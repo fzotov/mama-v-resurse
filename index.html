@@ -28,6 +28,7 @@
   --plum:#D99AC2; --plum-ink:#1A1219; --rose:#36222F; --sage:#8CC3AE; --sage-soft:#1F3029;
   --todo-bg:#3A3015; --todo-ink:#F2D98A; --alert:#FF8A80; --alert-soft:#3A1D1B; color-scheme:dark}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{background:var(--bg);color:var(--ink);font:16.5px/1.6 var(--body)}
 .wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 a{color:var(--plum)}
@@ -190,7 +191,8 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
 .timeline i{width:30px;height:30px;border-radius:50%;background:var(--surface);border:3px solid var(--line);display:block;transition:border-color .2s,transform .2s}
 .timeline div.on i{border-color:var(--plum);background:var(--plum);transform:scale(1.1)}
 .timeline div.on{color:var(--ink);font-weight:600}
-@media (max-width:560px){.timeline div span{font-size:.68rem}}
+.tl-cap{display:none}
+@media (max-width:560px){.timeline div span{display:none}.timeline{margin-bottom:.4rem}.tl-cap{display:block;margin:0 0 1.1rem;text-align:center;font-weight:600;color:var(--plum);font-size:.92rem}}
 .charts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem;margin-top:1.8rem}
 @media (max-width:820px){.charts{grid-template-columns:1fr}}
 .chart{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.1rem 1.1rem .8rem;display:grid;gap:.4rem;min-width:0}
@@ -280,8 +282,9 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
   <section id="marshrut"><div class="wrap">
     <div class="sec-head"><span class="eyebrow">Ваш маршрут</span><h2>Где вы сейчас?</h2><p class="muted">Выберите этап — покажем, что сделать в первую очередь и куда идти.</p></div>
     <div class="timeline" id="timeline" aria-hidden="true">
-      <div data-t="plan"><i></i><span>До зачатия</span></div><div data-t="wait"><i></i><span>Беременность</span></div><div data-t="wait"><i></i><span>Роды</span></div><div data-t="born"><i></i><span>До 6 мес.</span></div><div data-t="born"><i></i><span>1 год</span></div><div data-t="born"><i></i><span>2 года</span></div><div data-t="born"><i></i><span>3 года</span></div>
+      <div data-t="plan"><i></i><span>До зачатия</span></div><div data-t="wait close"><i></i><span>Беременность</span></div><div data-t="wait close"><i></i><span>Роды</span></div><div data-t="born close"><i></i><span>До 6 мес.</span></div><div data-t="born"><i></i><span>1 год</span></div><div data-t="born"><i></i><span>2 года</span></div><div data-t="born"><i></i><span>3 года</span></div>
     </div>
+    <p class="tl-cap" id="tl-cap" aria-hidden="true"></p>
     <div class="stages" role="tablist" aria-label="Этап">
       <button type="button" role="tab" aria-selected="false" data-stage="plan"><svg class="ico"><use href="#i-plan"/></svg>Планирую</button>
       <button type="button" role="tab" aria-selected="true" data-stage="wait"><svg class="ico"><use href="#i-bump"/></svg>Жду малыша</button>
@@ -602,7 +605,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
     [].forEach.call(document.querySelectorAll('.stage-panel'),function(p){p.hidden=p.getAttribute('data-panel')!==b.getAttribute('data-stage')});
     mark(b.getAttribute('data-stage'));
   })});
-  function mark(st){[].forEach.call(document.querySelectorAll('#timeline div'),function(d){d.classList.toggle('on',d.getAttribute('data-t')===st)})}
+  function mark(st){var on=[];[].forEach.call(document.querySelectorAll('#timeline div'),function(d){var y=d.getAttribute('data-t').split(' ').indexOf(st)>-1;d.classList.toggle('on',y);if(y)on.push(d.textContent.trim())});var c=document.getElementById('tl-cap');if(c)c.textContent=on.length>2?on[0]+' — '+on[on.length-1]:on.join(' → ')}
   mark('wait');
 
   var items=[].slice.call(document.querySelectorAll('#bags .check li'));
