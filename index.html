@@ -128,7 +128,10 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 .item p{color:var(--muted);font-size:.95rem}
 .callout{background:var(--alert-soft);border-left:3px solid var(--alert);padding:.9rem 1rem;border-radius:0 10px 10px 0;max-width:66ch}
 .callout b{color:var(--alert)}
-.calm{background:var(--rose);border-radius:20px;padding:1.6rem;display:grid;gap:.9rem}
+.calm{background:var(--rose);border-radius:20px;padding:1.6rem;display:grid;gap:.9rem;grid-template-columns:minmax(0,1fr) 260px;column-gap:2rem}
+.calm>*{grid-column:1}
+.calm>.calm-img{grid-column:2;grid-row:1 / span 7;width:100%;height:auto;border-radius:999px 999px 18px 18px;align-self:start}
+@media (max-width:760px){.calm{grid-template-columns:1fr}.calm>.calm-img{grid-column:1;grid-row:auto;max-width:240px;justify-self:center}}
 .list{display:grid;gap:.45rem;padding-left:1.2rem;margin:0;max-width:66ch}
 .figures{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}
 .figures div{display:grid;gap:.15rem;border-top:2px solid var(--plum);padding-top:.7rem;min-width:0}
@@ -151,6 +154,7 @@ form.fb .chk{display:flex;gap:.5rem;align-items:flex-start}
 
 /* SUBPAGES */
 .page-title{padding-block:2.4rem 1rem}
+.page-img{width:100%;max-width:340px;height:auto;border-radius:999px 999px 18px 18px;display:block;margin-bottom:1.4rem}
 .qa{display:grid;gap:1.7rem;max-width:66ch;padding-bottom:2.5rem}
 .qa article{display:grid;gap:.6rem}
 .qa .go{font-size:.93rem;color:var(--muted);display:flex;gap:.4rem 1rem;flex-wrap:wrap}
@@ -202,6 +206,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
 .ph.p2 .frame{background:linear-gradient(160deg,var(--sage-soft),#C9DED3)}
 .ph.p3 .frame{background:linear-gradient(160deg,#F3E2D4,var(--rose))}
 .ph.p4 .frame{background:linear-gradient(160deg,#E7E0F1,var(--sage-soft))}
+.ph img.art{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;display:block;border-radius:999px 999px 18px 18px;background:var(--rose)}
 .ph figcaption{font-size:.88rem;color:var(--muted)}
 .ph figcaption b{display:block;color:var(--ink);font-weight:600}
 .sec-ico{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:14px;background:var(--rose);color:var(--plum);margin-bottom:.2rem}
@@ -341,11 +346,12 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
       </div>
     </div>
     <div class="gallery">
-      <figure class="ph p1"><div class="frame"><svg class="ico"><use href="#i-door"/></svg></div><figcaption><b>Родовой бокс</b>Индивидуальный, на одну маму <span class="todo">фото</span></figcaption></figure>
-      <figure class="ph p2"><div class="frame"><svg class="ico"><use href="#i-home"/></svg></div><figcaption><b>Палата</b>Свой санузел и душ <span class="todo">фото</span></figcaption></figure>
-      <figure class="ph p3"><div class="frame"><svg class="ico"><use href="#i-hands"/></svg></div><figcaption><b>Партнёрские роды</b>Рядом тот, кому вы доверяете <span class="todo">фото с согласия пары</span></figcaption></figure>
-      <figure class="ph p4"><div class="frame"><svg class="ico"><use href="#i-baby"/></svg></div><figcaption><b>«Привет, мир!»</b>Малыши, родившиеся в Дмитрове <span class="todo">карточки с согласия родителей</span></figcaption></figure>
+      <figure class="ph"><img class="art" src="img/tour.webp" alt="Будущие родители на экскурсии в современной родовой палате, акушерка показывает палату" loading="lazy" width="640" height="857"><figcaption><b>День открытых дверей</b>Каждый четверг в 15:00 — можно с мужем или мамой</figcaption></figure>
+      <figure class="ph"><img class="art" src="img/school.webp" alt="Беременные на занятии дыхательной гимнастикой в зале роддома" loading="lazy" width="640" height="857"><figcaption><b>Школа мам</b>Бесплатно, ведут акушерки роддома</figcaption></figure>
+      <figure class="ph"><img class="art" src="img/papa.webp" alt="Папа держит новорождённого в семейной палате, мама отдыхает рядом" loading="lazy" width="640" height="857"><figcaption><b>Семейные палаты</b>Папа рядом с первых минут</figcaption></figure>
+      <figure class="ph"><img class="art" src="img/moms.webp" alt="Две мамы гуляют с колясками в парке" loading="lazy" width="640" height="857"><figcaption><b>Сообщество мам</b>4267 мам в чате роддома</figcaption></figure>
     </div>
+    <p class="note" style="margin-top:0">Иллюстрации. Фото роддома и команды добавим после согласования с больницей. <span class="todo">реальные фото и согласия</span></p>
     <div class="invite" id="den-otkrytyh-dverey">
       <h3>День открытых дверей: каждый четверг в 15:00</h3>
       <p>Михаил Цурцумия покажет родовое и послеродовое отделения и ответит на вопросы. Можно прийти с партнёром или мамой.</p>
@@ -389,7 +395,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
   </div></section>
 
   <section id="signal"><div class="wrap">
-    <div class="calm">
+    <div class="calm"><img class="calm-img" src="img/support.webp" alt="Мама с малышом, рядом её мама поддерживает и предлагает чай" loading="lazy" width="640" height="857">
       <span class="sec-ico"><svg class="ico"><use href="#i-leaf"/></svg></span><span class="eyebrow">«Ранний сигнал»</span>
       <h2>Если после родов тяжело — это не слабость</h2>
       <div class="prose">
@@ -515,6 +521,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
 <!-- ПАПАМ -->
 <div data-view="pape" hidden><div class="wrap">
   <div class="page-title sec-head"><span class="eyebrow">Для пап</span><h1>Папа может многое</h1></div>
+  <img class="page-img" src="img/papa.webp" alt="Папа держит новорождённого в семейной палате" loading="lazy" width="640" height="857">
   <div class="prose" style="padding-bottom:2.5rem">
     <p>В роддоме — бесплатные партнёрские роды по ОМС. На фестивале «Папа может!» в Дмитровском кремле будущие папы учились пеленать, успокаивать малыша, поддерживать маму после родов и пробовали симулятор схваток.</p>
     <p>Приходите вместе на день открытых дверей в четверг в 15:00. Что нужно партнёру на роды — в <a href="#chto-vzyat">списке сумки</a>.</p>
