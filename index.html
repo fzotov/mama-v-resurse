@@ -219,6 +219,47 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
 .ph figcaption b{display:block;color:var(--ink);font-weight:600}
 .sec-ico{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:14px;background:var(--rose);color:var(--plum);margin-bottom:.2rem}
 .calm .sec-ico{background:var(--surface)}
+
+.hero2{padding-block:1.4rem 0}
+.hero-card{position:relative;border-radius:28px;overflow:hidden;background:#8A1E46;min-height:clamp(460px,46vw,640px);display:flex;align-items:center}
+.hero-card>.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left center;display:block}
+.hero-card::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(138,30,70,0) 30%,rgba(110,22,56,.55) 52%,rgba(96,18,48,.82) 75%)}
+.hero-card .hero-txt{position:relative;z-index:1;margin-left:auto;width:min(560px,52%);padding:clamp(1.6rem,3.5vw,3.2rem);color:#fff;display:grid;gap:1.1rem}
+.hero-card .kicker{color:#FFD9E8;background:rgba(255,255,255,.12);border-radius:999px;padding:.35rem .8rem;justify-self:start;font-size:.82rem}
+.hero-card h1{color:#fff;font-size:clamp(2rem,3.6vw,3.1rem);line-height:1.08;margin:0}
+.hero-card h1 span{color:#FFC9DF;display:block}
+.hero-card .lead{color:rgba(255,255,255,.92);font-size:1.12rem;margin:0}
+.hero-card .btn.primary{background:#fff;color:#6B2A55}
+.hero-card .btn.line{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.75)}
+.hero-score{margin:0;font-size:.92rem;color:rgba(255,255,255,.88)}
+.hero-score b{color:#fff;font-size:1.05rem}
+@media (max-width:820px){.hero-card{display:block;min-height:0;background:#7A1A40}.hero-card>.hero-img{position:relative;height:auto;aspect-ratio:5/4;object-position:12% center}.hero-card::after{display:none}.hero-card .hero-txt{width:auto;margin:0;padding:1.4rem 1.2rem 1.6rem}}
+.enc-sec{background:#8E1F4C;color:#fff}
+.enc-sec h2,.enc-sec .eyebrow{color:#fff}.enc-sec .sec-head p{color:rgba(255,255,255,.85)}
+.enc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.4rem}
+.enc-card{display:grid;grid-template-columns:minmax(0,1fr);min-width:0;gap:.45rem;align-content:start;text-decoration:none;color:#fff;background:rgba(255,255,255,.08);border-radius:26px;padding:.7rem .7rem 1.2rem;transition:transform .2s}
+.enc-card:hover{transform:translateY(-4px)}
+.enc-card img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:20px;display:block;background:#F6D9E4}
+.enc-card b{font-family:var(--display);font-size:1.25rem;padding:.4rem .4rem 0}
+.enc-card span{font-size:.93rem;color:rgba(255,255,255,.85);padding:0 .4rem}
+@media (max-width:820px){.enc{grid-template-columns:minmax(0,1fr);max-width:520px;margin-inline:auto}}
+.doc-feature{margin:0 0 2.2rem;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);border-radius:26px;overflow:hidden;background:var(--surface);box-shadow:0 10px 40px rgba(38,26,36,.10)}
+.doc-feature img{width:100%;height:100%;min-height:340px;object-fit:cover;display:block}
+.doc-quote{min-width:0;padding:clamp(1.4rem,3vw,2.6rem);display:grid;gap:.8rem;align-content:center}
+.doc-quote blockquote{margin:0;font-family:var(--display);font-size:clamp(1.4rem,2.4vw,1.9rem);line-height:1.2;color:var(--plum);font-weight:700}
+.doc-quote p{margin:0;color:var(--muted)}
+.doc-quote b{color:var(--ink);font-size:1.05rem;margin-top:.4rem}
+.doc-quote span{color:var(--muted);font-size:.9rem;margin-top:-.6rem}
+@media (max-width:820px){.doc-feature{grid-template-columns:1fr}.doc-feature img{min-height:0;height:auto;aspect-ratio:3/2}}
+.srv{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.2rem}
+.srv-card{display:grid;grid-template-columns:minmax(0,1fr);min-width:0;gap:.4rem;align-content:start;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:.6rem .6rem 1.1rem;transition:transform .2s}
+.srv-card:hover{transform:translateY(-3px)}
+.srv-card img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:16px;display:block;background:#fff}
+.srv-card b{font-size:1.05rem;padding:.3rem .3rem 0}
+.srv-card span{font-size:.88rem;color:var(--muted);padding:0 .3rem}
+@media (max-width:900px){.srv{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.srv{gap:.8rem}.srv-card b{font-size:.95rem}}
+.page-img{max-width:min(100%,520px)!important;border-radius:24px!important;aspect-ratio:auto}
 </style>
 </head>
 <body>
@@ -256,7 +297,8 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
 <main>
 <div data-view="home">
 
-  <div class="hero"><span class="blob a"></span><span class="blob b"></span><div class="wrap">
+  <div class="hero2"><div class="wrap"><div class="hero-card">
+    <img referrerpolicy="no-referrer" class="hero-img" src="https://optim.tildacdn.com/tild6534-6532-4262-b932-393733343165/-/format/webp/__2026-02-08_130252.png.webp" alt="Мама держит на руках спящего младенца" width="1318" height="610" fetchpriority="high">
     <div class="hero-txt">
       <span class="kicker">Проект администрации Дмитровского округа и Дмитровской больницы</span>
       <h1>Вы не одна. <span>Рядом врачи, мамы и понятный маршрут.</span></h1>
@@ -265,13 +307,9 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
         <a class="btn primary" href="#den-otkrytyh-dverey">Прийти в роддом в четверг</a>
         <a class="btn line" href="https://t.me/womenhealthdmitrov">Спросить в чате мам</a>
       </div>
-      <p class="muted" style="font-size:.9rem">Дни открытых дверей — каждый четверг в 15:00. Экскурсию по родовому и послеродовому отделениям проводит заведующий отделением Михаил Цурцумия.</p>
+      <p class="hero-score"><b>8,78 из 10</b> — так мамы оценили Дмитровский роддом. 71% советуют его подругам.</p>
     </div>
-    <div class="arch">
-      <img src="data:image/webp;base64,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" alt="Мама держит на руках спящего младенца" width="380" height="440">
-      <div class="arch-note"><b>8,78 из 10</b> — так мамы оценили Дмитровский роддом. 71% советуют его подругам.</div>
-    </div>
-  </div>
+  </div></div>
   <div class="wrap"><div class="proof">
     <div><b>4267</b><span>мам в чате роддома</span></div>
     <div><b>300+</b><span>прошли бесплатную школу мам</span></div>
@@ -314,6 +352,15 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
       <div class="step"><svg class="ico"><use href="#i-door"/></svg><span class="n">Вместе</span><h3>Приходите в четверг</h3><p>День открытых дверей открыт и для пап.</p><a class="go" href="#den-otkrytyh-dverey">Как прийти →</a></div>
       <div class="step"><svg class="ico"><use href="#i-heart"/></svg><span class="n">После</span><h3>Заметьте, если маме тяжело</h3><p>Не ждите, пока она пожалуется сама. Спросите и помогите дойти до специалиста.</p><a class="go" href="#signal">Как помочь →</a></div>
       <div class="step"><svg class="ico"><use href="#i-baby"/></svg><span class="n">Для пап</span><h3>«Папа может!»</h3><p>Пеленать, успокаивать малыша, поддерживать маму.</p><a class="go" href="#pape">Подробнее →</a></div>
+    </div>
+  </div></section>
+
+  <section id="enc" class="enc-sec"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Энциклопедия</span><h2>Главное — по полочкам</h2><p>Подробно о здоровье, материнстве и поддержке семьи — простыми словами.</p></div>
+    <div class="enc">
+      <a class="enc-card" href="#chto-vzyat"><img referrerpolicy="no-referrer" src="https://static.tildacdn.com/tild6461-3061-4865-a235-656431343737/image_1.jpeg" alt="Собранная сумка в роддом" loading="lazy" width="1024" height="1024"><b>Что взять в роддом</b><span>Список с галочками — запомнится на вашем телефоне</span></a>
+      <a class="enc-card" href="#mam"><img referrerpolicy="no-referrer" src="https://static.tildacdn.com/tild6232-3462-4661-b364-656664303335/image.jpeg" alt="Мама нежно держит новорождённого" loading="lazy" width="856" height="813"><b>Мамам: ответы врачей</b><span>Страх родов, выплаты, ГВ, когда срочно ехать в роддом</span></a>
+      <a class="enc-card" href="#pape"><img referrerpolicy="no-referrer" src="https://static.tildacdn.com/tild3330-3131-4239-a564-353031363234/image_3.jpeg" alt="Будущие мама и папа гуляют, держась за руки" loading="lazy" width="700" height="700"><b>Папам</b><span>Партнёрские роды, «Папа может!» и как поддержать маму</span></a>
     </div>
   </div></section>
 
@@ -373,6 +420,14 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
 
   <section id="komanda"><div class="wrap">
     <div class="sec-head"><span class="eyebrow">Кто вас встретит</span><h2>Люди, которые отвечают за роды в Дмитрове</h2></div>
+    <figure class="doc-feature">
+      <img referrerpolicy="no-referrer" src="https://static.tildacdn.com/tild3732-3064-4463-a565-653332363936/photo_2026-02-08_13-.jpg" alt="Михаил Цурцумия обнимает молодого папу с новорождённым в родильном отделении" loading="lazy" width="1280" height="853">
+      <figcaption class="doc-quote">
+        <blockquote>«Каждое рождение — это чудо»</blockquote>
+        <p>Михаил Зурабович убеждён: беременность должна ассоциироваться с радостью и спокойствием. Своей работой он создаёт в отделении атмосферу комфорта и доверия.</p>
+        <b>Михаил Зурабович Цурцумия</b><span>Заведующий родильным отделением · экскурсии по четвергам в 15:00</span>
+      </figcaption>
+    </figure>
     <div class="people">
       <div class="person"><div class="avatar">МЦ</div><div class="item"><h3>Михаил Зурабович Цурцумия</h3><p>Заведующий родильным отделением. «Каждое рождение — это чудо». Проводит экскурсии по четвергам.</p></div></div>
       <div class="person"><div class="avatar">СЭ</div><div class="item"><h3>Сирануш Эдилян</h3><p>Заведующая детским отделением новорождённых.</p></div></div>
@@ -454,6 +509,16 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
     <p class="note">В проекте работают администрация округа, больница, социальные службы, семейный центр «Остров Надежды», местные предприниматели и сообщества мам. <a href="#afisha">События проекта →</a></p>
   </div></section>
 
+  <section id="servisy"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Полезное</span><h2>Сервисы для мам и семей</h2></div>
+    <div class="srv">
+      <a class="srv-card" href="https://t.me/womenhealthdmitrov"><img referrerpolicy="no-referrer" src="https://static.tildacdn.com/tild3061-3933-4133-a433-333235376339/b6ef9e2d-5841-403e-a.jpg" alt="Логотип роддома Дмитровской больницы" loading="lazy" width="640" height="640"><b>Telegram-сообщество мам</b><span>Новости роддома и женской консультации, ответы на вопросы, 4267 мам</span></a>
+      <a class="srv-card" href="https://t.me/eregistratura_mo_bot"><img referrerpolicy="no-referrer" src="https://static.tildacdn.com/tild6338-3263-4538-b431-393238653866/Screenshot_4.png" alt="Чат-бот «Денис» Минздрава Подмосковья" loading="lazy" width="1265" height="1265"><b>Чат-бот «Денис»</b><span>Запись к врачу, прививки, вызов врача на дом</span></a>
+      <a class="srv-card" href="https://uslugi.mosreg.ru/birthmo"><img referrerpolicy="no-referrer" src="https://static.tildacdn.com/tild6464-6631-4731-b237-643464393566/1200x630bf.jpg" alt="Герб Московской области" loading="lazy" width="629" height="630"><b>Поддержка молодых семей</b><span>Выплаты и услуги при рождении ребёнка в Подмосковье</span></a>
+      <a class="srv-card" href="https://www.gosuslugi.ru/help/faq/popular/21"><img referrerpolicy="no-referrer" src="https://static.tildacdn.com/tild3765-6239-4432-a662-653836626331/gu_poster_square_210.jpg" alt="Запись в детский сад на Госуслугах" loading="lazy" width="900" height="900"><b>Запись в детский сад</b><span>Встать в очередь онлайн, не выходя из дома</span></a>
+    </div>
+  </div></section>
+
   <section id="kontakty"><div class="wrap">
     <div class="sec-head"><span class="eyebrow">Контакты</span><h2>Куда звонить</h2></div>
     <div class="contacts">
@@ -477,6 +542,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
 <!-- МАМАМ -->
 <div data-view="mam" hidden><div class="wrap">
   <div class="page-title sec-head"><span class="eyebrow">Вопросы мам</span><h1>Ответы на то, что тревожит больше всего</h1>
+  <img referrerpolicy="no-referrer" class="page-img" src="https://static.tildacdn.com/tild6232-3462-4661-b364-656664303335/image.jpeg" alt="Мама нежно держит новорождённого" loading="lazy" width="856" height="813">
   <p class="muted">Вопросы взяты из опроса «Путь мамы». Отвечают врачи Дмитровского роддома. <span class="todo">Медицинские ответы согласовать с врачами до публикации.</span></p></div>
   <nav class="toc" aria-label="Вопросы">
     <a href="#mam-strah">Страшно рожать</a><a href="#mam-srochno">Когда ехать срочно</a><a href="#mam-vyplaty">Выплаты</a><a href="#mam-gv">Грудное вскармливание</a><a href="#mam-posle">После родов</a><a href="#mam-malysh">Малыш и врач</a><a href="#mam-ploho">Мне плохо</a><a href="#mam-odna">Я одна</a><a href="#mam-sad">Детский сад</a>
@@ -504,6 +570,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
 <!-- СУМКА -->
 <div data-view="chto-vzyat" hidden><div class="wrap">
   <div class="page-title sec-head"><span class="eyebrow">Памятка роддома</span><h1>Сумка в роддом</h1>
+  <img referrerpolicy="no-referrer" class="page-img" src="https://static.tildacdn.com/tild6461-3061-4865-a235-656431343737/image_1.jpeg" alt="Собранная сумка в роддом" loading="lazy" width="1024" height="1024">
   <p class="muted">Отмечайте, что уже собрали, — список запомнится на этом устройстве. Вещи сложите в прозрачные сумки: их три — предродовое отделение, родблок, послеродовое. Документы — отдельно в папке.</p></div>
   <div class="progress" aria-live="polite"><div style="display:flex;justify-content:space-between;font-size:.9rem"><span id="bag-count">Собрано 0</span><button type="button" id="bag-reset" class="btn soft" style="padding:.25rem .8rem;font-size:.82rem">Начать заново</button></div><div class="track"><div class="fill" id="bag-fill" style="width:0"></div></div></div>
   <div class="bags" id="bags">
@@ -532,7 +599,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
 <!-- ПАПАМ -->
 <div data-view="pape" hidden><div class="wrap">
   <div class="page-title sec-head"><span class="eyebrow">Для пап</span><h1>Папа может многое</h1></div>
-  <img class="page-img" src="img/papa.webp" alt="Папа держит новорождённого в семейной палате" loading="lazy" width="640" height="857">
+  <img referrerpolicy="no-referrer" class="page-img" src="https://static.tildacdn.com/tild3330-3131-4239-a564-353031363234/image_3.jpeg" alt="Будущие мама и папа гуляют, держась за руки" loading="lazy" width="700" height="700">
   <div class="prose" style="padding-bottom:2.5rem">
     <p>В роддоме — бесплатные партнёрские роды по ОМС. На фестивале «Папа может!» в Дмитровском кремле будущие папы учились пеленать, успокаивать малыша, поддерживать маму после родов и пробовали симулятор схваток.</p>
     <p>Приходите вместе на день открытых дверей в четверг в 15:00. Что нужно партнёру на роды — в <a href="#chto-vzyat">списке сумки</a>.</p>
