@@ -1,0 +1,1084 @@
+<style>[hidden]{display:none!important}.t-records{overflow:visible}</style>
+<meta name="description" content="Мама в ресурсе — проект Дмитровского округа и роддома: школа мам, занятия для беременных, дни открытых дверей, меры поддержки семьи.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Golos+Text:wght@400;500;600&display=swap">
+<style>
+/* Layout: спокойная колонка, арка-окно с иллюстрацией в первом экране, выбор «где вы сейчас» сразу под ним; сливовый — бренд, шалфей — «безопасно / работает» */
+:root{
+  --bg:#FBF8F6; --surface:#FFFFFF; --ink:#261A24; --muted:#6D5F69; --line:#EADFE4;
+  --plum:#6B2A55; --plum-ink:#FFFFFF; --rose:#F5E6EE; --sage:#3F6E5D; --sage-soft:#E3EEE8;
+  --todo-bg:#FFF3D1; --todo-ink:#6B4E00; --alert:#B3261E; --alert-soft:#FCEBEA;
+  --display:"Manrope","Golos Text",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --body:"Golos Text",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#17121A; --surface:#211A24; --ink:#F2EAF0; --muted:#B9AAB5; --line:#362B38;
+  --plum:#D99AC2; --plum-ink:#1A1219; --rose:#36222F; --sage:#8CC3AE; --sage-soft:#1F3029;
+  --todo-bg:#3A3015; --todo-ink:#F2D98A; --alert:#FF8A80; --alert-soft:#3A1D1B; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#17121A; --surface:#211A24; --ink:#F2EAF0; --muted:#B9AAB5; --line:#362B38;
+  --plum:#D99AC2; --plum-ink:#1A1219; --rose:#36222F; --sage:#8CC3AE; --sage-soft:#1F3029;
+  --todo-bg:#3A3015; --todo-ink:#F2D98A; --alert:#FF8A80; --alert-soft:#3A1D1B; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font:16.5px/1.6 var(--body)}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:var(--plum)}
+a:focus-visible,button:focus-visible,input:focus-visible,label:focus-within{outline:2px solid var(--plum);outline-offset:2px;border-radius:6px}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.15;text-wrap:balance;margin:0;letter-spacing:-.02em}
+h1{font-size:clamp(2rem,5vw,3.3rem);font-weight:800;letter-spacing:-.03em}
+h2{font-size:clamp(1.5rem,3.3vw,2.15rem)}
+h3{font-size:1.1rem;line-height:1.3}
+p{margin:0}
+.prose{max-width:66ch;display:grid;gap:.85rem}
+.muted{color:var(--muted)}
+.todo{background:var(--todo-bg);color:var(--todo-ink);border-radius:4px;padding:0 .35em;font-size:.9em;white-space:normal}
+html.clean .todo{display:none}
+.draft{background:var(--todo-bg);color:var(--todo-ink);font-size:.82rem}
+.draft .wrap{display:flex;gap:.6rem 1rem;align-items:center;flex-wrap:wrap;padding-block:.45rem}
+.draft button{font:inherit;font-weight:600;background:transparent;border:1px solid currentColor;color:inherit;border-radius:999px;padding:.1rem .7rem;cursor:pointer}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;background:color-mix(in srgb,var(--surface) 94%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:.6rem 1rem;padding-block:.6rem;flex-wrap:wrap}
+.brand{font-family:var(--display);font-weight:800;font-size:1.08rem;text-decoration:none;color:var(--ink);margin-right:auto;line-height:1.2}
+.brand small{display:block;font-family:var(--body);font-weight:400;font-size:.72rem;color:var(--muted)}
+nav.main{display:flex;gap:.15rem;flex-wrap:wrap}
+nav.main a{text-decoration:none;color:var(--ink);padding:.35rem .6rem;border-radius:8px;font-size:.92rem}
+nav.main a[aria-current="page"]{background:var(--rose);color:var(--plum);font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font:600 .97rem/1.2 var(--body);padding:.8rem 1.2rem;border-radius:999px;border:0;cursor:pointer}
+.btn.primary{background:var(--plum);color:var(--plum-ink)}
+.btn.soft{background:var(--rose);color:var(--plum)}
+.btn.line{background:transparent;color:var(--plum);box-shadow:inset 0 0 0 1.5px var(--plum)}
+.btns{display:flex;gap:.6rem;flex-wrap:wrap}
+
+/* HERO */
+.hero{padding-block:2.6rem 2.2rem}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);gap:2.4rem;align-items:center}
+.hero-txt{display:grid;gap:1.15rem;align-content:start}
+.kicker{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--sage);font-weight:600}
+.hero h1 span{color:var(--plum)}
+.hero .lead{font-size:1.15rem;max-width:42ch;color:var(--muted)}
+.arch{position:relative;justify-self:center;width:100%;max-width:380px;aspect-ratio:38/44;border-radius:999px 999px 28px 28px;overflow:hidden;background:#9C1C4B}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:16% 100%;display:block}
+.arch-note{position:absolute;left:12px;right:12px;bottom:12px;background:var(--surface);color:var(--ink);border-radius:16px;padding:.7rem .9rem;font-size:.88rem;box-shadow:0 6px 20px rgba(38,26,36,.18)}
+.arch-note b{color:var(--plum)}
+.proof{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border-block:1px solid var(--line);margin-top:2.2rem}
+.proof div{background:var(--bg);padding:1rem 1.1rem;display:grid;gap:.1rem;min-width:0}
+.proof b{font-family:var(--display);font-size:1.45rem;color:var(--ink);font-variant-numeric:tabular-nums}
+.proof span{font-size:.85rem;color:var(--muted)}
+@media (max-width:820px){.hero .wrap{grid-template-columns:1fr}.arch{max-width:300px;order:-1}.proof{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* SECTIONS */
+main section{padding-block:3rem;border-top:1px solid var(--line)}
+.sec-head{display:grid;gap:.55rem;margin-bottom:1.5rem;max-width:66ch}
+.eyebrow{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--plum);font-weight:600}
+
+/* STAGE PICKER */
+.stages{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.2rem}
+.stages button{font:500 .95rem var(--body);padding:.6rem 1rem;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.stages button[aria-selected="true"]{background:var(--plum);border-color:var(--plum);color:var(--plum-ink)}
+.stage-panel{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:1rem}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.1rem;display:grid;gap:.45rem;align-content:start;min-width:0}
+.step .n{font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.step p{color:var(--muted);font-size:.95rem}
+.step a.go{font-weight:600;font-size:.93rem;text-decoration:none}
+
+/* ACCOUNTABILITY */
+.ledger{display:grid;gap:0;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) auto;gap:1rem;padding:.95rem 0;border-bottom:1px solid var(--line);align-items:start}
+.row q{font-family:var(--display);font-weight:600;font-size:1rem;quotes:"«" "»"}
+.row p{color:var(--muted)}
+.chip{font-size:.78rem;font-weight:600;padding:.2rem .6rem;border-radius:999px;white-space:nowrap}
+.chip.ok{background:var(--sage-soft);color:var(--sage)}
+.chip.soon{background:var(--rose);color:var(--plum)}
+@media (max-width:720px){.row{grid-template-columns:1fr auto}.row p{grid-column:1/-1;grid-row:2}}
+
+/* RODDOM */
+.two{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:2.2rem;align-items:start}
+@media (max-width:820px){.two{grid-template-columns:1fr}}
+.ticks{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
+.ticks li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:.5rem}
+.ticks li::before{content:"";width:16px;height:16px;margin-top:.3rem;border-radius:50%;background:var(--sage-soft);box-shadow:inset 0 0 0 5px var(--sage)}
+.scores{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.3rem;display:grid;gap:1rem;align-content:start}
+.bar{display:grid;gap:.3rem}
+.bar .lbl{display:flex;justify-content:space-between;font-size:.92rem}
+.bar .lbl b{font-variant-numeric:tabular-nums}
+.track{height:10px;border-radius:999px;background:var(--rose);overflow:hidden}
+.fill{height:100%;background:var(--plum);border-radius:999px}
+.scale{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.invite{margin-top:1.4rem;background:var(--sage-soft);border-radius:18px;padding:1.2rem 1.3rem;display:grid;gap:.6rem}
+.invite h3{color:var(--sage)}
+
+/* PEOPLE */
+.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:1.2rem}
+.person{display:grid;grid-template-columns:52px minmax(0,1fr);gap:.8rem;align-items:start}
+.avatar{width:52px;height:52px;border-radius:50%;background:var(--rose);color:var(--plum);display:grid;place-items:center;font-family:var(--display);font-weight:600}
+.person p{color:var(--muted);font-size:.93rem}
+
+/* TABLES */
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:460px;font-size:.95rem}
+th,td{text-align:left;padding:.65rem .8rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1.1rem}
+.item{display:grid;gap:.35rem;align-content:start;min-width:0}
+.item p{color:var(--muted);font-size:.95rem}
+.callout{background:var(--alert-soft);border-left:3px solid var(--alert);padding:.9rem 1rem;border-radius:0 10px 10px 0;max-width:66ch}
+.callout b{color:var(--alert)}
+.calm{background:var(--rose);border-radius:20px;padding:1.6rem;display:grid;gap:.9rem;grid-template-columns:minmax(0,1fr) 260px;column-gap:2rem}
+.calm>*{grid-column:1}
+.calm>.calm-img{grid-column:2;grid-row:1 / span 7;width:100%;height:auto;border-radius:999px 999px 18px 18px;align-self:start}
+@media (max-width:760px){.calm{grid-template-columns:1fr}.calm>.calm-img{grid-column:1;grid-row:auto;max-width:240px;justify-self:center}}
+.list{display:grid;gap:.45rem;padding-left:1.2rem;margin:0;max-width:66ch}
+.figures{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}
+.figures div{display:grid;gap:.15rem;border-top:2px solid var(--plum);padding-top:.7rem;min-width:0}
+.figures b{font-family:var(--display);font-size:1.7rem;font-variant-numeric:tabular-nums}
+.figures span{color:var(--muted);font-size:.9rem}
+@media (max-width:720px){.figures{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.note{color:var(--muted);font-size:.85rem;margin-top:.8rem}
+.contacts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}
+@media (max-width:820px){.contacts{grid-template-columns:1fr}}
+.contacts .item{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.1rem}
+.phone{font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink);user-select:all}
+form.fb{display:grid;gap:.8rem;max-width:520px;margin-top:1.4rem}
+form.fb label{display:grid;gap:.3rem;font-size:.9rem}
+form.fb input[type=text],form.fb textarea{font:inherit;padding:.65rem .75rem;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+form.fb .chk{display:flex;gap:.5rem;align-items:flex-start}
+.formmsg{color:var(--sage);font-weight:500}
+.sticky-call{position:fixed;left:0;right:0;bottom:0;z-index:7;display:none;padding:.6rem max(16px,env(safe-area-inset-right,0px)) calc(.6rem + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:var(--surface);border-top:1px solid var(--line);gap:.5rem}
+.sticky-call .btn{flex:1;justify-content:center;padding:.7rem}
+@media (max-width:720px){.sticky-call{display:flex}footer{padding-bottom:4.5rem}}
+
+/* SUBPAGES */
+.page-title{padding-block:2.4rem 1rem}
+.page-img{width:100%;max-width:340px;height:auto;border-radius:999px 999px 18px 18px;display:block;margin-bottom:1.4rem}
+.qa{display:grid;gap:1.7rem;max-width:66ch;padding-bottom:2.5rem}
+.qa article{display:grid;gap:.6rem}
+.qa .go{font-size:.93rem;color:var(--muted);display:flex;gap:.4rem 1rem;flex-wrap:wrap}
+.toc{display:flex;flex-wrap:wrap;gap:.4rem;margin:.6rem 0 1.6rem}
+.toc a{font-size:.88rem;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.3rem .75rem;color:var(--ink)}
+.bags{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:1.6rem;padding-bottom:1rem}
+.bag{display:grid;gap:.5rem;align-content:start}
+.check{list-style:none;padding:0;margin:0;display:grid;gap:.15rem}
+.check label{display:flex;gap:.6rem;align-items:flex-start;padding:.35rem .2rem;cursor:pointer;border-radius:6px}
+.check input{width:18px;height:18px;margin-top:.2rem;accent-color:var(--sage);flex:0 0 18px}
+.check input:checked+span{color:var(--muted);text-decoration:line-through}
+.progress{position:sticky;top:calc(env(safe-area-inset-top,0px) + 58px);z-index:3;background:var(--bg);padding-block:.6rem;display:grid;gap:.35rem;margin-bottom:1rem}
+.progress .track{height:8px;background:var(--sage-soft)}
+.progress .fill{background:var(--sage)}
+footer{background:var(--surface);border-top:1px solid var(--line);font-size:.88rem;color:var(--muted)}
+footer .wrap{padding-block:1.8rem;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:1.4rem}
+@media (max-width:720px){footer .wrap{grid-template-columns:1fr}}
+footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+.ico{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.step .ico{width:40px;height:40px;padding:8px;border-radius:12px;background:var(--rose);color:var(--plum)}
+.stages button{display:inline-flex;align-items:center;gap:.45rem}
+.stages button .ico{width:20px;height:20px}
+.timeline{position:relative;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));margin:0 0 1.6rem;padding-top:.2rem}
+.timeline::before{content:"";position:absolute;left:7%;right:7%;top:15px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--rose),var(--plum),var(--sage))}
+.timeline div{position:relative;display:grid;justify-items:center;gap:.45rem;text-align:center;font-size:.8rem;color:var(--muted);min-width:0}
+.timeline i{width:30px;height:30px;border-radius:50%;background:var(--surface);border:3px solid var(--line);display:block;transition:border-color .2s,transform .2s}
+.timeline div.on i{border-color:var(--plum);background:var(--plum);transform:scale(1.1)}
+.timeline div.on{color:var(--ink);font-weight:600}
+.tl-cap{display:none}
+@media (max-width:560px){.timeline div span{display:none}.timeline{margin-bottom:.4rem}.tl-cap{display:block;margin:0 0 1.1rem;text-align:center;font-weight:600;color:var(--plum);font-size:.92rem}}
+.charts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem;margin-top:1.8rem}
+@media (max-width:820px){.charts{grid-template-columns:1fr}}
+.chart{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.1rem 1.1rem .8rem;display:grid;gap:.4rem;min-width:0}
+.chart h3{font-size:.98rem}
+.chart svg{width:100%;height:auto;display:block}
+.chart .cap{font-size:.8rem;color:var(--muted)}
+.hero{position:relative;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(2px);pointer-events:none;z-index:0}
+.blob.a{width:420px;height:420px;right:-120px;top:-140px;background:var(--rose)}
+.blob.b{width:220px;height:220px;right:30%;bottom:-120px;background:var(--sage-soft)}
+.hero .wrap{position:relative;z-index:1}
+.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin:2rem 0 .4rem}
+@media (max-width:820px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ph{display:grid;gap:.5rem;margin:0}
+.ph .frame{aspect-ratio:3/4;max-width:100%;border-radius:999px 999px 18px 18px;display:grid;place-items:center;color:var(--plum);position:relative;overflow:hidden}
+.ph .frame::after{content:"";position:absolute;inset:auto -30% -40% -30%;height:70%;border-radius:50%;background:var(--surface);opacity:.35}
+.ph .frame .ico{width:54px;height:54px;stroke-width:1.3;position:relative;z-index:1}
+.ph.p1 .frame{background:linear-gradient(160deg,var(--rose),#E9C7D8)}
+.ph.p2 .frame{background:linear-gradient(160deg,var(--sage-soft),#C9DED3)}
+.ph.p3 .frame{background:linear-gradient(160deg,#F3E2D4,var(--rose))}
+.ph.p4 .frame{background:linear-gradient(160deg,#E7E0F1,var(--sage-soft))}
+.ph img.art{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;display:block;border-radius:999px 999px 18px 18px;background:var(--rose)}
+.ph figcaption{font-size:.88rem;color:var(--muted)}
+.ph figcaption b{display:block;color:var(--ink);font-weight:600}
+.sec-ico{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:14px;background:var(--rose);color:var(--plum);margin-bottom:.2rem}
+.calm .sec-ico{background:var(--surface)}
+
+.hero2{padding-block:1.4rem 0}
+.hero-card{position:relative;border-radius:28px;overflow:hidden;background:#8A1E46;min-height:clamp(460px,46vw,640px);display:flex;align-items:center}
+.hero-card>.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left center;display:block}
+.hero-card::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(138,30,70,0) 30%,rgba(110,22,56,.55) 52%,rgba(96,18,48,.82) 75%)}
+.hero-card .hero-txt{position:relative;z-index:1;margin-left:auto;width:min(560px,52%);padding:clamp(1.6rem,3.5vw,3.2rem);color:#fff;display:grid;gap:1.1rem}
+.hero-card .kicker{color:#FFD9E8;background:rgba(255,255,255,.12);border-radius:999px;padding:.35rem .8rem;justify-self:start;font-size:.82rem}
+.hero-card h1{color:#fff;font-size:clamp(2rem,3.6vw,3.1rem);line-height:1.08;margin:0}
+.hero-card h1 span{color:#FFC9DF;display:block}
+.hero-card .lead{color:rgba(255,255,255,.92);font-size:1.12rem;margin:0}
+.hero-card .btn.primary{background:#fff;color:#6B2A55}
+.hero-card .btn.line{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.75)}
+.hero-score{margin:0;font-size:.92rem;color:rgba(255,255,255,.88)}
+.hero-score b{color:#fff;font-size:1.05rem}
+@media (max-width:820px){.hero-card{display:block;min-height:0;background:#7A1A40}.hero-card>.hero-img{position:relative;height:auto;aspect-ratio:5/4;object-position:12% center}.hero-card::after{display:none}.hero-card .hero-txt{width:auto;margin:0;padding:1.4rem 1.2rem 1.6rem}}
+.enc-sec{background:#8E1F4C;color:#fff}
+.enc-sec h2,.enc-sec .eyebrow{color:#fff}.enc-sec .sec-head p{color:rgba(255,255,255,.85)}
+.enc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.4rem}
+.enc-card{display:grid;grid-template-columns:minmax(0,1fr);min-width:0;gap:.45rem;align-content:start;text-decoration:none;color:#fff;background:rgba(255,255,255,.08);border-radius:26px;padding:.7rem .7rem 1.2rem;transition:transform .2s}
+.enc-card:hover{transform:translateY(-4px)}
+.enc-card img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:20px;display:block;background:#F6D9E4}
+.enc-card b{font-family:var(--display);font-size:1.25rem;padding:.4rem .4rem 0}
+.enc-card span{font-size:.93rem;color:rgba(255,255,255,.85);padding:0 .4rem}
+@media (max-width:820px){.enc{grid-template-columns:minmax(0,1fr);max-width:520px;margin-inline:auto}}
+.doc-feature{margin:0 0 2.2rem;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);border-radius:26px;overflow:hidden;background:var(--surface);box-shadow:0 10px 40px rgba(38,26,36,.10)}
+.doc-feature img{width:100%;height:100%;min-height:340px;object-fit:cover;display:block}
+.doc-quote{min-width:0;padding:clamp(1.4rem,3vw,2.6rem);display:grid;gap:.8rem;align-content:center}
+.doc-quote blockquote{margin:0;font-family:var(--display);font-size:clamp(1.4rem,2.4vw,1.9rem);line-height:1.2;color:var(--plum);font-weight:700}
+.doc-quote p{margin:0;color:var(--muted)}
+.doc-quote b{color:var(--ink);font-size:1.05rem;margin-top:.4rem}
+.doc-quote span{color:var(--muted);font-size:.9rem;margin-top:-.6rem}
+@media (max-width:820px){.doc-feature{grid-template-columns:1fr}.doc-feature img{min-height:0;height:auto;aspect-ratio:3/2}}
+.srv{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.2rem}
+.srv-card{display:grid;grid-template-columns:minmax(0,1fr);min-width:0;gap:.4rem;align-content:start;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:.6rem .6rem 1.1rem;transition:transform .2s}
+.srv-card:hover{transform:translateY(-3px)}
+.srv-card img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:16px;display:block;background:#fff}
+.srv-card b{font-size:1.05rem;padding:.3rem .3rem 0}
+.srv-card span{font-size:.88rem;color:var(--muted);padding:0 .3rem}
+@media (max-width:900px){.srv{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.srv{gap:.8rem}.srv-card b{font-size:.95rem}}
+.page-img{max-width:min(100%,520px)!important;border-radius:24px!important;aspect-ratio:auto}
+
+.hero-title{font-size:clamp(2.4rem,5vw,4rem)!important;letter-spacing:-.02em}
+.back{margin:1.2rem 0 0}.back a{color:var(--plum);text-decoration:none;font-weight:600;font-size:.95rem}
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem}
+.tile{position:relative;display:block;border-radius:24px;overflow:hidden;aspect-ratio:16/10;color:#fff;text-decoration:none;background:#3a2033}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.tile:hover img{transform:scale(1.04)}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,10,25,0) 35%,rgba(30,10,25,.82))}
+.tile-txt{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:clamp(1rem,2.5vw,1.6rem);display:grid;gap:.3rem}
+.tile-txt b{font-family:var(--display);font-size:clamp(1.15rem,2.2vw,1.55rem);line-height:1.15}
+.tile-txt span{font-size:.92rem;opacity:.9}
+.tile-txt b::after{content:" →"}
+@media (max-width:700px){.tiles{grid-template-columns:minmax(0,1fr)}.tile{aspect-ratio:4/3}}
+.ph-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.7rem;margin:0 0 1.8rem}
+.ph-strip .lb img{aspect-ratio:4/3}
+@media (max-width:700px){.ph-strip{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.lb{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;border-radius:16px;overflow:hidden}
+.lb img{display:block;width:100%;height:auto;object-fit:cover;transition:transform .4s}
+.lb:hover img{transform:scale(1.03)}
+.ev-photos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem;margin-top:.9rem}
+.ev-photos .lb img{aspect-ratio:1/1}
+@media (max-width:600px){.ev-photos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ph-av{width:52px;height:52px;border-radius:50%;object-fit:cover;padding:0}
+.life-teaser{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:0;margin-top:2rem;border-radius:26px;overflow:hidden;background:var(--plum);color:#fff;text-decoration:none;box-shadow:0 12px 40px rgba(60,20,50,.18)}
+.lt-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:3px;min-height:300px;background:#2a1424}
+.lt-grid img{width:100%;height:100%;object-fit:cover;display:block}
+.lt-grid img:nth-child(1){grid-area:1/1/3/2}.lt-grid img:nth-child(2){grid-area:1/2/2/3}.lt-grid img:nth-child(3){grid-area:1/3/2/4}.lt-grid img:nth-child(4){grid-area:2/2/3/4}
+.lt-txt{padding:clamp(1.4rem,3vw,2.4rem);display:grid;gap:.8rem;align-content:center}
+.lt-txt .eyebrow{color:#FFD0E3}
+.lt-txt b{font-family:var(--display);font-size:clamp(1.3rem,2.4vw,1.8rem);line-height:1.15}
+.lt-txt>span:not(.eyebrow):not(.btn){opacity:.9}
+.lt-txt .btn{justify-self:start;background:#fff;color:#6B2A55}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .life-teaser{background:#4a1d3b}}
+@media (max-width:760px){.life-teaser{grid-template-columns:minmax(0,1fr)}.lt-grid{min-height:220px}}
+.life-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border-block:1px solid var(--line);margin:0 0 1.4rem}
+.life-stats div{background:var(--bg);padding:.9rem 1rem;display:grid}
+.life-stats b{font-family:var(--display);font-size:1.6rem;color:var(--plum)}
+.life-stats span{font-size:.85rem;color:var(--muted)}
+.chips-f{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.6rem;padding:.4rem 0}
+@media (max-width:600px){.chips-f{flex-wrap:nowrap;overflow-x:auto;margin-inline:-16px;padding-inline:16px;scrollbar-width:none}.chip-f{white-space:nowrap;flex:none}}
+.chip-f{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:.5rem .95rem;font:600 .9rem/1 var(--body);cursor:pointer}
+.chip-f[aria-pressed="true"]{background:var(--plum);border-color:var(--plum);color:var(--plum-ink)}
+.life-g{margin:0 0 2.6rem}
+.life-h h2{margin:0 0 .2rem}.life-h p{margin:0 0 1rem}
+.life-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-flow:dense;gap:.9rem}
+.lf{margin:0;display:grid;gap:.4rem;align-content:start}
+.lf .lb img{aspect-ratio:3/2}
+.lf.tall{grid-column:span 2;grid-row:span 2}
+.lf.tall .lb img{aspect-ratio:auto;height:100%;min-height:100%}
+.lf.tall .lb{height:100%}
+.lf figcaption{font-size:.88rem;color:var(--muted)}
+@media (max-width:700px){.life-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.lf.tall{grid-column:span 2;grid-row:auto}.lf.tall .lb img{aspect-ratio:3/2;height:auto}}
+#lightbox{border:0;padding:0;background:transparent;max-width:min(96vw,1300px);max-height:96vh;overflow:visible}
+#lightbox::backdrop{background:rgba(15,8,14,.88)}
+#lightbox img{display:block;max-width:min(96vw,1300px);max-height:82vh;width:auto;height:auto;border-radius:14px;margin:0 auto}
+.lb-cap{color:#fff;text-align:center;margin:.7rem 0 0;font-size:.95rem}
+.lb-close,.lb-nav{position:fixed;border:0;background:rgba(255,255,255,.16);color:#fff;border-radius:999px;width:46px;height:46px;font-size:1.7rem;line-height:1;cursor:pointer}
+.lb-close{top:14px;right:14px}.lb-nav.prev{left:10px;top:50%}.lb-nav.next{right:10px;top:50%}
+
+.life-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.life-grid.two.lead .lf:first-child{grid-column:span 2}
+.life-grid.two.lead .lf:first-child .lb img{aspect-ratio:16/8}
+
+/* stories */
+.st-row{display:flex;gap:1.1rem;overflow-x:auto;scrollbar-width:none;padding:.3rem .2rem .4rem;margin-inline:-.2rem}
+.st-row::-webkit-scrollbar{display:none}
+.st-dot{flex:none;display:grid;justify-items:center;gap:.45rem;background:none;border:0;padding:0;cursor:pointer;color:var(--ink);font:600 .86rem/1.2 var(--body);width:86px}
+.st-ring{width:80px;height:80px;border-radius:50%;padding:3px;background:conic-gradient(from 210deg,#C2185B,#6B2A55,#E58FB3,#C2185B);display:block}
+.st-ring img{width:100%;height:100%;object-fit:cover;border-radius:50%;border:3px solid var(--bg);display:block}
+.st-dot.seen .st-ring{background:var(--line)}
+.st-dot:focus-visible{outline:2px solid var(--plum);outline-offset:4px;border-radius:12px}
+.st-row.big{gap:1.6rem}
+.st-row.big .st-dot{width:112px;font-size:.95rem}
+.st-row.big .st-ring{width:106px;height:106px}
+.home-stories{padding-block:1.6rem .4rem}
+.hs-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.8rem}
+.hs-head h2{font-size:1.25rem;margin:0}
+.hs-head a{color:var(--plum);font-weight:600;text-decoration:none}
+/* story viewer */
+.story{position:fixed;inset:0;z-index:100;background:#120a10;color:#fff;display:grid;place-items:center}
+.story[hidden]{display:none!important}
+.sv-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(28px) brightness(.55);transform:scale(1.15)}
+.sv-img{position:relative;max-width:min(100vw,1100px);max-height:100vh;width:100%;height:100%;object-fit:contain}
+.sv-bars{position:absolute;top:12px;left:12px;right:12px;display:flex;gap:4px;z-index:3}
+.sv-bars i{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,.3);overflow:hidden;display:block}
+.sv-bars i b{display:block;height:100%;width:0;background:#fff}
+.sv-bars i.done b{width:100%}
+.sv-bars i.run b{animation:svfill var(--dur,5s) linear forwards}
+@keyframes svfill{to{width:100%}}
+.sv-top{position:absolute;top:24px;left:16px;right:8px;display:flex;justify-content:space-between;align-items:center;z-index:3}
+.sv-title{font:700 1rem var(--display)}
+.sv-close{background:none;border:0;color:#fff;font-size:2.2rem;line-height:1;cursor:pointer;padding:.2rem .6rem}
+.sv-cap{position:absolute;left:0;right:0;bottom:0;margin:0;padding:3rem 1.2rem 1.6rem;background:linear-gradient(transparent,rgba(0,0,0,.75));font-size:1.05rem;text-align:center;z-index:2}
+.sv-tap{position:absolute;top:70px;bottom:90px;width:40%;background:none;border:0;cursor:pointer;z-index:1}
+.sv-tap.prev{left:0}.sv-tap.next{right:0;width:60%}
+/* marquee */
+.mq{overflow:hidden}
+.mq-track{display:flex;gap:6px;width:max-content;animation:mq 60s linear infinite}
+.mq.b .mq-track{animation-direction:reverse;animation-duration:70s}
+.mq img{height:clamp(120px,16vw,210px);width:auto;aspect-ratio:3/2;object-fit:cover;border-radius:10px;display:block}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.mq-track{animation:none}.sv-bars i.run b{animation:none;width:100%}}
+/* band on home */
+.life-band{position:relative;display:grid;gap:6px;margin-top:2rem;border-radius:26px;overflow:hidden;background:#2b1224;text-decoration:none;color:#fff;padding:6px 0}
+.life-band .lb-txt{position:absolute;inset:0;display:grid;align-content:center;justify-items:center;text-align:center;gap:.6rem;padding:1.2rem;background:radial-gradient(ellipse at center,rgba(43,18,36,.86) 0,rgba(43,18,36,.6) 45%,rgba(43,18,36,.15) 80%)}
+.life-band b{font-family:var(--display);font-size:clamp(1.7rem,4.4vw,3.2rem);line-height:1.05;letter-spacing:-.02em}
+.life-band .lb-txt>span:not(.lb-cta){max-width:46ch;opacity:.92}
+.lb-cta{margin-top:.4rem;background:#fff;color:#6B2A55;border-radius:999px;padding:.75rem 1.3rem;font-weight:700}
+/* zhizn page */
+.lz-hero{position:relative;background:#2b1224;color:#fff;padding:6px 0;display:grid;gap:6px;overflow:hidden}
+.lz-hero-txt{position:absolute;inset:0;display:grid;align-content:center;justify-items:start;gap:.9rem;background:linear-gradient(90deg,rgba(43,18,36,.92) 0,rgba(43,18,36,.75) 45%,rgba(43,18,36,.2) 100%)}
+.lz-hero h1{font-family:var(--display);font-size:clamp(2.4rem,7vw,5.4rem);line-height:.98;letter-spacing:-.03em;margin:0;max-width:11ch;color:#fff}
+.lz-hero-txt>p:not(.back){max-width:44ch;font-size:1.08rem;opacity:.92;margin:0}
+.lz-hero .mq img{height:clamp(150px,22vw,280px)}
+.back.light a{color:#FFD0E3}
+.lz-h{font-size:clamp(1.6rem,3vw,2.2rem);margin:0 0 .3rem}
+.lz-sub{margin:0 0 1.4rem}
+.lz-stories,.lz-path,.lz-feature,.lz-more,.lz-join{padding-block:clamp(2.2rem,5vw,3.6rem)}
+.pth-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1rem;counter-reset:p}
+.pth{position:relative;display:grid;gap:.5rem;align-content:start}
+.pth-n{position:absolute;top:10px;left:10px;z-index:1;width:34px;height:34px;border-radius:50%;background:#fff;color:#6B2A55;display:grid;place-items:center;font:800 1rem var(--display);box-shadow:0 2px 10px rgba(0,0,0,.18)}
+.pth .lb img{aspect-ratio:4/5}
+.pth h3{margin:.3rem 0 0;font-size:1.12rem}
+.pth p{margin:0;color:var(--muted);font-size:.93rem}
+.pth a{color:var(--plum);font-weight:600;font-size:.93rem;text-decoration:none}
+@media (max-width:900px){.pth-list{grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:72%;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-16px;padding:0 16px 8px;scrollbar-width:none}.pth{scroll-snap-align:start}}
+.lz-feature{background:var(--rose)}
+.ft-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(1.2rem,3vw,2.4rem);align-items:center}
+.ft-main img{aspect-ratio:3/2}
+.ft-txt h2{font-size:clamp(1.8rem,3.4vw,2.6rem);margin:0 0 .6rem}
+.ft-thumbs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem;margin-top:1rem}
+.ft-thumbs img{aspect-ratio:1/1}
+@media (max-width:820px){.ft-grid{grid-template-columns:minmax(0,1fr)}}
+.lz-quote{position:relative;min-height:clamp(360px,52vw,620px);display:grid;align-items:end;color:#fff;overflow:hidden}
+.lz-quote>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.lz-quote::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,.75))}
+.lz-quote blockquote{position:relative;z-index:1;margin:0 auto;padding-bottom:clamp(1.6rem,4vw,3rem)}
+.lz-quote blockquote p{font-family:var(--display);font-size:clamp(2rem,5vw,4rem);line-height:1.02;letter-spacing:-.02em;margin:0 0 .6rem;max-width:14ch}
+.lz-quote cite{font-style:normal;opacity:.9}
+.mos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem}
+.mos .lb img{aspect-ratio:1/1}
+.mos .lb:nth-child(1),.mos .lb:nth-child(8){grid-column:span 2;grid-row:span 2}
+.mos .lb:nth-child(1) img,.mos .lb:nth-child(8) img{height:100%}
+@media (max-width:700px){.mos{grid-template-columns:repeat(2,minmax(0,1fr))}.mos .lb:nth-child(8){grid-column:span 2;grid-row:auto}.mos .lb:nth-child(8) img{aspect-ratio:3/2}}
+.lz-join{text-align:center}.lz-join h2{margin:0 0 .5rem}.lz-join p{max-width:52ch;margin:0 auto 1rem}.lz-join .btns{justify-content:center}
+
+@media (max-width:600px){.life-band .mq img{height:150px}.lz-hero .mq img{height:215px}.st-row.big .st-dot{width:90px;font-size:.88rem}.st-row.big .st-ring{width:84px;height:84px}.life-band .lb-txt>span:not(.lb-cta){font-size:.95rem}}
+
+.ev-nav{display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none;padding-block:1.2rem .4rem}
+.ev-nav a{flex:none;border:1.5px solid var(--line);border-radius:999px;padding:.5rem .95rem;font-weight:600;font-size:.92rem;color:var(--ink);text-decoration:none;background:var(--surface)}
+.ev-nav a:hover{border-color:var(--plum);color:var(--plum)}
+.ev-sec{padding-block:clamp(2rem,4.5vw,3.2rem)}
+.ev-sec.alt{background:var(--rose)}
+.ev-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.4rem 1.5rem;align-items:end;margin-bottom:1.2rem}
+.ev-head h2{grid-column:1;margin:0;font-size:clamp(1.7rem,3.4vw,2.6rem);letter-spacing:-.02em}
+.ev-head p{grid-column:1;margin:0;color:var(--muted);max-width:60ch}
+.ev-head p a{color:var(--plum);font-weight:600}
+.ev-play{grid-column:2;grid-row:1/3;width:auto!important;display:inline-flex!important;align-items:center;gap:.5rem;background:var(--plum)!important;color:var(--plum-ink)!important;border-radius:999px!important;padding:.7rem 1.2rem!important;font:700 .95rem var(--body)!important}
+.ev-play::before{content:"";width:0;height:0;border-left:10px solid currentColor;border-top:6px solid transparent;border-bottom:6px solid transparent}
+@media (max-width:640px){.ev-head{grid-template-columns:minmax(0,1fr)}.ev-play{grid-column:1;grid-row:auto;justify-self:start;margin-top:.5rem}}
+.ev-grid{display:grid;grid-auto-flow:dense;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem}
+.ev-grid .lb{border-radius:12px}
+.ev-grid .lb img{aspect-ratio:1/1;height:100%}
+.ev-grid .lb:first-child{grid-column:span 2;grid-row:span 2}
+.ev-grid.n10 .lb:nth-child(7){grid-column:span 2;grid-row:span 2}
+.ev-grid.n3{grid-template-columns:2fr 1fr}.ev-grid.n3 .lb:first-child{grid-column:1;grid-row:span 2}.ev-grid.n3 .lb:first-child img{aspect-ratio:auto}
+.ev-grid.n4{grid-template-columns:repeat(3,minmax(0,1fr))}.ev-grid.n4 .lb:first-child{grid-column:span 3;grid-row:auto}.ev-grid.n4 .lb:first-child img{aspect-ratio:16/8}
+@media (max-width:640px){.ev-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ev-grid.n4{grid-template-columns:repeat(3,minmax(0,1fr))}.ev-grid .lb:first-child{grid-column:span 2;grid-row:auto}.ev-grid.n4 .lb:first-child{grid-column:span 3}.ev-grid .lb:first-child img{aspect-ratio:3/2}.ev-grid.n3{grid-template-columns:repeat(2,minmax(0,1fr))}.ev-grid.n3 .lb:first-child{grid-column:span 2;grid-row:auto}}
+
+.st-cards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.st-card{position:relative;display:block;aspect-ratio:9/14;border:0;padding:0;border-radius:22px;overflow:hidden;cursor:pointer;background:#2b1224;color:#fff;text-align:left;font:inherit;isolation:isolate;box-shadow:0 10px 28px -12px rgba(60,20,50,.45);transition:transform .3s}
+.st-card:hover{transform:translateY(-4px)}
+.st-card:focus-visible{outline:3px solid var(--plum);outline-offset:3px}
+.sc-imgs{position:absolute;inset:0}
+.sc-imgs img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:scfade 9s infinite;animation-delay:calc(var(--d) - 9s + var(--o))}
+.sc-imgs img:first-child{opacity:1}
+@keyframes scfade{0%{opacity:0;transform:scale(1.02)}6%{opacity:1}33%{opacity:1}39%{opacity:0;transform:scale(1.1)}100%{opacity:0}}
+.st-card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(20,6,16,.45) 0,rgba(20,6,16,0) 22%,rgba(20,6,16,0) 50%,rgba(20,6,16,.85) 100%)}
+.sc-segs{position:absolute;top:10px;left:10px;right:10px;z-index:2;display:flex;gap:3px}
+.sc-segs i{flex:1;height:2.5px;border-radius:2px;background:rgba(255,255,255,.45)}
+.sc-segs i:first-child{background:#fff}
+.sc-txt{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:14px 14px 16px;display:grid;gap:6px}
+.sc-txt b{font-family:var(--display);font-size:clamp(1.05rem,1.5vw,1.3rem);line-height:1.1;letter-spacing:-.01em}
+.sc-n{display:inline-flex;align-items:center;gap:7px;font-size:.84rem;opacity:.92}
+.sc-play{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.22);backdrop-filter:blur(4px);position:relative}
+.sc-play::after{content:"";position:absolute;left:8px;top:6px;border-left:8px solid #fff;border-top:5px solid transparent;border-bottom:5px solid transparent}
+.st-card.seen .sc-segs i{background:rgba(255,255,255,.85)}
+@media (max-width:900px){.st-cards{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-16px;padding:4px 16px 10px;scrollbar-width:none}.st-cards::-webkit-scrollbar{display:none}.st-card{flex:none;width:42%;scroll-snap-align:start}}
+@media (max-width:560px){.st-card{width:58%}}
+@media (prefers-reduced-motion:reduce){.sc-imgs img{animation:none}.sc-imgs img:not(:first-child){display:none}}
+.home-stories{padding-block:2rem .6rem}
+.hs-head h2{font-size:clamp(1.4rem,2.6vw,1.9rem);letter-spacing:-.02em}
+
+.enc.four .enc-card img{object-position:center 30%}
+.enc.four{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:1.4rem}
+@media (max-width:1000px){.enc.four{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:820px){.enc.four{grid-template-columns:minmax(0,1fr);max-width:520px;margin-inline:auto}}
+
+.docs-home{padding-block:clamp(2.4rem,5vw,4rem);background:#141014;color:#fff}
+.dh-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:clamp(1rem,2.5vw,1.8rem);align-items:end}
+.dh-intro{align-self:center;display:grid;gap:1rem;justify-items:start}
+.dh-intro h2{color:#fff;margin:0;font-size:clamp(1.8rem,3.4vw,2.8rem);line-height:1.05;letter-spacing:-.02em}
+.dh-intro p{margin:0;color:rgba(255,255,255,.78);max-width:40ch}
+.dh-intro .btn.primary{background:#fff;color:#6B2A55}
+.dh-card{margin:0;position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/5;background:#000}
+.dh-card img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.05)}
+.dh-card figcaption{position:absolute;left:0;right:0;bottom:0;padding:3.5rem 1.2rem 1.2rem;background:linear-gradient(transparent,rgba(0,0,0,.85));display:grid;gap:.25rem}
+.dh-card b{font-family:var(--display);font-size:1.15rem;line-height:1.15}
+.dh-card span{font-size:.88rem;opacity:.85}
+.dh-card q{font-family:var(--display);font-size:1rem;margin-top:.4rem;opacity:.95}
+@media (max-width:820px){.dh-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.dh-intro{grid-column:1/-1}}
+@media (max-width:560px){.dh-grid{grid-template-columns:minmax(0,1fr)}}
+
+.film{margin:0 0 1.6rem;display:grid;gap:.6rem}
+.film video{width:100%;height:auto;aspect-ratio:16/9;border-radius:20px;background:#000;display:block}
+.film figcaption{display:grid;gap:.15rem}
+.film figcaption b{font-family:var(--display);font-size:1.15rem}
+.film figcaption span{color:var(--muted);font-size:.92rem}
+.film.big figcaption b{font-size:clamp(1.4rem,3vw,2.2rem);letter-spacing:-.02em;line-height:1.1}
+.lz-film{padding-block:clamp(2rem,4vw,3rem) 0}
+.film.dark{margin:clamp(1.6rem,4vw,2.6rem) 0 0}
+.film.dark figcaption span{color:rgba(255,255,255,.7)}
+
+.film-play{position:relative;display:block;width:100%;padding:0;border:0;border-radius:20px;overflow:hidden;cursor:pointer;background:#000;aspect-ratio:16/9}
+.film-play img{width:100%;height:100%;object-fit:cover;display:block;opacity:.88;transition:opacity .3s}
+.film-play:hover img{opacity:1}
+.fp-btn{position:absolute;left:50%;top:50%;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;background:rgba(255,255,255,.92);box-shadow:0 8px 30px rgba(0,0,0,.35)}
+.fp-btn::after{content:"";position:absolute;left:34px;top:26px;border-left:24px solid #6B2A55;border-top:16px solid transparent;border-bottom:16px solid transparent}
+.film-play.loading .fp-btn{animation:fpp 1s ease-in-out infinite}
+@keyframes fpp{50%{transform:scale(.9)}}
+.fp-time{position:absolute;right:14px;bottom:12px;background:rgba(0,0,0,.6);color:#fff;font:600 .85rem var(--body);padding:.2rem .5rem;border-radius:6px}
+</style>
+
+<div class="draft"><div class="wrap"><span>Черновик для согласования. Не индексируется. Жёлтым — данные, которые ещё нужно получить.</span><button type="button" id="toggle-todo">Скрыть пометки</button></div></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17M8 14h2M14 14h2M8 17h2"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M5 18.5 3.5 21l.6-4A8 8 0 1 1 8 19.6"/><path d="M8.5 11h7M8.5 14h4.5"/></symbol>
+<symbol id="i-bag" viewBox="0 0 24 24"><rect x="3.5" y="8" width="17" height="12.5" rx="3"/><path d="M8.5 8V6.5a3.5 3.5 0 0 1 7 0V8M3.5 13h17"/></symbol>
+<symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3.5 21 19.5H3z"/><path d="M12 10v4M12 17v.5"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7a4.3 4.3 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20z"/></symbol>
+<symbol id="i-steth" viewBox="0 0 24 24"><path d="M6 3.5v5a4 4 0 0 0 8 0v-5"/><path d="M10 12.5v2.5a5 5 0 0 0 10 0v-2"/><circle cx="20" cy="11" r="1.8"/></symbol>
+<symbol id="i-rub" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M10 17V7.5h3a2.5 2.5 0 0 1 0 5H8.5M8.5 14.8h5"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14z"/><path d="M5 19c3-4 6-7 10-9"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11 12 4.5 20 11v8.5H4z"/><path d="M10 19.5v-5h4v5"/></symbol>
+<symbol id="i-baby" viewBox="0 0 24 24"><circle cx="12" cy="9" r="4.5"/><path d="M10.3 9.5h.01M13.7 9.5h.01M10.5 11.3c.9.6 2.1.6 3 0"/><path d="M5.5 20.5c1-3.5 3.6-5.5 6.5-5.5s5.5 2 6.5 5.5"/></symbol>
+<symbol id="i-plan" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="i-bump" viewBox="0 0 24 24"><circle cx="11" cy="5" r="2.2"/><path d="M11 7.5v13M11 10.5c4.5 0 6.5 2.2 6.5 4.5S15.5 19 11 19"/></symbol>
+<symbol id="i-hands" viewBox="0 0 24 24"><circle cx="8" cy="7" r="2.5"/><circle cx="16" cy="7" r="2.5"/><path d="M3.5 19c.5-3.8 2.3-6 4.5-6s3 1.2 4 2.5c1-1.3 1.8-2.5 4-2.5s4 2.2 4.5 6"/></symbol>
+<symbol id="i-door" viewBox="0 0 24 24"><path d="M6 20.5V4.5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v16M4 20.5h16M14.5 12.5h.01"/></symbol>
+</svg>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#home">Мама в ресурсе<small>Дмитровский округ · Дмитровская больница</small></a>
+  <nav class="main" aria-label="Разделы">
+    <a href="#home">Главная</a>
+    <a href="#roddom">Роддом</a>
+    <a href="#zanyatiya">Занятия</a>
+    <a href="#zhizn">Жизнь проекта</a>
+    <a href="#mam">Вопросы мам</a>
+    <a href="#chto-vzyat">Сумка в роддом</a>
+    <a href="#kontakty">Контакты</a>
+  </nav>
+</div></header>
+
+<main>
+<div data-view="home">
+
+  <div class="hero2"><div class="wrap"><div class="hero-card">
+    <img referrerpolicy="no-referrer" class="hero-img" src="https://optim.tildacdn.com/tild6534-6532-4262-b932-393733343165/-/format/webp/__2026-02-08_130252.png.webp" alt="Мама держит на руках спящего младенца" width="1318" height="610" fetchpriority="high">
+    <div class="hero-txt">
+      <span class="kicker">Проект администрации Дмитровского муниципального округа и Дмитровской больницы</span>
+      <h1 class="hero-title">Мама в ресурсе</h1>
+      <p class="lead">Всё, что нужно маме в Дмитровском округе: обновлённый роддом, врачи, которым можно доверять, и меры поддержки в одном месте.</p>
+    </div>
+  </div></div>
+  <div class="wrap"><div class="proof">
+    <div><b>4267</b><span>мам в чате роддома</span></div>
+    <div><b>300+</b><span>прошли бесплатную школу мам</span></div>
+    <div><b>0 ₽</b><span>партнёрские роды и «Золотой час» по ОМС</span></div>
+    <div><b>151</b><span>мама рассказала, что изменить</span></div>
+  </div></div></div>
+
+
+
+  <section id="marshrut"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Ваш маршрут</span><h2>Где вы сейчас?</h2><p class="muted">Выберите этап — покажем, что сделать в первую очередь и куда идти.</p></div>
+    <div class="timeline" id="timeline" aria-hidden="true">
+      <div data-t="plan"><i></i><span>До зачатия</span></div><div data-t="wait close"><i></i><span>Беременность</span></div><div data-t="wait close"><i></i><span>Роды</span></div><div data-t="born close"><i></i><span>До 6 мес.</span></div><div data-t="born"><i></i><span>1 год</span></div><div data-t="born"><i></i><span>2 года</span></div><div data-t="born"><i></i><span>3 года</span></div>
+    </div>
+    <p class="tl-cap" id="tl-cap" aria-hidden="true"></p>
+    <div class="stages" role="tablist" aria-label="Этап">
+      <button type="button" role="tab" aria-selected="false" data-stage="plan"><svg class="ico"><use href="#i-plan"/></svg>Планирую</button>
+      <button type="button" role="tab" aria-selected="true" data-stage="wait"><svg class="ico"><use href="#i-bump"/></svg>Жду малыша</button>
+      <button type="button" role="tab" aria-selected="false" data-stage="born"><svg class="ico"><use href="#i-baby"/></svg>Малыш уже родился</button>
+      <button type="button" role="tab" aria-selected="false" data-stage="close"><svg class="ico"><use href="#i-hands"/></svg>Я папа</button>
+    </div>
+    <div class="stage-panel" data-panel="plan" hidden>
+      <div class="step"><svg class="ico"><use href="#i-door"/></svg><span class="n">Шаг 1</span><h3>Познакомьтесь с роддомом заранее</h3><p>Приходите на день открытых дверей в четверг в 15:00 — можно с партнёром.</p><a class="go" href="#den-otkrytyh-dverey">Как прийти →</a></div>
+      <div class="step"><svg class="ico"><use href="#i-steth"/></svg><span class="n">Шаг 2</span><h3>Спросите помощника «Мама»</h3><p>ИИ-помощник в Max подскажет, куда обратиться и какие меры поддержки вам положены.</p><a class="go" href="#kontakty">Открыть «Маму» в Max →</a></div>
+      <div class="step"><svg class="ico"><use href="#i-chat"/></svg><span class="n">Шаг 3</span><h3>Вступите в чат мам</h3><p>4267 участниц, врачи и регистратура на связи.</p><a class="go" href="https://t.me/womenhealthdmitrov">Перейти в чат →</a></div>
+      <div class="step"><svg class="ico"><use href="#i-rub"/></svg><span class="n">Ещё</span><h3>Узнайте о мерах поддержки</h3><p>Выплаты оформляются онлайн через Госуслуги Подмосковья.</p><a class="go" href="#podderzhka">Меры поддержки →</a></div>
+    </div>
+    <div class="stage-panel" data-panel="wait">
+      <div class="step"><svg class="ico"><use href="#i-door"/></svg><span class="n">Шаг 1</span><h3>Сходите на день открытых дверей</h3><p>Увидеть родзал и палаты заранее — лучший способ снять страх родов.</p><a class="go" href="#den-otkrytyh-dverey">Четверг, 15:00 →</a></div>
+      <div class="step"><svg class="ico"><use href="#i-cal"/></svg><span class="n">Шаг 2</span><h3>Запишитесь в школу мам</h3><p>Дыхание в схватках, первые дни малыша. Бесплатно, ведут акушерки роддома.</p><a class="go" href="#zanyatiya">Расписание →</a></div>
+      <div class="step"><svg class="ico"><use href="#i-bag"/></svg><span class="n">Шаг 3</span><h3>Соберите сумку в роддом</h3><p>Интерактивный список: отмечайте, что уже собрали.</p><a class="go" href="#chto-vzyat">Открыть список →</a></div>
+      <div class="step"><svg class="ico"><use href="#i-alert"/></svg><span class="n">Важно</span><h3>Когда ехать срочно</h3><p>Восемь признаков, при которых не нужно ждать.</p><a class="go" href="#mam-srochno">Памятка роддома →</a></div>
+    </div>
+    <div class="stage-panel" data-panel="born" hidden>
+      <div class="step"><svg class="ico"><use href="#i-heart"/></svg><span class="n">Первые дни</span><h3>Наладить кормление</h3><p>В роддоме работает консультант по грудному вскармливанию.</p><a class="go" href="#mam-gv">Что нормально →</a></div>
+      <div class="step"><svg class="ico"><use href="#i-rub"/></svg><span class="n">Выплаты</span><h3>Оформить выплаты</h3><p>Онлайн через Госуслуги Подмосковья, без походов по кабинетам.</p><a class="go" href="https://uslugi.mosreg.ru/birthmo">Подать заявление →</a></div>
+      <div class="step"><svg class="ico"><use href="#i-leaf"/></svg><span class="n">Самочувствие</span><h3>Если тяжело</h3><p>Подавленность больше двух недель — повод обратиться. Это лечится.</p><a class="go" href="#signal">«Ранний сигнал» →</a></div>
+      <div class="step"><svg class="ico"><use href="#i-home"/></svg><span class="n">Дальше</span><h3>Детский сад</h3><p>Заявление онлайн через Госуслуги, место положено с 2 месяцев.</p><a class="go" href="https://www.gosuslugi.ru/help/faq/popular/21">Подать заявление →</a></div>
+    </div>
+    <div class="stage-panel" data-panel="close" hidden>
+      <div class="step"><svg class="ico"><use href="#i-hands"/></svg><span class="n">До родов</span><h3>Партнёрские роды</h3><p>Бесплатно по ОМС. Нужны флюорография и анализ на корь.</p><a class="go" href="#chto-vzyat">Что подготовить →</a></div>
+      <div class="step"><svg class="ico"><use href="#i-door"/></svg><span class="n">Вместе</span><h3>Приходите в четверг</h3><p>День открытых дверей открыт и для пап.</p><a class="go" href="#den-otkrytyh-dverey">Как прийти →</a></div>
+      <div class="step"><svg class="ico"><use href="#i-heart"/></svg><span class="n">После</span><h3>Заметьте, если маме тяжело</h3><p>Не ждите, пока она пожалуется сама. Спросите и помогите дойти до специалиста.</p><a class="go" href="#signal">Как помочь →</a></div>
+      <div class="step"><svg class="ico"><use href="#i-baby"/></svg><span class="n">Для пап</span><h3>«Папа может!»</h3><p>Пеленать, успокаивать малыша, поддерживать маму.</p><a class="go" href="#pape">Подробнее →</a></div>
+    </div>
+  </div></section>
+
+  <section id="enc" class="enc-sec"><div class="wrap">
+    <div class="sec-head"><h2>Главное — по полочкам</h2><p>Подробно о здоровье, материнстве и поддержке семьи — простыми словами.</p></div>
+    <div class="enc">
+      <a class="enc-card" href="#chto-vzyat"><img referrerpolicy="no-referrer" src="https://static.tildacdn.com/tild6461-3061-4865-a235-656431343737/image_1.jpeg" alt="Собранная сумка в роддом" loading="lazy" width="1024" height="1024"><b>Что взять в роддом</b><span>Список с галочками — запомнится на вашем телефоне</span></a>
+      <a class="enc-card" href="#mam"><img referrerpolicy="no-referrer" src="https://static.tildacdn.com/tild6232-3462-4661-b364-656664303335/image.jpeg" alt="Мама нежно держит новорождённого" loading="lazy" width="856" height="813"><b>Мамам: ответы врачей</b><span>Страх родов, выплаты, ГВ, когда срочно ехать в роддом</span></a>
+      <a class="enc-card" href="#pape"><img referrerpolicy="no-referrer" src="https://static.tildacdn.com/tild3330-3131-4239-a564-353031363234/image_3.jpeg" alt="Будущие мама и папа гуляют, держась за руки" loading="lazy" width="700" height="700"><b>Папам</b><span>Партнёрские роды, «Папа может!» и как поддержать маму</span></a>
+    </div>
+    <div class="enc four" id="razdely">
+      <a class="enc-card" href="#vy-skazali"><img src="https://fzotov.github.io/mama-v-resurse/img/support.webp" alt="Мама с малышом и бабушка" loading="lazy" width="640" height="857"><b>Вы сказали — мы сделали</b><span>Что мамы попросили изменить и что уже работает</span></a>
+      <a class="enc-card" href="#roddom"><img src="https://fzotov.github.io/mama-v-resurse/img/tour.webp" alt="Будущие родители на экскурсии в родовой палате" loading="lazy" width="640" height="857"><b>Роддом, в котором не страшно</b><span>Палаты, оснащение, оценки мам и врачи</span></a>
+      <a class="enc-card" href="#zanyatiya"><img src="https://fzotov.github.io/mama-v-resurse/img/school.webp" alt="Будущие мамы на занятии" loading="lazy" width="640" height="857"><b>Школа мам и занятия для беременных</b><span>Школа мам, йога, арт-терапия, вокал, психолог</span></a>
+      <a class="enc-card" href="#zhizn"><img src="https://fzotov.github.io/mama-v-resurse/img/moms.webp" alt="Мамы гуляют с колясками" loading="lazy" width="640" height="857"><b>Жизнь проекта</b><span>Праздники, встречи, подарки и люди — в фотографиях</span></a>
+    </div>
+  </div></section>
+
+  <section class="docs-home"><div class="wrap">
+    <div class="dh-grid">
+      <div class="dh-intro">
+        <h2>Врачи, которым можно доверять</h2>
+        <p>Акушерскую службу Дмитровской больницы ведут врачи, которые лично знакомятся с будущими мамами: проводят экскурсии по роддому, отвечают на вопросы на встречах и в чате.</p>
+        <a class="btn primary" href="#komanda">Вся команда роддома</a>
+      </div>
+      <figure class="dh-card">
+        <img src="https://fzotov.github.io/mama-v-resurse/img/life/tsurtsumia-p.webp" alt="Михаил Зурабович Цурцумия" loading="lazy" width="853" height="1066">
+        <figcaption><b>Цурцумия Михаил Зурабович</b><span>Заведующий акушерским отделением</span><q>Каждое рождение — это чудо</q></figcaption>
+      </figure>
+      <figure class="dh-card">
+        <img src="https://fzotov.github.io/mama-v-resurse/img/life/vartanyan.webp" alt="Элен Араевна Вартанян" loading="lazy" width="590" height="737">
+        <figcaption><b>Вартанян Элен Араевна</b><span>Заместитель главного врача по акушерству и гинекологии</span></figcaption>
+      </figure>
+    </div>
+    <figure class="film dark"><button type="button" class="film-play" data-parts="14" aria-label="Смотреть фильм"><img src="https://fzotov.github.io/mama-v-resurse/img/life/film-poster.webp" alt="" loading="lazy" width="1280" height="720"><span class="fp-btn"></span><span class="fp-time">1:08</span></button><figcaption><b>Родовое отделение изнутри</b><span>Посмотрите, как работает команда роддома, 1 минута</span></figcaption></figure>
+  </div></section>
+
+
+  <section id="signal"><div class="wrap">
+    <div class="calm"><img class="calm-img" src="https://fzotov.github.io/mama-v-resurse/img/support.webp" alt="Мама с малышом, рядом её мама поддерживает и предлагает чай" loading="lazy" width="640" height="857">
+      <span class="sec-ico"><svg class="ico"><use href="#i-leaf"/></svg></span><span class="eyebrow">«Ранний сигнал»</span>
+      <h2>Если после родов тяжело — это не слабость</h2>
+      <div class="prose">
+        <p>Перестали радовать вещи, которые радовали раньше? Тревога не отпускает, сон пропал, даже когда малыш спит? Если это длится больше двух недель, это может быть перинатальная депрессия. Она хорошо лечится, если заметить её вовремя.</p>
+        <p>Сигнал может подать врач, акушерка, патронажная сестра, сама мама или её близкие. Дальше у мамы есть понятный маршрут к психологу.</p>
+      </div>
+      <div class="btns"><a class="btn primary" href="#kontakty">Получить помощь психолога</a></div>
+      <div class="callout">Если появились мысли причинить вред себе или ребёнку — обратитесь за помощью в тот же день: контакт-центр «Остров Надежды» — <a href="tel:+74962232454" style="white-space:nowrap"><b>+7 (496) 223-24-54</b></a>, экстренная помощь — <b>112</b>.</div>
+    </div>
+  </div></section>
+
+  <section id="podderzhka"><div class="wrap">
+    <div class="sec-head"><span class="sec-ico"><svg class="ico"><use href="#i-rub"/></svg></span><span class="eyebrow">Меры поддержки</span><h2>Что положено семье и как это получить</h2></div>
+    <div class="grid">
+      <div class="item"><h3><a href="https://uslugi.mosreg.ru/birthmo">Выплаты при рождении ребёнка</a></h3><p>Заявление онлайн через Госуслуги Подмосковья. Не понимаете, что положено именно вам, — спросите контакт-центр «Остров Надежды».</p></div>
+      <div class="item"><h3><a href="#kontakty">ИИ-помощник «Мама» в Max</a></h3><p>Подскажет, какие меры поддержки положены именно вам и как их оформить. <span class="todo">ссылка на бота «Мама» в Max</span></p></div>
+      <div class="item"><h3><a href="https://www.gosuslugi.ru/help/faq/popular/21">Детский сад</a></h3><p>Место в муниципальном саду положено каждому ребёнку от 2 месяцев до 8 лет.</p></div>
+      <div class="item"><h3>Энциклопедия молодой мамы</h3><p>Про сон, кормление, гигиену и осмотры — простым языком. <span class="todo">PDF после правки опечаток</span></p></div>
+    </div>
+    <h3 style="margin:2rem 0 .8rem">Партнёры проекта: скидка 10% для мам</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Услуга</th><th>Партнёр</th></tr></thead>
+      <tbody>
+        <tr><td>Аппаратный массаж</td><td>Студия Татьяны Клементьевой</td></tr>
+        <tr><td>Перманентный макияж</td><td>Студия Алены Воиновой</td></tr>
+        <tr><td>Украшения ручной работы</td><td>Полина Ковальски</td></tr>
+        <tr><td>Маникюр и педикюр</td><td>Студия LERSTORM</td></tr>
+        <tr><td>Косметологические услуги</td><td>Врач дерматолог-косметолог Евгения Сентюрина</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note"><span class="todo">Как получить скидку и контакты партнёров.</span></p>
+  </div></section>
+
+  <section id="itogi"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Открытые цифры</span><h2>Что изменилось с начала проекта</h2><p class="muted">Проект запущен в 2024 году. Данные Дмитровской больницы, обновляются раз в квартал.</p></div>
+    <div class="figures">
+      <div><b>+13,5%</b><span>родов в январе–августе 2026 к тому же периоду 2025</span></div>
+      <div><b>954</b><span>ребёнка родились в январе–августе 2026 (840 годом ранее)</span></div>
+      <div><b>1242</b><span>родов в 2025 году (1110 в 2024)</span></div>
+      <div><b>4267</b><span>мам в чате роддома (было 980)</span></div>
+      <div><b>300+</b><span>мам прошли школу мам</span></div>
+      <div><b>Топ-3</b><span>вошли в тройку призёров в номинации конкурса «Медиалидер», 562 заявки</span></div>
+    </div>
+    <div class="charts"><div class="chart"><h3>Родов, январь–август</h3><svg viewBox="0 0 300 170" role="img" aria-label="Родов, январь–август: 2025 — 840, 2026 — 954"><line x1="20" y1="140" x2="280" y2="140" stroke="var(--line)" stroke-width="1.5"/><rect x="48" y="43" width="84" height="97" rx="8" fill="var(--rose)"/><text x="90" y="35" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ink)" font-family="Manrope,Golos Text,sans-serif">840</text><text x="90" y="160" text-anchor="middle" font-size="12.5" fill="var(--muted)" font-family="Golos Text,sans-serif">2025</text><rect x="168" y="30" width="84" height="110" rx="8" fill="var(--plum)"/><text x="210" y="22" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ink)" font-family="Manrope,Golos Text,sans-serif">954</text><text x="210" y="160" text-anchor="middle" font-size="12.5" fill="var(--muted)" font-family="Golos Text,sans-serif">2026</text></svg><p class="cap">+13,5% за год</p></div><div class="chart"><h3>Родов за год</h3><svg viewBox="0 0 300 170" role="img" aria-label="Родов за год: 2024 — 1110, 2025 — 1242"><line x1="20" y1="140" x2="280" y2="140" stroke="var(--line)" stroke-width="1.5"/><rect x="48" y="42" width="84" height="98" rx="8" fill="var(--rose)"/><text x="90" y="34" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ink)" font-family="Manrope,Golos Text,sans-serif">1110</text><text x="90" y="160" text-anchor="middle" font-size="12.5" fill="var(--muted)" font-family="Golos Text,sans-serif">2024</text><rect x="168" y="30" width="84" height="110" rx="8" fill="var(--plum)"/><text x="210" y="22" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ink)" font-family="Manrope,Golos Text,sans-serif">1242</text><text x="210" y="160" text-anchor="middle" font-size="12.5" fill="var(--muted)" font-family="Golos Text,sans-serif">2025</text></svg><p class="cap">Данные Дмитровской больницы</p></div><div class="chart"><h3>Мам в чате роддома</h3><svg viewBox="0 0 300 170" role="img" aria-label="Мам в чате роддома: было — 980, сейчас — 4267"><line x1="20" y1="140" x2="280" y2="140" stroke="var(--line)" stroke-width="1.5"/><rect x="48" y="115" width="84" height="25" rx="8" fill="var(--rose)"/><text x="90" y="107" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ink)" font-family="Manrope,Golos Text,sans-serif">980</text><text x="90" y="160" text-anchor="middle" font-size="12.5" fill="var(--muted)" font-family="Golos Text,sans-serif">было</text><rect x="168" y="30" width="84" height="110" rx="8" fill="var(--plum)"/><text x="210" y="22" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ink)" font-family="Manrope,Golos Text,sans-serif">4267</text><text x="210" y="160" text-anchor="middle" font-size="12.5" fill="var(--muted)" font-family="Golos Text,sans-serif">сейчас</text></svg><p class="cap">В 4,4 раза больше</p></div></div>
+    <p class="note">В проекте работают администрация округа, больница, социальные службы, семейный центр «Остров Надежды», местные предприниматели и сообщества мам. <a href="#afisha">События проекта →</a></p>
+    <a class="life-band" href="#zhizn">
+      <div class="mq a" aria-hidden="true"><div class="mq-track"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fest-cpr-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/school2-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/twins-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/kraft-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fam-car-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/birth-room-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/gifts-seats-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fest-game-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fest-cpr-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/school2-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/twins-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/kraft-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fam-car-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/birth-room-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/gifts-seats-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fest-game-s.webp" alt="" loading="lazy" width="760" height="507"></div></div><div class="mq b" aria-hidden="true"><div class="mq-track"><img src="https://fzotov.github.io/mama-v-resurse/img/life/hall-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/drmisha-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/nurse-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/workshop-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/mom-baby-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/keepers-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/giving-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/neo-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/hall-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/drmisha-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/nurse-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/workshop-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/mom-baby-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/keepers-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/giving-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/neo-s.webp" alt="" loading="lazy" width="760" height="507"></div></div>
+      <span class="lb-txt"><b>Здесь рождаются семьи</b><span>Праздники у Дома рождения, школа мам, встречи с врачами и первые дни малышей</span><span class="lb-cta">Смотреть жизнь проекта</span></span>
+    </a>
+  </div></section>
+
+  <section id="servisy"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Полезное</span><h2>Сервисы для мам и семей</h2></div>
+    <div class="srv">
+      <a class="srv-card" href="https://t.me/womenhealthdmitrov"><img referrerpolicy="no-referrer" src="https://static.tildacdn.com/tild3061-3933-4133-a433-333235376339/b6ef9e2d-5841-403e-a.jpg" alt="Логотип роддома Дмитровской больницы" loading="lazy" width="640" height="640"><b>Telegram-сообщество мам</b><span>Новости роддома и женской консультации, ответы на вопросы, 4267 мам</span></a>
+      <a class="srv-card" href="#kontakty"><img src="https://fzotov.github.io/mama-v-resurse/img/life/max-mama.webp" alt="ИИ-помощник «Мама» в Max" loading="lazy" width="900" height="900"><b>ИИ-помощник «Мама» в Max</b><span>Подскажет меры поддержки и куда обратиться</span></a>
+      <a class="srv-card" href="https://uslugi.mosreg.ru/birthmo"><img referrerpolicy="no-referrer" src="https://static.tildacdn.com/tild6464-6631-4731-b237-643464393566/1200x630bf.jpg" alt="Герб Московской области" loading="lazy" width="629" height="630"><b>Поддержка молодых семей</b><span>Выплаты и услуги при рождении ребёнка в Подмосковье</span></a>
+      <a class="srv-card" href="https://www.gosuslugi.ru/help/faq/popular/21"><img referrerpolicy="no-referrer" src="https://static.tildacdn.com/tild3765-6239-4432-a662-653836626331/gu_poster_square_210.jpg" alt="Запись в детский сад на Госуслугах" loading="lazy" width="900" height="900"><b>Запись в детский сад</b><span>Встать в очередь онлайн, не выходя из дома</span></a>
+    </div>
+  </div></section>
+
+  <section id="kontakty"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Контакты</span><h2>Куда звонить</h2></div>
+    <div class="contacts">
+      <div class="item"><h3>Роддом</h3><p>Дмитров, Больничная ул., 7, корп. 3 (ул. Минина, 40)</p><p>Приёмное отделение, круглосуточно:<br><span class="phone">8 (496) 223-26-96</span></p><p>Передачи — круглосуточно через приёмное отделение. Посещений нет.</p></div>
+      <div class="item"><h3>Женская консультация</h3><p>Тот же адрес</p><p>Справочная, будни 8:00–20:00:<br><span class="phone">+7 (496) 222-30-20</span></p><p>Пн–пт 8:00–20:00, сб 9:00–14:00, вс — выходной.</p></div>
+      <div class="item"><h3>Проект и мероприятия</h3><p>Семейный центр «Остров Надежды»</p><p><span class="phone">+7 (496) 223-24-54</span></p><p><span class="todo">почта проекта на официальном домене</span></p></div>
+    </div>
+    <h3 style="margin-top:2.2rem">Напишите нам</h3>
+    <form class="fb" id="fb">
+      <label for="fb-name">Как к вам обращаться<input type="text" id="fb-name" required autocomplete="name"></label>
+      <label for="fb-contact">Телефон или почта<input type="text" id="fb-contact" required></label>
+      <label for="fb-msg">Ваш вопрос<textarea id="fb-msg" rows="4" required></textarea></label>
+      <label class="chk" for="fb-agree"><input type="checkbox" id="fb-agree" required> <span>Согласна на обработку персональных данных по <a href="#politika">политике конфиденциальности</a></span></label>
+      <p class="note" style="margin:0">Ответим в течение <span class="todo">N</span> рабочих дней. Отвечает: <span class="todo">кто</span>.</p>
+      <div><button class="btn primary" type="submit">Отправить вопрос</button></div>
+      <p class="formmsg" id="fb-out" hidden>В черновике форма никуда не отправляет. На рабочем сайте её подключат к почте проекта.</p>
+    </form>
+  </div></section>
+</div>
+
+<!-- МАМАМ -->
+
+<div data-view="vy-skazali" hidden>
+  <p class="back"><a href="#home">← На главную</a></p>
+  <section id="vy-skazali"><div class="wrap">
+    <div class="sec-head"><span class="sec-ico"><svg class="ico"><use href="#i-chat"/></svg></span><span class="eyebrow">Вы сказали — мы сделали</span><h2>Что мамы попросили изменить и что уже работает</h2><p class="muted">В опросе «Путь мамы» мамы назвали 187 трудных ситуаций, 106 из них вызывают сильную тревогу. Вот что сделано по главным.</p></div>
+    <div class="ledger">
+      <div class="row"><q>Не знаю, куда обратиться</q><p>Цифровой гид, энциклопедия мамы и ответы в чате роддома</p><span class="chip ok">Работает</span></div>
+      <div class="row"><q>Страшно рожать</q><p>Обновлённая команда роддома, обучение персонала, ремонт, дни открытых дверей, обратная связь от мам</p><span class="chip ok">Работает</span></div>
+      <div class="row"><q>Не хватает навыков ухода за малышом</q><p>Бесплатная школа мам, эфиры и занятия в роддоме</p><span class="chip ok">Работает</span></div>
+      <div class="row"><q>Тревога и подавленность после родов</q><p>«Ранний сигнал» и маршрут к психологу</p><span class="chip ok">Работает</span></div>
+      <div class="row"><q>Чувство «я одна»</q><p>Чат на 4267 мам и очные встречи на занятиях</p><span class="chip ok">Работает</span></div>
+      <div class="row"><q>Трудно записаться к врачу</q><p>Связь с регистратурой в чате роддома и ИИ-помощник «Мама» в Max</p><span class="chip ok">Работает</span></div>
+      <div class="row"><q>Детский сад и выход на работу</q><p>Заявление онлайн за два клика. В 2027 году откроются два детских сада.</p><span class="chip soon">В работе</span></div>
+      <div class="row"><q>Хочу видеть все меры поддержки в одном месте</q><p>ИИ-помощник «Мама» в Max, который подскажет подходящую меру.</p><span class="chip soon">Скоро</span></div>
+    </div>
+    <p class="note">Не нашли свою ситуацию? <a href="#kontakty">Напишите нам</a> — новые вопросы попадают в следующий опрос.</p>
+  </div></section>
+</div>
+
+<div data-view="roddom" hidden>
+  <p class="back"><a href="#home">← На главную</a></p>
+  <section id="roddom"><div class="wrap">
+    <div class="sec-head"><span class="sec-ico"><svg class="ico"><use href="#i-door"/></svg></span><span class="eyebrow">Роддом</span><h2>Роддом, в котором не страшно</h2><p class="muted">Главная задача команды — снять страх перед родами и выстроить доверие между женщиной и врачом.</p></div>
+    <figure class="film"><button type="button" class="film-play" data-parts="14" aria-label="Смотреть фильм"><img src="https://fzotov.github.io/mama-v-resurse/img/life/film-poster.webp" alt="" loading="lazy" width="1280" height="720"><span class="fp-btn"></span><span class="fp-time">1:08</span></button><figcaption><b>Родовое отделение изнутри</b><span>Фильм о команде Дмитровского роддома, 1 минута</span></figcaption></figure>
+    <div class="ph-strip"><button type="button" class="lb" data-src="https://fzotov.github.io/mama-v-resurse/img/life/birth-room.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/birth-room-s.webp" alt="Родовой зал Дмитровского роддома" loading="lazy" width="760" height="507"></button><button type="button" class="lb" data-src="https://fzotov.github.io/mama-v-resurse/img/life/neo.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/neo-s.webp" alt="Реанимационное место для новорождённого" loading="lazy" width="760" height="507"></button><button type="button" class="lb" data-src="https://fzotov.github.io/mama-v-resurse/img/life/twins.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/twins-s.webp" alt="Медсестра держит двойню рядом с мамой" loading="lazy" width="760" height="507"></button><button type="button" class="lb" data-src="https://fzotov.github.io/mama-v-resurse/img/life/door.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/door-s.webp" alt="Надпись «Сегодня будет круто» на двери палаты" loading="lazy" width="760" height="507"></button></div>
+    <div class="two">
+      <div>
+        <ul class="ticks">
+          <li><span>Индивидуальные родовые боксы</span></li>
+          <li><span>В послеродовых палатах не больше двух мам, большинство — одноместные, в каждой свой санузел и душ</span></li>
+          <li><span>Совместное пребывание с малышом, семейные палаты, палата интенсивной терапии для новорождённых</span></li>
+          <li><span>«Золотой час» и партнёрские роды — бесплатно по ОМС</span></li>
+          <li><span>Консультант по грудному вскармливанию, расширенный неонатальный скрининг</span></li>
+          <li><span>С лета 2026 года — два реанимационных комплекса для новорождённых, в том числе недоношенных, аппараты ИВЛ, наркозно-дыхательная аппаратура, мониторы</span></li>
+          <li><span>Персонал учится не только медицине, но и общению с пациентками</span></li>
+        </ul>
+        <p class="note">Рожать сюда приезжают из соседних округов, других городов и даже стран.</p>
+      </div>
+      <div class="scores" aria-label="Оценки мам">
+        <h3>Как мамы оценили роддом</h3>
+        <div class="bar"><div class="lbl"><span>Родовое отделение</span><b>8,99</b></div><div class="track"><div class="fill" style="width:89.9%"></div></div></div>
+        <div class="bar"><div class="lbl"><span>Общее впечатление</span><b>8,78</b></div><div class="track"><div class="fill" style="width:87.8%"></div></div></div>
+        <div class="bar"><div class="lbl"><span>Послеродовое отделение</span><b>8,53</b></div><div class="track"><div class="fill" style="width:85.3%"></div></div></div>
+        <div class="scale"><span>0</span><span>шкала из 10 баллов</span><span>10</span></div>
+      </div>
+    </div>
+    <div class="invite" id="den-otkrytyh-dverey">
+      <h3>День открытых дверей: каждый четверг в 15:00</h3>
+      <p>Михаил Цурцумия покажет родовое и послеродовое отделения и ответит на вопросы. Можно прийти с партнёром или мамой.</p>
+      <p><b>Адрес:</b> Дмитров, ул. Больничная, д. 7, корп. 3 (ул. Минина, 40). <span class="todo">Нужна ли запись — уточнить</span></p>
+      <div class="btns"><a class="btn primary" href="https://t.me/womenhealthdmitrov">Узнать подробности в чате</a></div>
+    </div>
+  </div></section>
+  <section id="komanda"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Кто вас встретит</span><h2>Люди, которые отвечают за роды в Дмитрове</h2></div>
+    <figure class="doc-feature">
+      <img referrerpolicy="no-referrer" src="https://static.tildacdn.com/tild3732-3064-4463-a565-653332363936/photo_2026-02-08_13-.jpg" alt="Михаил Цурцумия обнимает молодого папу с новорождённым в родильном отделении" loading="lazy" width="1280" height="853">
+      <figcaption class="doc-quote">
+        <blockquote>«Каждое рождение — это чудо»</blockquote>
+        <p>Михаил Зурабович убеждён: беременность должна ассоциироваться с радостью и спокойствием. Своей работой он создаёт в отделении атмосферу комфорта и доверия.</p>
+        <b>Михаил Зурабович Цурцумия</b><span>Заведующий акушерским отделением · экскурсии по четвергам в 15:00</span>
+      </figcaption>
+    </figure>
+    <div class="people">
+      <div class="person"><img class="avatar ph-av" src="https://fzotov.github.io/mama-v-resurse/img/life/av-tsurtsumia.webp" alt="Михаил Зурабович Цурцумия" width="104" height="104" loading="lazy"><div class="item"><h3>Цурцумия Михаил Зурабович</h3><p>Заведующий акушерским отделением. Проводит экскурсии по четвергам.</p></div></div>
+      <div class="person"><img class="avatar ph-av" src="https://fzotov.github.io/mama-v-resurse/img/life/av-vartanyan.webp" alt="Элен Араевна Вартанян" width="104" height="104" loading="lazy"><div class="item"><h3>Вартанян Элен Араевна</h3><p>Заместитель главного врача по акушерству и гинекологии.</p></div></div>
+      <div class="person"><div class="avatar">СЭ</div><div class="item"><h3>Эдилян Сирануш Геворковна</h3><p>Заведующая детским отделением новорождённых.</p></div></div>
+      <div class="person"><div class="avatar">ОК</div><div class="item"><h3>Кокорина Оксана Валериевна</h3><p>Врач-неонатолог детского отделения новорождённых.</p></div></div>
+      <div class="person"><div class="avatar">ЛГ</div><div class="item"><h3>Горюнова Лариса Александровна</h3><p>Врач-неонатолог детского отделения новорождённых.</p></div></div>
+    </div>
+    <p class="note"><span class="todo">Портреты врачей (кроме М. З. Цурцумии) с письменными согласиями; психолог, инструктор йоги, педагог по вокалу, консультант по ГВ — ФИО и фото.</span></p>
+  </div></section>
+</div>
+
+<div data-view="zanyatiya" hidden>
+  <p class="back"><a href="#home">← На главную</a></p>
+  <section id="zanyatiya"><div class="wrap">
+    <div class="sec-head"><span class="sec-ico"><svg class="ico"><use href="#i-cal"/></svg></span><span class="eyebrow">Бесплатно</span><h2>Школа мам и занятия для беременных</h2><p class="muted">Маме нужны не только знания, но и силы. Все занятия проходят в роддоме и ничего не стоят.</p></div>
+    <div class="ph-strip"><button type="button" class="lb" data-src="https://fzotov.github.io/mama-v-resurse/img/life/school2.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/school2-s.webp" alt="Михаил Цурцумия на встрече с будущими мамами" loading="lazy" width="760" height="507"></button><button type="button" class="lb" data-src="https://fzotov.github.io/mama-v-resurse/img/life/school1.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/school1-s.webp" alt="Занятие в зале школы мам" loading="lazy" width="760" height="507"></button><button type="button" class="lb" data-src="https://fzotov.github.io/mama-v-resurse/img/life/workshop.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/workshop-s.webp" alt="Будущие мамы на практическом занятии" loading="lazy" width="760" height="507"></button><button type="button" class="lb" data-src="https://fzotov.github.io/mama-v-resurse/img/life/hall.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/hall-s.webp" alt="Лекция в зале для будущих родителей" loading="lazy" width="760" height="507"></button></div>
+    <div class="tbl"><table>
+      <thead><tr><th>День</th><th>Время</th><th>Занятие</th></tr></thead>
+      <tbody>
+        <tr><td>Понедельник</td><td class="num">12:00</td><td>Репетиция родов с акушерками и доулами</td></tr>
+        <tr><td>Вторник</td><td class="num">14:00</td><td>Арт-терапия и проработка страхов с психологом</td></tr>
+        <tr><td>Среда</td><td class="num">13:00</td><td>Йога</td></tr>
+        <tr><td>Четверг</td><td class="num">15:00</td><td>День открытых дверей: знакомство с врачами, вопросы</td></tr>
+        <tr><td>Четверг</td><td class="num">17:00</td><td>Вокал</td></tr>
+      </tbody>
+    </table></div>
+    <div class="grid" style="margin-top:1.6rem">
+      <div class="item"><h3>Школа мам · 300+ мам</h3><p>Подготовка к родам, дыхание, кормление, пеленание, купание, уход за пупочной ранкой.</p></div>
+      <div class="item"><h3>Йога и пилатес · 50+ мам</h3><p>Дыхательные практики и растяжка. <span class="todo">расписание пилатеса</span></p></div>
+      <div class="item"><h3>Арт-терапия · 50+ мам</h3><p>Снять тревогу через творчество.</p></div>
+      <div class="item"><h3>Вокал · 70+ мам</h3><p>Пение для беременных.</p></div>
+      <div class="item"><h3>Психолог</h3><p>Индивидуальные консультации, запись через женскую консультацию.</p></div>
+      <div class="item"><h3>Клуб «БиблиоФеи»</h3><p>Литературный клуб с Дмитровской библиотекой.</p></div>
+    </div>
+    <p class="note">Школа мам и клуб «БиблиоФеи» проходят в роддоме. Анонсы и запись — в чате роддома, Telegram <a href="https://t.me/womenhealthdmitrov">@womenhealthdmitrov</a>, или через женскую консультацию.</p>
+  </div></section>
+</div>
+
+
+<div data-view="zhizn" hidden>
+  <section class="lz-hero">
+    <div class="mq a" aria-hidden="true"><div class="mq-track"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fest-cpr-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/school2-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/twins-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/kraft-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fam-car-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/birth-room-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/gifts-seats-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fest-game-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fest-cpr-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/school2-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/twins-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/kraft-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fam-car-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/birth-room-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/gifts-seats-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fest-game-s.webp" alt="" loading="lazy" width="760" height="507"></div></div><div class="mq b" aria-hidden="true"><div class="mq-track"><img src="https://fzotov.github.io/mama-v-resurse/img/life/hall-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/drmisha-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/nurse-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/workshop-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/mom-baby-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/keepers-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/giving-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/neo-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/hall-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/drmisha-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/nurse-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/workshop-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/mom-baby-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/keepers-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/giving-s.webp" alt="" loading="lazy" width="760" height="507"><img src="https://fzotov.github.io/mama-v-resurse/img/life/neo-s.webp" alt="" loading="lazy" width="760" height="507"></div></div>
+    <div class="lz-hero-txt wrap">
+      <p class="back light"><a href="#home">← На главную</a></p>
+      <h1>Здесь рождаются семьи</h1>
+      <p>«Мама в ресурсе» — это тысячи семей Дмитровского округа. Мы встречаемся в роддоме и на праздниках, учимся, задаём вопросы врачам и поддерживаем друг друга.</p>
+    </div>
+  </section>
+
+  <section class="lz-film"><div class="wrap"><figure class="film big"><button type="button" class="film-play" data-parts="14" aria-label="Смотреть фильм"><img src="https://fzotov.github.io/mama-v-resurse/img/life/film-poster.webp" alt="" loading="lazy" width="1280" height="720"><span class="fp-btn"></span><span class="fp-time">1:08</span></button><figcaption><b>Чудеса случаются там, где в них верят</b><span>Один фильм о людях, которые принимают роды в Дмитрове</span></figcaption></figure></div></section>
+
+  <section class="lz-stories"><div class="wrap">
+    <h2 class="lz-h">Истории</h2>
+    <p class="muted lz-sub">Нажмите на карточку — фото листаются касанием, как в соцсетях.</p>
+    <div class="st-cards" role="list"><button type="button" class="st-card" data-story="dod" style="--o:-0.0s" aria-label="День открытых дверей: смотреть 9 фото"><span class="sc-imgs"><img src="https://fzotov.github.io/mama-v-resurse/img/life/school2-s.webp" alt="" loading="lazy" width="760" height="507" style="--d:0s"><img src="https://fzotov.github.io/mama-v-resurse/img/life/birth-room-s.webp" alt="" loading="lazy" width="760" height="507" style="--d:3s"><img src="https://fzotov.github.io/mama-v-resurse/img/life/twins-s.webp" alt="" loading="lazy" width="760" height="507" style="--d:6s"></span><span class="sc-segs"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="sc-txt"><b>День открытых дверей</b><span class="sc-n"><span class="sc-play"></span>9 фото</span></span></button><button type="button" class="st-card" data-story="papa" style="--o:-1.7s" aria-label="Папа может!: смотреть 4 фото"><span class="sc-imgs"><img src="https://fzotov.github.io/mama-v-resurse/img/life/papa-doc-s.webp" alt="" loading="lazy" width="760" height="507" style="--d:0s"><img src="https://fzotov.github.io/mama-v-resurse/img/life/papa-lect-s.webp" alt="" loading="lazy" width="760" height="507" style="--d:3s"><img src="https://fzotov.github.io/mama-v-resurse/img/life/gallery-qa-s.webp" alt="" loading="lazy" width="760" height="507" style="--d:6s"></span><span class="sc-segs"><i></i><i></i><i></i><i></i></span><span class="sc-txt"><b>Папа может!</b><span class="sc-n"><span class="sc-play"></span>4 фото</span></span></button><button type="button" class="st-card" data-story="schastie" style="--o:-3.4s" aria-label="За счастьем к нам: смотреть 10 фото"><span class="sc-imgs"><img src="https://fzotov.github.io/mama-v-resurse/img/life/stage-s.webp" alt="" loading="lazy" width="760" height="507" style="--d:0s"><img src="https://fzotov.github.io/mama-v-resurse/img/life/drmisha-s.webp" alt="" loading="lazy" width="760" height="507" style="--d:3s"><img src="https://fzotov.github.io/mama-v-resurse/img/life/gifts-seats-s.webp" alt="" loading="lazy" width="760" height="507" style="--d:6s"></span><span class="sc-segs"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="sc-txt"><b>За счастьем к нам</b><span class="sc-n"><span class="sc-play"></span>10 фото</span></span></button><button type="button" class="st-card" data-story="berem" style="--o:-5.1s" aria-label="День беременных: смотреть 3 фото"><span class="sc-imgs"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fest-cpr-s.webp" alt="" loading="lazy" width="760" height="507" style="--d:0s"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fest-game-s.webp" alt="" loading="lazy" width="760" height="507" style="--d:3s"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fest-amb-s.webp" alt="" loading="lazy" width="760" height="507" style="--d:6s"></span><span class="sc-segs"><i></i><i></i><i></i></span><span class="sc-txt"><b>День беременных</b><span class="sc-n"><span class="sc-play"></span>3 фото</span></span></button><button type="button" class="st-card" data-story="872" style="--o:-6.8s" aria-label="872-й ребёнок: смотреть 4 фото"><span class="sc-imgs"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fam-car-s.webp" alt="" loading="lazy" width="760" height="507" style="--d:0s"><img src="https://fzotov.github.io/mama-v-resurse/img/life/mom-baby-s.webp" alt="" loading="lazy" width="760" height="507" style="--d:3s"><img src="https://fzotov.github.io/mama-v-resurse/img/life/dad-car-s.webp" alt="" loading="lazy" width="760" height="507" style="--d:6s"></span><span class="sc-segs"><i></i><i></i><i></i><i></i></span><span class="sc-txt"><b>872-й ребёнок</b><span class="sc-n"><span class="sc-play"></span>4 фото</span></span></button></div>
+  </div></section>
+
+  <section class="lz-path"><div class="wrap">
+    <h2 class="lz-h">Путь семьи с проектом</h2>
+    <p class="muted lz-sub">От первой встречи с врачом до праздников с малышом.</p>
+    <ol class="pth-list"><li class="pth"><span class="pth-n">1</span><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/school2.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/school2-s.webp" alt="Знакомство" loading="lazy" width="760" height="507"></button><h3>Знакомство</h3><p>Каждый четверг в 15:00 врачи показывают родовое и послеродовое отделения и отвечают на вопросы.</p><a href="#den-otkrytyh-dverey">Про день открытых дверей</a></li><li class="pth"><span class="pth-n">2</span><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/school1.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/school1-s.webp" alt="Подготовка" loading="lazy" width="760" height="507"></button><h3>Подготовка</h3><p>Школа мам, йога, вокал и арт-терапия — бесплатно, в роддоме.</p><a href="#zanyatiya">Расписание занятий</a></li><li class="pth"><span class="pth-n">3</span><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/birth-room.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/birth-room-s.webp" alt="Роды" loading="lazy" width="760" height="507"></button><h3>Роды</h3><p>Индивидуальные родовые боксы, партнёрские роды и «Золотой час» по ОМС.</p><a href="#roddom">Как устроен роддом</a></li><li class="pth"><span class="pth-n">4</span><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/twins.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/twins-s.webp" alt="Первые дни" loading="lazy" width="760" height="507"></button><h3>Первые дни</h3><p>Мама и малыш вместе, рядом — неонатологи и консультант по грудному вскармливанию.</p><a href="#mam-gv">Про кормление</a></li><li class="pth"><span class="pth-n">5</span><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/fest-cpr.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fest-cpr-s.webp" alt="Вместе дальше" loading="lazy" width="760" height="507"></button><h3>Вместе дальше</h3><p>Праздники, встречи и чат, где 4267 мам помогают друг другу.</p><a href="https://t.me/womenhealthdmitrov">Вступить в чат мам</a></li></ol>
+  </div></section>
+
+  <nav class="ev-nav wrap" aria-label="Мероприятия"><a href="#ev-dod">День открытых дверей</a><a href="#ev-papa">Папа может!</a><a href="#ev-schastie">За счастьем к нам</a><a href="#ev-berem">День беременных</a><a href="#ev-872">872-й ребёнок</a></nav>
+  <section class="ev-sec" id="ev-dod"><div class="wrap">
+    <div class="ev-head"><h2>День открытых дверей</h2><p>Каждый четверг в 15:00 будущие родители знакомятся с врачами, видят родовое и послеродовое отделения и задают любые вопросы. <a href="#den-otkrytyh-dverey">Как прийти</a></p><button type="button" class="ev-play st-dot" data-story="dod">Смотреть историей</button></div>
+    <div class="ev-grid n9"><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/school2.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/school2-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/school1.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/school1-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/birth-room.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/birth-room-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/neo.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/neo-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/door.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/door-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/twins.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/twins-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/nurse.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/nurse-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/feet.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/feet-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/sprout.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/sprout-s.webp" alt="" loading="lazy" width="760" height="507"></button></div>
+  </div></section>
+  <section class="ev-sec alt" id="ev-papa"><div class="wrap">
+    <div class="ev-head"><h2>Папа может!</h2><p>Будущие папы учились пеленать, успокаивать малыша и поддерживать маму после родов, пробовали симулятор схваток.</p><button type="button" class="ev-play st-dot" data-story="papa">Смотреть историей</button></div>
+    <div class="ev-grid n4"><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/papa-doc.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/papa-doc-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/papa-lect.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/papa-lect-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/gallery-qa.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/gallery-qa-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/talk-girl.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/talk-girl-s.webp" alt="" loading="lazy" width="760" height="507"></button></div>
+  </div></section>
+  <section class="ev-sec" id="ev-schastie"><div class="wrap">
+    <div class="ev-head"><h2>За счастьем к нам</h2><p>Первый в Подмосковье фестиваль для беременных — пришли около ста женщин с родными.</p><button type="button" class="ev-play st-dot" data-story="schastie">Смотреть историей</button></div>
+    <div class="ev-grid n10"><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/stage.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/stage-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/hall.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/hall-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/keepers.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/keepers-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/mic.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/mic-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/drmisha.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/drmisha-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/gifts-seats.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/gifts-seats-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/workshop.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/workshop-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/kraft.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/kraft-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/giving.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/giving-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/medela.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/medela-s.webp" alt="" loading="lazy" width="760" height="507"></button></div>
+  </div></section>
+  <section class="ev-sec alt" id="ev-berem"><div class="wrap">
+    <div class="ev-head"><h2>День беременных</h2><p>Праздник у Дома рождения: бригада скорой учит первой помощи, для старших детей — игры. Проходит в апреле и октябре.</p><button type="button" class="ev-play st-dot" data-story="berem">Смотреть историей</button></div>
+    <div class="ev-grid n3"><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/fest-cpr.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fest-cpr-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/fest-amb.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fest-amb-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/fest-game.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fest-game-s.webp" alt="" loading="lazy" width="760" height="507"></button></div>
+  </div></section>
+  <section class="ev-sec" id="ev-872"><div class="wrap">
+    <div class="ev-head"><h2>872-й ребёнок</h2><p>Ко Дню города семья Марии и Михаила Севидовых из села Подъячево получила автомобиль: их малыш стал 872-м ребёнком, родившимся в Дмитрове в 2026 году.</p><button type="button" class="ev-play st-dot" data-story="872">Смотреть историей</button></div>
+    <div class="ev-grid n4"><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/fam-car.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fam-car-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/dad-car.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/dad-car-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/mom-baby.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/mom-baby-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/car-side.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/car-side-s.webp" alt="" loading="lazy" width="760" height="507"></button></div>
+  </div></section>
+  <section class="lz-quote">
+    <img referrerpolicy="no-referrer" src="https://static.tildacdn.com/tild3732-3064-4463-a565-653332363936/photo_2026-02-08_13-.jpg" alt="Михаил Цурцумия с молодым папой и новорождённым" loading="lazy" width="1280" height="853">
+    <blockquote class="wrap"><p>«Каждое рождение — это чудо»</p><cite>Михаил Зурабович Цурцумия, заведующий акушерским отделением</cite></blockquote>
+  </section>
+
+
+
+
+  <section class="lz-join"><div class="wrap">
+    <h2>Ваше фото тоже может быть здесь</h2>
+    <p>Приходите на встречи и праздники, а снимки со своими малышами присылайте в чат роддома — лучшие появятся в этом разделе.</p>
+    <div class="btns"><a class="btn primary" href="https://t.me/womenhealthdmitrov">Вступить в чат мам</a><a class="btn line" href="#afisha">События проекта</a></div>
+    <p class="note"><span class="todo">Фото публикуются с согласия участников — подтвердить. Отзывы мам для раздела — собрать.</span></p>
+  </div></section>
+</div>
+
+<div id="story" class="story" hidden role="dialog" aria-modal="true" aria-label="Истории">
+  <div class="sv-bars"></div>
+  <div class="sv-top"><span class="sv-title"></span><button type="button" class="sv-close" aria-label="Закрыть">×</button></div>
+  <img class="sv-bg" alt="" aria-hidden="true"><img class="sv-img" alt="">
+  
+  <button type="button" class="sv-tap prev" aria-label="Назад"></button><button type="button" class="sv-tap next" aria-label="Дальше"></button>
+</div>
+<script type="application/json" id="story-data">{"order": ["dod", "papa", "schastie", "berem", "872"], "names": {"dod": "День открытых дверей", "papa": "Папа может!", "schastie": "За счастьем к нам", "berem": "День беременных", "872": "872-й ребёнок"}, "items": {"dod": [{"src": "https://fzotov.github.io/mama-v-resurse/img/life/school2.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/school1.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/birth-room.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/neo.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/door.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/twins.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/nurse.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/feet.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/sprout.webp", "cap": ""}], "papa": [{"src": "https://fzotov.github.io/mama-v-resurse/img/life/papa-doc.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/papa-lect.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/gallery-qa.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/talk-girl.webp", "cap": ""}], "schastie": [{"src": "https://fzotov.github.io/mama-v-resurse/img/life/stage.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/hall.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/keepers.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/mic.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/drmisha.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/gifts-seats.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/workshop.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/kraft.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/giving.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/medela.webp", "cap": ""}], "berem": [{"src": "https://fzotov.github.io/mama-v-resurse/img/life/fest-cpr.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/fest-amb.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/fest-game.webp", "cap": ""}], "872": [{"src": "https://fzotov.github.io/mama-v-resurse/img/life/fam-car.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/dad-car.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/mom-baby.webp", "cap": ""}, {"src": "https://fzotov.github.io/mama-v-resurse/img/life/car-side.webp", "cap": ""}]}}</script>
+
+<dialog id="lightbox" aria-label="Фотография"><button type="button" class="lb-close" aria-label="Закрыть">×</button><button type="button" class="lb-nav prev" aria-label="Предыдущее фото">‹</button><img alt=""><button type="button" class="lb-nav next" aria-label="Следующее фото">›</button></dialog>
+
+<div data-view="mam" hidden><div class="wrap">
+  <div class="page-title sec-head"><span class="eyebrow">Вопросы мам</span><h1>Ответы на то, что тревожит больше всего</h1>
+  <img referrerpolicy="no-referrer" class="page-img" src="https://static.tildacdn.com/tild6232-3462-4661-b364-656664303335/image.jpeg" alt="Мама нежно держит новорождённого" loading="lazy" width="856" height="813">
+  <p class="muted">Вопросы взяты из опроса «Путь мамы». Отвечают врачи Дмитровского роддома. <span class="todo">Медицинские ответы согласовать с врачами до публикации.</span></p></div>
+  <nav class="toc" aria-label="Вопросы">
+    <a href="#mam-strah">Страшно рожать</a><a href="#mam-srochno">Когда ехать срочно</a><a href="#mam-vyplaty">Выплаты</a><a href="#mam-gv">Грудное вскармливание</a><a href="#mam-posle">После родов</a><a href="#mam-malysh">Малыш и врач</a><a href="#mam-ploho">Мне плохо</a><a href="#mam-odna">Я одна</a><a href="#mam-sad">Детский сад</a>
+  </nav>
+  <div class="qa">
+    <article id="mam-strah"><h2>Мне страшно рожать</h2><p>Это самый частый страх. Лучший способ его снять — увидеть роддом заранее и познакомиться с врачами. Приходите на день открытых дверей в четверг: заведующий отделением проведёт экскурсию по родовому и послеродовому отделениям. На школе мам расскажут, как дышать и вести себя в схватках.</p><p class="go"><a href="#den-otkrytyh-dverey">День открытых дверей</a><a href="#zanyatiya">Школа мам</a></p></article>
+    <article><h2>Как выбрать роддом</h2><p>Смотрите на условия, а не только на расстояние. В Дмитровском роддоме — индивидуальные родовые боксы, одноместные палаты, «Золотой час» и бесплатные партнёрские роды. Средняя оценка мамами — 8,78 из 10.</p><p class="go"><a href="#roddom">О роддоме</a></p></article>
+    <article><h2>Какие документы нужны</h2><p>Паспорт, полис ОМС, СНИЛС, обменная карта и родовой сертификат (если есть — сейчас он в основном электронный). Рубашку на роды, сорочку и халат выдаст роддом.</p><p class="go"><a href="#chto-vzyat">Сумка в роддом</a></p></article>
+    <article id="mam-srochno"><h2>Когда срочно ехать в роддом</h2><p>Памятка роддома. Не ждите, приезжайте сразу, если:</p>
+      <ol class="list"><li>Появились кровянистые выделения — даже небольшие.</li><li>Излились или подтекают околоплодные воды — сильным потоком или понемногу, но постоянно.</li><li>Малыш стал двигаться заметно меньше, слабее или вы его не чувствуете.</li><li>Сильная или постоянная боль в животе — особенно если нарастает, живот напряжён.</li><li>Сильная головная боль, «мушки» перед глазами, ухудшилось зрение — так может проявляться опасное повышение давления.</li><li>Температура 38° и выше, озноб, слабость, рвота, одышка.</li><li>Начались регулярные болезненные схватки при сроке 37 недель и больше.</li><li>Вы упали или ударились животом — даже если всё кажется в порядке.</li></ol>
+      <div class="callout"><b>Сразу звоните 112</b>, если обильное кровотечение, потеря сознания, судороги, резко стало трудно дышать или сильная боль в груди, состояние быстро ухудшается.</div>
+      <p>Если сомневаетесь — лучше приехать и убедиться, что всё хорошо. Приёмное отделение: <span class="phone">8 (496) 223-26-96</span>, круглосуточно.</p></article>
+    <article id="mam-vyplaty"><h2>Какие выплаты мне положены</h2><p>Оформить выплаты при рождении ребёнка можно онлайн через Госуслуги Подмосковья. Если не понимаете, что положено именно вам, — напишите в контакт-центр «Остров Надежды».</p><p class="go"><a href="https://uslugi.mosreg.ru/birthmo">Госуслуги Подмосковья</a><a href="#kontakty">Контакт-центр</a></p></article>
+    <article id="mam-gv"><h2>Не получается наладить грудное вскармливание</h2><p>Почти каждая мама в первые недели думает, что молока мало, — и чаще всего это не так. Первые дни малышу хватает молозива: желудок у него совсем маленький. За первый месяц лактация подстраивается под ребёнка, лучше всего помогает кормление по требованию. Настоящие признаки нехватки — мало мокрых подгузников, редкий стул и плохая прибавка в весе. Даже тогда не переходите сразу на смесь: сначала к педиатру и к консультанту по ГВ — часто дело в прикладывании.</p><p class="go"><a href="https://t.me/womenhealthdmitrov">Спросить в чате роддома</a></p></article>
+    <article id="mam-posle"><h2>Что нормально после родов, а когда ехать в роддом</h2><p>Послеродовой период длится 42 дня. Выделения (лохии) в норме идут до шести недель: сначала кровяные, через неделю — слизистые. Душ можно принимать уже в первые сутки, в том числе после кесарева; шов и рубец достаточно мыть с мылом и сушить, зелёнка и пластырь не нужны.</p><p>Приезжайте в роддом, если выделений больше, чем в первые дни месячных, есть сгустки, они ярко-алые, снова стали обильными после затихания или неприятно пахнут. Если за 6 часов после родов не удаётся помочиться — скажите врачу. При любых жалобах в течение 42 дней можно и нужно приехать в роддом.</p><p class="go">Приёмное отделение: <span class="phone">8 (496) 223-26-96</span>, круглосуточно</p></article>
+    <article id="mam-malysh"><h2>Когда с малышом срочно к врачу</h2><p>В большинстве случаев достаточно наблюдать. Но к врачу нужно сразу, если малыш:</p><ul class="list"><li>стал вялым, отказывается от груди или плохо сосёт;</li><li>часто и обильно срыгивает (больше 5 раз в день), беспокоен, не прибавляет в весе;</li><li>пожелтел сильнее, побледнел или посинел;</li><li>температура выше 37,5 °C, и малыш вялый или беспокойный;</li><li>редко мочится, стул плотный, сухой или тёмный;</li><li>из пупка выделения с гноем или кровью, неприятный запах, покраснение вокруг; пупочная ранка не заживает больше 21 дня.</li></ul><p class="go"><a href="https://t.me/womenhealthdmitrov">Спросить в чате роддома</a></p></article>
+    <article id="mam-ploho"><h2>Мне плохо после родов, и я не понимаю почему</h2><p>Если больше двух недель держатся подавленность и слёзы, потеря интереса ко всему, сильная тревога, бессонница даже когда малыш спит, чувство вины и никчёмности — это может быть перинатальная депрессия. Это не слабость и не «плохая мать». Она хорошо лечится, если обратиться вовремя.</p><div class="callout">Если появились мысли причинить вред себе или ребёнку — обратитесь за помощью в тот же день: контакт-центр «Остров Надежды» — <a href="tel:+74962232454" style="white-space:nowrap"><b>+7 (496) 223-24-54</b></a>, экстренная помощь — <b>112</b>.</div><p>Близким: не ждите, пока мама пожалуется сама. Спросите, как она себя чувствует, и помогите дойти до специалиста.</p><p class="go"><a href="#signal">«Ранний сигнал»</a></p></article>
+    <article id="mam-odna"><h2>Я всё время одна, не с кем поговорить</h2><p>В чате роддома 4267 мам. Там можно спросить совет у тех, кто уже прошёл этот путь, и найти подругу для прогулок. На занятиях в роддоме — очные встречи.</p><p class="go"><a href="https://t.me/womenhealthdmitrov">Telegram</a><span class="todo">Чат в MAX</span></p></article>
+    <article><h2>Не могу записаться к врачу</h2><p>Напишите в чат роддома — там есть связь с регистратурой. Подсказать, куда обратиться, может и ИИ-помощник «Мама» в Max.</p><p class="go"><a href="https://t.me/womenhealthdmitrov">Чат роддома</a></p></article>
+    <article id="mam-sad"><h2>Как устроить ребёнка в детский сад и вернуться на работу</h2><p>Каждый ребёнок от 2 месяцев до 8 лет имеет право на место в муниципальном саду. Заявление подаётся онлайн через Госуслуги. В 2027 году в Дмитрове планируется достроить сад на 130 мест на ул. Большевистской.</p><p class="go"><a href="https://www.gosuslugi.ru/help/faq/popular/21">Записаться в детский сад</a></p></article>
+    <article><h2>Ещё вопросы</h2><p class="go"><a href="#vopros-otvet">Выписка, посещения, скрининг</a><a href="#pamyatki">Памятки: анализы и УЗИ</a><a href="#pape">Для пап</a></p></article>
+  </div>
+</div></div>
+
+<!-- СУМКА -->
+<div data-view="chto-vzyat" hidden><div class="wrap">
+  <div class="page-title sec-head"><span class="eyebrow">Памятка роддома</span><h1>Сумка в роддом</h1>
+  <img referrerpolicy="no-referrer" class="page-img" src="https://static.tildacdn.com/tild6461-3061-4865-a235-656431343737/image_1.jpeg" alt="Собранная сумка в роддом" loading="lazy" width="1024" height="1024">
+  <p class="muted">Отмечайте, что уже собрали, — список запомнится на этом устройстве. Вещи сложите в прозрачные сумки: их три — предродовое отделение, родблок, послеродовое. Документы — отдельно в папке.</p></div>
+  <div class="progress" aria-live="polite"><div style="display:flex;justify-content:space-between;font-size:.9rem"><span id="bag-count">Собрано 0</span><button type="button" id="bag-reset" class="btn soft" style="padding:.25rem .8rem;font-size:.82rem">Начать заново</button></div><div class="track"><div class="fill" id="bag-fill" style="width:0"></div></div></div>
+  <div class="bags" id="bags">
+    <div class="bag"><h2>Документы</h2><ul class="check"><li>Паспорт</li><li>Полис ОМС</li><li>СНИЛС</li><li>Обменная карта</li><li>Родовой сертификат (если есть; сейчас он в основном электронный)</li></ul></div>
+    <div class="bag"><h2>Партнёру на роды</h2><p class="muted">Муж, мама или подруга.</p><ul class="check"><li>Флюорография не старше 1 года</li><li>Анализ на антитела к кори или справка о прививке не старше полугода</li></ul></div>
+    <div class="bag"><h2>Предродовое отделение</h2><p class="muted">Сорочку и халат выдаст роддом.</p><ul class="check"><li>Моющиеся тапочки</li><li>Телефон и зарядка</li><li>Туалетные принадлежности и средства личной гигиены</li><li>Полотенца для тела и для лица</li><li>Кружка</li></ul></div>
+    <div class="bag"><h2>Родблок</h2><p class="muted">Рубашку на роды выдаст роддом.</p><ul class="check"><li>Моющиеся тапочки</li><li>Телефон и зарядка</li><li>Вода без газа с дозатором, минимум 0,5 л</li><li>Лёгкий перекус: печенье, шоколад, банан</li><li>Вазелиновое масло</li><li>Гигиеническая помада</li><li>Компрессионные чулки 2-го класса</li><li>Одноразовые трусики</li><li>Пелёнки 60×90 см, 10 шт.</li><li>Малышу: 1 подгузник, шапочка, носочки, боди</li></ul></div>
+    <div class="bag"><h2>Послеродовое — маме</h2><p class="muted">Сорочку и халат выдаст роддом; можно взять свои.</p><ul class="check"><li>Туалетные принадлежности и средства гигиены</li><li>Послеродовые трусики и прокладки</li><li>Полотенца для тела и для лица</li><li>Кружка</li><li>Свои сорочка и халат — по желанию, 2 шт.</li></ul></div>
+    <div class="bag"><h2>Послеродовое — малышу</h2><ul class="check"><li>Подгузники фабричного производства</li><li>Бумажные полотенца</li><li>Детское жидкое мыло</li><li>Детские влажные салфетки</li><li>Детский крем</li><li>Распашонки или боди, шапочки, носочки</li></ul></div>
+  </div>
+  <p class="note" style="padding-bottom:2.5rem">Посещений в роддоме нет. Если что-то забыли — родные передадут через приёмное отделение в любое время. <span class="todo">Список вещей на выписку — получить у роддома.</span></p>
+</div></div>
+
+<!-- ВОПРОС-ОТВЕТ -->
+<div data-view="vopros-otvet" hidden><div class="wrap">
+  <div class="page-title sec-head"><span class="eyebrow">Роддом</span><h1>Вопрос — ответ</h1></div>
+  <div class="qa">
+    <article><h2>Когда выписка?</h2><p>После естественных родов — на третьи сутки, после кесарева сечения — на четвёртые. <span class="todo">Во сколько и что взять на выписку.</span></p></article>
+    <article><h2>Можно ли навестить маму?</h2><p>Посещений в роддоме нет. Передачи принимаются круглосуточно через приёмное отделение.</p></article>
+    <article><h2>Можно ли рожать с мужем, мамой или подругой?</h2><p>Да, партнёрские роды бесплатны по ОМС. Партнёру нужны флюорография не старше 1 года и анализ на антитела к кори или справка о прививке не старше полугода.</p></article>
+    <article><h2>Что такое неонатальный скрининг?</h2><p>Анализ крови из пяточки на наследственные заболевания, берут в роддоме на 1–2 сутки (у недоношенных — на 7-е). Если всё в порядке, родителям не звонят; при отклонениях поликлиника сама направит на повторное обследование.</p></article>
+    <article><h2>Какие осмотры нужны малышу до года?</h2><p>Ежемесячно педиатр; в 1 месяц — невролог, хирург, офтальмолог, стоматолог, УЗИ и аудиоскрининг; в 3 месяца — ортопед; в 12 месяцев — расширенный осмотр.</p></article>
+  </div>
+</div></div>
+
+<!-- ПАПАМ -->
+<div data-view="pape" hidden><div class="wrap">
+  <div class="page-title sec-head"><span class="eyebrow">Для пап</span><h1>Папа может многое</h1></div>
+  <img referrerpolicy="no-referrer" class="page-img" src="https://static.tildacdn.com/tild3330-3131-4239-a564-353031363234/image_3.jpeg" alt="Будущие мама и папа гуляют, держась за руки" loading="lazy" width="700" height="700">
+  <div class="prose" style="padding-bottom:2.5rem">
+    <p>В роддоме — бесплатные партнёрские роды по ОМС. На фестивале «Папа может!» в Дмитровском кремле будущие папы учились пеленать, успокаивать малыша, поддерживать маму после родов и пробовали симулятор схваток.</p>
+    <p>Приходите вместе на день открытых дверей в четверг в 15:00. Что нужно партнёру на роды — в <a href="#chto-vzyat">списке сумки</a>.</p>
+    <p>После родов главное, что может сделать близкий человек, — замечать, как чувствует себя мама. <a href="#signal">Как распознать, что ей тяжело →</a></p>
+    <p><span class="todo">Фотоотчёт с фестиваля; чек-лист от врачей «Первые дни дома».</span></p>
+  </div>
+</div></div>
+
+<!-- АФИША -->
+<div data-view="afisha" hidden><div class="wrap">
+  <div class="page-title sec-head"><span class="eyebrow">Афиша и новости</span><h1>События проекта</h1></div>
+  <div class="qa">
+    <article><h2>Форум «Гнездо-2026»</h2><p>Михаил Цурцумия выступит спикером 14 ноября.</p></article>
+    <article><h2>872-й ребёнок</h2><p>Ко Дню города семья Марии и Михаила Севидовых из села Подъячево получила автомобиль: их малыш стал 872-м ребёнком, родившимся в Дмитрове в 2026 году. Все четверо детей Севидовых родились в Дмитровском роддоме.</p>
+      <div class="ev-photos"><button type="button" class="lb" data-src="https://fzotov.github.io/mama-v-resurse/img/life/fam-car.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fam-car-s.webp" alt="Семья Севидовых с новорождённым у автомобиля проекта" loading="lazy" width="760" height="507"></button><button type="button" class="lb" data-src="https://fzotov.github.io/mama-v-resurse/img/life/dad-car.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/dad-car-s.webp" alt="Михаил Севидов за рулём автомобиля" loading="lazy" width="760" height="507"></button><button type="button" class="lb" data-src="https://fzotov.github.io/mama-v-resurse/img/life/mom-baby.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/mom-baby-s.webp" alt="Мама с новорождённым и дочкой" loading="lazy" width="760" height="507"></button><button type="button" class="lb" data-src="https://fzotov.github.io/mama-v-resurse/img/life/car-side.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/car-side-s.webp" alt="Автомобиль с логотипом проекта" loading="lazy" width="760" height="507"></button></div></article>
+    <article><h2>Фестиваль «Папа может!»</h2><p>В октябре в Дмитровском кремле будущие папы учились пеленать и поддерживать маму.</p><div class="ev-photos"><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/papa-doc.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/papa-doc-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/papa-lect.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/papa-lect-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/gallery-qa.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/gallery-qa-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/talk-girl.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/talk-girl-s.webp" alt="" loading="lazy" width="760" height="507"></button></div><p><a href="#ev-papa">Все фото →</a></p></article>
+    <article><h2>Фестиваль «За счастьем к нам»</h2><p>Первый в Подмосковье фестиваль для беременных — пришли около ста женщин с родными.</p><div class="ev-photos"><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/stage.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/stage-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/hall.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/hall-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/keepers.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/keepers-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/mic.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/mic-s.webp" alt="" loading="lazy" width="760" height="507"></button></div><p><a href="#ev-schastie">Все фото →</a></p></article>
+    <article><h2>День беременных</h2><p>Праздник у Дома рождения: первая помощь от бригады скорой и игры для детей. Проходит в апреле и октябре.</p><div class="ev-photos"><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/fest-cpr.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fest-cpr-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/fest-amb.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fest-amb-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/fest-game.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/fest-game-s.webp" alt="" loading="lazy" width="760" height="507"></button></div><p><a href="#ev-berem">Все фото →</a></p></article>
+    <article><h2>День открытых дверей</h2><p>Каждый четверг в 15:00 будущие родители знакомятся с врачами и видят родовое и послеродовое отделения. <a href="#den-otkrytyh-dverey">Подробнее →</a></p><div class="ev-photos"><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/school2.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/school2-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/school1.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/school1-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/birth-room.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/birth-room-s.webp" alt="" loading="lazy" width="760" height="507"></button><button type="button" class="lb " data-src="https://fzotov.github.io/mama-v-resurse/img/life/neo.webp"><img src="https://fzotov.github.io/mama-v-resurse/img/life/neo-s.webp" alt="" loading="lazy" width="760" height="507"></button></div><p><a href="#ev-dod">Все фото →</a></p></article>
+    <article><h2>«Медиалидер» и «Свет профилактики-2026»</h2><p>Проект вошёл в тройку призёров в номинации конкурса «Медиалидер» (562 заявки) и подан на всероссийский конкурс просветительских проектов НМИЦ ТПМ Минздрава России.</p></article>
+  </div>
+</div></div>
+
+<!-- ПАМЯТКИ -->
+<div data-view="pamyatki" hidden><div class="wrap">
+  <div class="page-title sec-head"><span class="eyebrow">Дмитровская больница</span><h1>Памятки для пациенток</h1></div>
+  <div class="grid" style="padding-bottom:2.5rem">
+    <div class="item"><h3><a href="#mam-srochno">Когда срочно ехать в роддом</a></h3><p>Восемь признаков, при которых не нужно ждать.</p></div>
+    <div class="item"><h3>Подготовка к забору крови</h3><p>Последний приём пищи до 20:00, кровь сдаётся натощак, процедурный кабинет по записи с 08:00 до 10:00.</p></div>
+    <div class="item"><h3>После сдачи крови</h3><p><span class="todo">памятка из чата</span></p></div>
+    <div class="item"><h3>Как сдавать мочу</h3><p><span class="todo">памятка из чата</span></p></div>
+    <div class="item"><h3>Подготовка к УЗИ</h3><p><span class="todo">памятка из чата</span></p></div>
+  </div>
+</div></div>
+
+<!-- ПОЛИТИКА -->
+<div data-view="politika" hidden><div class="wrap">
+  <div class="page-title sec-head"><span class="eyebrow">Документы</span><h1>Политика обработки персональных данных</h1></div>
+  <p class="prose" style="padding-bottom:2.5rem"><span class="todo">Утверждённый текст политики от оператора персональных данных (администрация округа или больница).</span></p>
+</div></div>
+</main>
+
+<div class="sticky-call"><a class="btn primary" href="#kontakty">Позвонить</a><a class="btn soft" href="https://t.me/womenhealthdmitrov">Чат мам</a></div>
+
+<footer><div class="wrap">
+  <div><b style="color:var(--ink)">Проект «Мама в ресурсе»</b><br>Администрация Дмитровского муниципального округа и Дмитровская больница. Запущен в 2024 году.<br><a href="https://dmitrov-reg.ru/">dmitrov-reg.ru</a></div>
+  <nav aria-label="Ещё"><a href="#mam">Вопросы мам</a><a href="#chto-vzyat">Сумка в роддом</a><a href="#vopros-otvet">Вопрос — ответ</a><a href="#pape">Для пап</a><a href="#afisha">Афиша</a><a href="#pamyatki">Памятки</a><a href="#politika">Политика конфиденциальности</a></nav>
+</div></footer>
+
+<script>
+(function(){
+  var store={get:function(k){try{return localStorage.getItem(k)}catch(e){return null}},set:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+  var views=[].slice.call(document.querySelectorAll('[data-view]'));
+  var names=views.map(function(v){return v.getAttribute('data-view')});
+  function show(){
+    var h=(location.hash||'').slice(1)||'home';
+    var anchor=names.indexOf(h)>-1?null:document.getElementById(h);
+    var target=names.indexOf(h)>-1?h:(anchor?anchor.closest('[data-view]').getAttribute('data-view'):'home');
+    views.forEach(function(v){v.hidden=v.getAttribute('data-view')!==target});
+    [].forEach.call(document.querySelectorAll('nav.main a'),function(a){
+      var k=a.getAttribute('href').slice(1);
+      var on=(k===h)||(k==='home'&&target==='home'&&!anchor)||(k==='mam'&&target==='mam');
+      if(on)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
+    });
+    if(anchor){anchor.scrollIntoView();}else{window.scrollTo(0,0);}
+  }
+  window.addEventListener('hashchange',show);show();
+
+  var tabs=[].slice.call(document.querySelectorAll('.stages button'));
+  tabs.forEach(function(b){b.addEventListener('click',function(){
+    tabs.forEach(function(t){t.setAttribute('aria-selected',t===b?'true':'false')});
+    [].forEach.call(document.querySelectorAll('.stage-panel'),function(p){p.hidden=p.getAttribute('data-panel')!==b.getAttribute('data-stage')});
+    mark(b.getAttribute('data-stage'));
+  })});
+  function mark(st){var on=[];[].forEach.call(document.querySelectorAll('#timeline div'),function(d){var y=d.getAttribute('data-t').split(' ').indexOf(st)>-1;d.classList.toggle('on',y);if(y)on.push(d.textContent.trim())});var c=document.getElementById('tl-cap');if(c)c.textContent=on.length>2?on[0]+' — '+on[on.length-1]:on.join(' → ')}
+  mark('wait');
+
+  var items=[].slice.call(document.querySelectorAll('#bags .check li'));
+  var saved={};try{saved=JSON.parse(store.get('mama-bag')||'{}')}catch(e){}
+  items.forEach(function(li,i){
+    var text=li.textContent;li.textContent='';
+    var lab=document.createElement('label');var cb=document.createElement('input');cb.type='checkbox';cb.id='bag-'+i;cb.checked=!!saved[i];
+    var sp=document.createElement('span');sp.textContent=text;lab.appendChild(cb);lab.appendChild(sp);li.appendChild(lab);
+    cb.addEventListener('change',function(){saved[i]=cb.checked;store.set('mama-bag',JSON.stringify(saved));count()});
+  });
+  function count(){var n=items.filter(function(li){return li.querySelector('input').checked}).length;
+    document.getElementById('bag-count').textContent='Собрано '+n+' из '+items.length+(n===items.length?' — всё готово':'');
+    document.getElementById('bag-fill').style.width=(items.length?n/items.length*100:0)+'%';}
+  document.getElementById('bag-reset').addEventListener('click',function(){saved={};store.set('mama-bag','{}');items.forEach(function(li){li.querySelector('input').checked=false});count()});
+  count();
+
+  var tg=document.getElementById('toggle-todo');
+  tg.addEventListener('click',function(){var c=document.documentElement.classList.toggle('clean');tg.textContent=c?'Показать пометки':'Скрыть пометки'});
+  document.getElementById('fb').addEventListener('submit',function(e){e.preventDefault();document.getElementById('fb-out').hidden=false});
+})();
+
+  // фото: фильтр и лайтбокс
+  (function(){
+    var chips=[].slice.call(document.querySelectorAll('.chip-f'));
+    chips.forEach(function(c){c.addEventListener('click',function(){
+      var g=c.getAttribute('data-g');
+      chips.forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false')});
+      [].forEach.call(document.querySelectorAll('.life-g'),function(sec){sec.hidden=!(g==='all'||sec.getAttribute('data-g')===g)});
+    })});
+    var dlg=document.getElementById('lightbox');if(!dlg)return;
+    var img=dlg.querySelector('img'),cap=dlg.querySelector('.lb-cap'),list=[],idx=0;
+    function open(i){var b=list[i];if(!b)return;idx=i;img.src=b.getAttribute('data-src');img.alt=b.querySelector('img').alt;if(!dlg.open){if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','')}}
+    document.addEventListener('click',function(e){
+      var b=e.target.closest&&e.target.closest('.lb');
+      if(b){var scope=b.closest('[data-view]');list=[].slice.call(scope.querySelectorAll('.lb')).filter(function(x){return x.offsetParent!==null});open(list.indexOf(b));return}
+      if(e.target===dlg||e.target.classList.contains('lb-close'))dlg.close();
+      if(e.target.classList.contains('prev'))open((idx-1+list.length)%list.length);
+      if(e.target.classList.contains('next'))open((idx+1)%list.length);
+    });
+    document.addEventListener('keydown',function(e){if(!dlg.open)return;if(e.key==='ArrowLeft')open((idx-1+list.length)%list.length);if(e.key==='ArrowRight')open((idx+1)%list.length)});
+  })();
+
+  // истории
+  (function(){
+    var el=document.getElementById('story'),dataEl=document.getElementById('story-data');if(!el||!dataEl)return;
+    var D=JSON.parse(dataEl.textContent),bars=el.querySelector('.sv-bars'),img=el.querySelector('.sv-img'),title=el.querySelector('.sv-title');
+    var sid=null,i=0,timer=null,last=null,DUR=5000;
+    function seen(id){[].forEach.call(document.querySelectorAll('[data-story="'+id+'"]'),function(d){d.classList.add('seen')})}
+    function show(){
+      var it=D.items[sid];clearTimeout(timer);
+      bars.innerHTML=it.map(function(_,k){return '<i class="'+(k<i?'done':k===i?'run':'')+'"><b></b></i>'}).join('');
+      img.src=it[i].src;el.querySelector('.sv-bg').src=it[i].src;img.alt=it[i].cap;title.textContent=D.names[sid];
+      if(it[i+1]){var pre=new Image();pre.src=it[i+1].src}
+      timer=setTimeout(next,DUR);
+    }
+    function open(id){sid=id;i=0;last=document.activeElement;el.hidden=false;document.documentElement.style.overflow='hidden';show();el.querySelector('.sv-close').focus()}
+    function close(){clearTimeout(timer);if(sid)seen(sid);el.hidden=true;document.documentElement.style.overflow='';if(last)last.focus()}
+    function next(){var it=D.items[sid];if(i<it.length-1){i++;show()}else{seen(sid);var o=D.order,k=o.indexOf(sid);if(k<o.length-1){sid=o[k+1];i=0;show()}else close()}}
+    function prev(){if(i>0){i--;show()}else{var o=D.order,k=o.indexOf(sid);if(k>0){sid=o[k-1];i=D.items[sid].length-1;show()}else show()}}
+    document.addEventListener('click',function(e){var d=e.target.closest&&e.target.closest('.st-dot,.st-card');if(d){open(d.getAttribute('data-story'))}});
+    el.querySelector('.sv-close').addEventListener('click',close);
+    el.querySelector('.sv-tap.next').addEventListener('click',next);
+    el.querySelector('.sv-tap.prev').addEventListener('click',prev);
+    document.addEventListener('keydown',function(e){if(el.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev()});
+    var y0=null;el.addEventListener('touchstart',function(e){y0=e.touches[0].clientY},{passive:true});
+    el.addEventListener('touchend',function(e){if(y0!==null&&e.changedTouches[0].clientY-y0>90)close();y0=null});
+  })();
+
+  // фильм: собираем из частей и играем
+  (function(){
+    var blobUrl=null,loading=null;
+    function load(n){if(blobUrl)return Promise.resolve(blobUrl);if(loading)return loading;
+      var ps=[];for(var k=0;k<n;k++)ps.push(fetch('https://fzotov.github.io/mama-v-resurse/video/roddom.part'+(k<10?'0':'')+k).then(function(r){if(!r.ok)throw 0;return r.arrayBuffer()}));
+      loading=Promise.all(ps).then(function(bufs){blobUrl=URL.createObjectURL(new Blob(bufs,{type:'video/mp4'}));return blobUrl});return loading}
+    document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.film-play');if(!b)return;
+      b.classList.add('loading');
+      load(+b.getAttribute('data-parts')).then(function(url){var v=document.createElement('video');v.controls=true;v.playsInline=true;v.setAttribute('playsinline','');v.src=url;v.poster='https://fzotov.github.io/mama-v-resurse/img/life/film-poster.webp';v.style.cssText='width:100%;aspect-ratio:16/9;border-radius:20px;background:#000;display:block';b.replaceWith(v);v.play().catch(function(){})}).catch(function(){b.classList.remove('loading')});
+    });
+  })();
+</script>
