@@ -260,6 +260,68 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
 @media (max-width:900px){.srv{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:480px){.srv{gap:.8rem}.srv-card b{font-size:.95rem}}
 .page-img{max-width:min(100%,520px)!important;border-radius:24px!important;aspect-ratio:auto}
+
+.hero-title{font-size:clamp(2.4rem,5vw,4rem)!important;letter-spacing:-.02em}
+.back{margin:1.2rem 0 0}.back a{color:var(--plum);text-decoration:none;font-weight:600;font-size:.95rem}
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem}
+.tile{position:relative;display:block;border-radius:24px;overflow:hidden;aspect-ratio:16/10;color:#fff;text-decoration:none;background:#3a2033}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.tile:hover img{transform:scale(1.04)}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,10,25,0) 35%,rgba(30,10,25,.82))}
+.tile-txt{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:clamp(1rem,2.5vw,1.6rem);display:grid;gap:.3rem}
+.tile-txt b{font-family:var(--display);font-size:clamp(1.15rem,2.2vw,1.55rem);line-height:1.15}
+.tile-txt span{font-size:.92rem;opacity:.9}
+.tile-txt b::after{content:" →"}
+@media (max-width:700px){.tiles{grid-template-columns:minmax(0,1fr)}.tile{aspect-ratio:4/3}}
+.ph-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.7rem;margin:0 0 1.8rem}
+.ph-strip .lb img{aspect-ratio:4/3}
+@media (max-width:700px){.ph-strip{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.lb{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;border-radius:16px;overflow:hidden}
+.lb img{display:block;width:100%;height:auto;object-fit:cover;transition:transform .4s}
+.lb:hover img{transform:scale(1.03)}
+.ev-photos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem;margin-top:.9rem}
+.ev-photos .lb img{aspect-ratio:1/1}
+@media (max-width:600px){.ev-photos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ph-av{width:52px;height:52px;border-radius:50%;object-fit:cover;padding:0}
+.life-teaser{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:0;margin-top:2rem;border-radius:26px;overflow:hidden;background:var(--plum);color:#fff;text-decoration:none;box-shadow:0 12px 40px rgba(60,20,50,.18)}
+.lt-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:3px;min-height:300px;background:#2a1424}
+.lt-grid img{width:100%;height:100%;object-fit:cover;display:block}
+.lt-grid img:nth-child(1){grid-area:1/1/3/2}.lt-grid img:nth-child(2){grid-area:1/2/2/3}.lt-grid img:nth-child(3){grid-area:1/3/2/4}.lt-grid img:nth-child(4){grid-area:2/2/3/4}
+.lt-txt{padding:clamp(1.4rem,3vw,2.4rem);display:grid;gap:.8rem;align-content:center}
+.lt-txt .eyebrow{color:#FFD0E3}
+.lt-txt b{font-family:var(--display);font-size:clamp(1.3rem,2.4vw,1.8rem);line-height:1.15}
+.lt-txt>span:not(.eyebrow):not(.btn){opacity:.9}
+.lt-txt .btn{justify-self:start;background:#fff;color:#6B2A55}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .life-teaser{background:#4a1d3b}}
+@media (max-width:760px){.life-teaser{grid-template-columns:minmax(0,1fr)}.lt-grid{min-height:220px}}
+.life-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border-block:1px solid var(--line);margin:0 0 1.4rem}
+.life-stats div{background:var(--bg);padding:.9rem 1rem;display:grid}
+.life-stats b{font-family:var(--display);font-size:1.6rem;color:var(--plum)}
+.life-stats span{font-size:.85rem;color:var(--muted)}
+.chips-f{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.6rem;padding:.4rem 0}
+@media (max-width:600px){.chips-f{flex-wrap:nowrap;overflow-x:auto;margin-inline:-16px;padding-inline:16px;scrollbar-width:none}.chip-f{white-space:nowrap;flex:none}}
+.chip-f{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:.5rem .95rem;font:600 .9rem/1 var(--body);cursor:pointer}
+.chip-f[aria-pressed="true"]{background:var(--plum);border-color:var(--plum);color:var(--plum-ink)}
+.life-g{margin:0 0 2.6rem}
+.life-h h2{margin:0 0 .2rem}.life-h p{margin:0 0 1rem}
+.life-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-flow:dense;gap:.9rem}
+.lf{margin:0;display:grid;gap:.4rem;align-content:start}
+.lf .lb img{aspect-ratio:3/2}
+.lf.tall{grid-column:span 2;grid-row:span 2}
+.lf.tall .lb img{aspect-ratio:auto;height:100%;min-height:100%}
+.lf.tall .lb{height:100%}
+.lf figcaption{font-size:.88rem;color:var(--muted)}
+@media (max-width:700px){.life-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.lf.tall{grid-column:span 2;grid-row:auto}.lf.tall .lb img{aspect-ratio:3/2;height:auto}}
+#lightbox{border:0;padding:0;background:transparent;max-width:min(96vw,1300px);max-height:96vh;overflow:visible}
+#lightbox::backdrop{background:rgba(15,8,14,.88)}
+#lightbox img{display:block;max-width:min(96vw,1300px);max-height:82vh;width:auto;height:auto;border-radius:14px;margin:0 auto}
+.lb-cap{color:#fff;text-align:center;margin:.7rem 0 0;font-size:.95rem}
+.lb-close,.lb-nav{position:fixed;border:0;background:rgba(255,255,255,.16);color:#fff;border-radius:999px;width:46px;height:46px;font-size:1.7rem;line-height:1;cursor:pointer}
+.lb-close{top:14px;right:14px}.lb-nav.prev{left:10px;top:50%}.lb-nav.next{right:10px;top:50%}
+
+.life-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.life-grid.two.lead .lf:first-child{grid-column:span 2}
+.life-grid.two.lead .lf:first-child .lb img{aspect-ratio:16/8}
 </style>
 </head>
 <body>
@@ -288,6 +350,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
     <a href="#home">Главная</a>
     <a href="#roddom">Роддом</a>
     <a href="#zanyatiya">Занятия</a>
+    <a href="#zhizn">Жизнь проекта</a>
     <a href="#mam">Вопросы мам</a>
     <a href="#chto-vzyat">Сумка в роддом</a>
     <a href="#kontakty">Контакты</a>
@@ -300,13 +363,9 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
   <div class="hero2"><div class="wrap"><div class="hero-card">
     <img referrerpolicy="no-referrer" class="hero-img" src="https://optim.tildacdn.com/tild6534-6532-4262-b932-393733343165/-/format/webp/__2026-02-08_130252.png.webp" alt="Мама держит на руках спящего младенца" width="1318" height="610" fetchpriority="high">
     <div class="hero-txt">
-      <span class="kicker">Проект администрации Дмитровского округа и Дмитровской больницы</span>
-      <h1>Вы не одна. <span>Рядом врачи, мамы и понятный маршрут.</span></h1>
-      <p class="lead">От планирования беременности до первых лет с малышом — на каждом шаге есть ответ, человек и телефон.</p>
-      <div class="btns">
-        <a class="btn primary" href="#den-otkrytyh-dverey">Прийти в роддом в четверг</a>
-        <a class="btn line" href="https://t.me/womenhealthdmitrov">Спросить в чате мам</a>
-      </div>
+      <span class="kicker">Проект администрации Дмитровского муниципального округа и Дмитровской больницы</span>
+      <h1 class="hero-title">Мама в ресурсе</h1>
+      <p class="lead">Всё, что нужно маме в Дмитровском округе: обновлённый роддом, врачи, которым можно доверять, и меры поддержки в одном месте.</p>
       <p class="hero-score"><b>8,78 из 10</b> — так мамы оценили Дмитровский роддом. 71% советуют его подругам.</p>
     </div>
   </div></div>
@@ -327,7 +386,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
       <button type="button" role="tab" aria-selected="false" data-stage="plan"><svg class="ico"><use href="#i-plan"/></svg>Планирую</button>
       <button type="button" role="tab" aria-selected="true" data-stage="wait"><svg class="ico"><use href="#i-bump"/></svg>Жду малыша</button>
       <button type="button" role="tab" aria-selected="false" data-stage="born"><svg class="ico"><use href="#i-baby"/></svg>Малыш уже родился</button>
-      <button type="button" role="tab" aria-selected="false" data-stage="close"><svg class="ico"><use href="#i-hands"/></svg>Я папа или близкий</button>
+      <button type="button" role="tab" aria-selected="false" data-stage="close"><svg class="ico"><use href="#i-hands"/></svg>Я папа</button>
     </div>
     <div class="stage-panel" data-panel="plan" hidden>
       <div class="step"><svg class="ico"><use href="#i-door"/></svg><span class="n">Шаг 1</span><h3>Познакомьтесь с роддомом заранее</h3><p>Приходите на день открытых дверей в четверг в 15:00 — можно с партнёром.</p><a class="go" href="#den-otkrytyh-dverey">Как прийти →</a></div>
@@ -356,7 +415,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
   </div></section>
 
   <section id="enc" class="enc-sec"><div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Энциклопедия</span><h2>Главное — по полочкам</h2><p>Подробно о здоровье, материнстве и поддержке семьи — простыми словами.</p></div>
+    <div class="sec-head"><h2>Главное — по полочкам</h2><p>Подробно о здоровье, материнстве и поддержке семьи — простыми словами.</p></div>
     <div class="enc">
       <a class="enc-card" href="#chto-vzyat"><img referrerpolicy="no-referrer" src="https://static.tildacdn.com/tild6461-3061-4865-a235-656431343737/image_1.jpeg" alt="Собранная сумка в роддом" loading="lazy" width="1024" height="1024"><b>Что взять в роддом</b><span>Список с галочками — запомнится на вашем телефоне</span></a>
       <a class="enc-card" href="#mam"><img referrerpolicy="no-referrer" src="https://static.tildacdn.com/tild6232-3462-4661-b364-656664303335/image.jpeg" alt="Мама нежно держит новорождённого" loading="lazy" width="856" height="813"><b>Мамам: ответы врачей</b><span>Страх родов, выплаты, ГВ, когда срочно ехать в роддом</span></a>
@@ -364,100 +423,13 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
     </div>
   </div></section>
 
-  <section id="vy-skazali"><div class="wrap">
-    <div class="sec-head"><span class="sec-ico"><svg class="ico"><use href="#i-chat"/></svg></span><span class="eyebrow">Вы сказали — мы сделали</span><h2>Что мамы попросили изменить и что уже работает</h2><p class="muted">В опросе «Путь мамы» мамы назвали 187 трудных ситуаций, 106 из них вызывают сильную тревогу. Вот что сделано по главным.</p></div>
-    <div class="ledger">
-      <div class="row"><q>Не знаю, куда обратиться</q><p>Цифровой гид, энциклопедия мамы и ответы в чате роддома</p><span class="chip ok">Работает</span></div>
-      <div class="row"><q>Страшно рожать</q><p>Обновлённая команда роддома, обучение персонала, ремонт, дни открытых дверей, обратная связь от мам</p><span class="chip ok">Работает</span></div>
-      <div class="row"><q>Не хватает навыков ухода за малышом</q><p>Бесплатная школа мам, эфиры и занятия в роддоме</p><span class="chip ok">Работает</span></div>
-      <div class="row"><q>Тревога и подавленность после родов</q><p>«Ранний сигнал» и маршрут к психологу</p><span class="chip ok">Работает</span></div>
-      <div class="row"><q>Чувство «я одна»</q><p>Чат на 4267 мам и очные встречи на занятиях</p><span class="chip ok">Работает</span></div>
-      <div class="row"><q>Трудно записаться к врачу</q><p>Связь с регистратурой в чате и чат-бот «Денис»</p><span class="chip ok">Работает</span></div>
-      <div class="row"><q>Детский сад и выход на работу</q><p>Заявление онлайн за два клика. В 2027 году планируется достроить сад на 130 мест на ул. Большевистской</p><span class="chip soon">В работе</span></div>
-      <div class="row"><q>Хочу видеть все меры поддержки в одном месте</q><p>Сообщество во «ВКонтакте» с ИИ-помощником, который подскажет подходящую меру</p><span class="chip soon">Скоро</span></div>
+  <section id="razdely"><div class="wrap">
+    <div class="tiles">
+      <a class="tile" href="#vy-skazali"><img src="img/life/gifts-seats-s.webp" alt="Мамы на встрече проекта с подарками" loading="lazy" width="760" height="507"><span class="tile-txt"><b>Вы сказали — мы сделали</b><span>Что мамы попросили изменить и что уже работает</span></span></a>
+      <a class="tile" href="#roddom"><img src="img/life/birth-room-s.webp" alt="Родовой зал Дмитровского роддома" loading="lazy" width="760" height="507"><span class="tile-txt"><b>Роддом, в котором не страшно</b><span>Палаты, оснащение, оценки мам и врачи</span></span></a>
+      <a class="tile" href="#zanyatiya"><img src="img/life/school2-s.webp" alt="Встреча будущих мам с врачом в школе мам" loading="lazy" width="760" height="507"><span class="tile-txt"><b>Школа мам и занятия для беременных</b><span>Школа мам, йога, арт-терапия, вокал, психолог</span></span></a>
+      <a class="tile" href="#zhizn"><img src="img/life/fest-cpr-s.webp" alt="Мастер-класс по первой помощи у Дома рождения" loading="lazy" width="760" height="507"><span class="tile-txt"><b>Жизнь проекта</b><span>Праздники, встречи, подарки и люди — в фотографиях</span></span></a>
     </div>
-    <p class="note">Не нашли свою ситуацию? <a href="#kontakty">Напишите нам</a> — новые вопросы попадают в следующий опрос.</p>
-  </div></section>
-
-  <section id="roddom"><div class="wrap">
-    <div class="sec-head"><span class="sec-ico"><svg class="ico"><use href="#i-door"/></svg></span><span class="eyebrow">Роддом</span><h2>Роддом, в котором не страшно</h2><p class="muted">Главная задача команды — снять страх перед родами и выстроить доверие между женщиной и врачом.</p></div>
-    <div class="two">
-      <div>
-        <ul class="ticks">
-          <li><span>Индивидуальные родовые боксы</span></li>
-          <li><span>В послеродовых палатах не больше двух мам, большинство — одноместные, в каждой свой санузел и душ</span></li>
-          <li><span>Совместное пребывание с малышом, семейные палаты, палата интенсивной терапии для новорождённых</span></li>
-          <li><span>«Золотой час» и партнёрские роды — бесплатно по ОМС</span></li>
-          <li><span>Консультант по грудному вскармливанию, расширенный неонатальный скрининг</span></li>
-          <li><span>С лета 2026 года — два реанимационных комплекса для новорождённых, в том числе недоношенных, аппараты ИВЛ, наркозно-дыхательная аппаратура, мониторы</span></li>
-          <li><span>Персонал учится не только медицине, но и общению с пациентками</span></li>
-        </ul>
-        <p class="note">Рожать сюда приезжают из соседних округов, других городов и даже стран. <span class="todo">Видео из родового отделения (1:08), фото палат — прислать файлами, нужны согласия.</span></p>
-      </div>
-      <div class="scores" aria-label="Оценки мам">
-        <h3>Как мамы оценили роддом</h3>
-        <div class="bar"><div class="lbl"><span>Родовое отделение</span><b>8,99</b></div><div class="track"><div class="fill" style="width:89.9%"></div></div></div>
-        <div class="bar"><div class="lbl"><span>Общее впечатление</span><b>8,78</b></div><div class="track"><div class="fill" style="width:87.8%"></div></div></div>
-        <div class="bar"><div class="lbl"><span>Послеродовое отделение</span><b>8,53</b></div><div class="track"><div class="fill" style="width:85.3%"></div></div></div>
-        <div class="scale"><span>0</span><span>шкала из 10 баллов</span><span>10</span></div>
-        <p class="muted" style="font-size:.88rem">Опрос 151 мамы. 71% готовы рекомендовать роддом подругам. Где оценка ниже, там и работаем дальше.</p>
-      </div>
-    </div>
-    <div class="gallery">
-      <figure class="ph"><img class="art" src="img/tour.webp" alt="Будущие родители на экскурсии в современной родовой палате, акушерка показывает палату" loading="lazy" width="640" height="857"><figcaption><b>День открытых дверей</b>Каждый четверг в 15:00 — можно с мужем или мамой</figcaption></figure>
-      <figure class="ph"><img class="art" src="img/school.webp" alt="Беременные на занятии дыхательной гимнастикой в зале роддома" loading="lazy" width="640" height="857"><figcaption><b>Школа мам</b>Бесплатно, ведут акушерки роддома</figcaption></figure>
-      <figure class="ph"><img class="art" src="img/papa.webp" alt="Папа держит новорождённого в семейной палате, мама отдыхает рядом" loading="lazy" width="640" height="857"><figcaption><b>Семейные палаты</b>Папа рядом с первых минут</figcaption></figure>
-      <figure class="ph"><img class="art" src="img/moms.webp" alt="Две мамы гуляют с колясками в парке" loading="lazy" width="640" height="857"><figcaption><b>Сообщество мам</b>4267 мам в чате роддома</figcaption></figure>
-    </div>
-    <p class="note" style="margin-top:0">Иллюстрации. Фото роддома и команды добавим после согласования с больницей. <span class="todo">реальные фото и согласия</span></p>
-    <div class="invite" id="den-otkrytyh-dverey">
-      <h3>День открытых дверей: каждый четверг в 15:00</h3>
-      <p>Михаил Цурцумия покажет родовое и послеродовое отделения и ответит на вопросы. Можно прийти с партнёром или мамой.</p>
-      <p><b>Адрес:</b> Дмитров, ул. Больничная, д. 7, корп. 3 (ул. Минина, 40). <span class="todo">Нужна ли запись — уточнить</span></p>
-      <div class="btns"><a class="btn primary" href="https://t.me/womenhealthdmitrov">Узнать подробности в чате</a></div>
-    </div>
-  </div></section>
-
-  <section id="komanda"><div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Кто вас встретит</span><h2>Люди, которые отвечают за роды в Дмитрове</h2></div>
-    <figure class="doc-feature">
-      <img referrerpolicy="no-referrer" src="https://static.tildacdn.com/tild3732-3064-4463-a565-653332363936/photo_2026-02-08_13-.jpg" alt="Михаил Цурцумия обнимает молодого папу с новорождённым в родильном отделении" loading="lazy" width="1280" height="853">
-      <figcaption class="doc-quote">
-        <blockquote>«Каждое рождение — это чудо»</blockquote>
-        <p>Михаил Зурабович убеждён: беременность должна ассоциироваться с радостью и спокойствием. Своей работой он создаёт в отделении атмосферу комфорта и доверия.</p>
-        <b>Михаил Зурабович Цурцумия</b><span>Заведующий родильным отделением · экскурсии по четвергам в 15:00</span>
-      </figcaption>
-    </figure>
-    <div class="people">
-      <div class="person"><div class="avatar">МЦ</div><div class="item"><h3>Михаил Зурабович Цурцумия</h3><p>Заведующий родильным отделением. Проводит экскурсии по четвергам.</p></div></div>
-      <div class="person"><div class="avatar">СЭ</div><div class="item"><h3>Сирануш Эдилян</h3><p>Заведующая детским отделением новорождённых.</p></div></div>
-      <div class="person"><div class="avatar">ОК</div><div class="item"><h3>Оксана Кокорина</h3><p>Неонатолог.</p></div></div>
-      <div class="person"><div class="avatar">ЛГ</div><div class="item"><h3>Лариса Александровна Горюнова</h3><p>Врач-неонатолог детского отделения новорождённых.</p></div></div>
-    </div>
-    <p class="note"><span class="todo">Фото и письменные согласия; психолог, инструктор йоги, педагог по вокалу, консультант по ГВ — ФИО и фото.</span></p>
-  </div></section>
-
-  <section id="zanyatiya"><div class="wrap">
-    <div class="sec-head"><span class="sec-ico"><svg class="ico"><use href="#i-cal"/></svg></span><span class="eyebrow">Бесплатно</span><h2>Школа мам и занятия для беременных</h2><p class="muted">Маме нужны не только знания, но и силы. Все занятия проходят в роддоме и ничего не стоят.</p></div>
-    <div class="tbl"><table>
-      <thead><tr><th>День</th><th>Время</th><th>Занятие</th></tr></thead>
-      <tbody>
-        <tr><td>Понедельник</td><td class="num">12:00</td><td>Репетиция родов с акушерками и доулами</td></tr>
-        <tr><td>Вторник</td><td class="num">14:00</td><td>Арт-терапия и проработка страхов с психологом</td></tr>
-        <tr><td>Среда</td><td class="num">13:00</td><td>Йога</td></tr>
-        <tr><td>Четверг</td><td class="num">15:00</td><td>День открытых дверей: знакомство с врачами, вопросы</td></tr>
-        <tr><td>Четверг</td><td class="num">17:00</td><td>Вокал</td></tr>
-      </tbody>
-    </table></div>
-    <div class="grid" style="margin-top:1.6rem">
-      <div class="item"><h3>Школа мам · 300+ мам</h3><p>Подготовка к родам, дыхание, кормление, пеленание, купание, уход за пупочной ранкой.</p></div>
-      <div class="item"><h3>Йога и пилатес · 50+ мам</h3><p>Дыхательные практики и растяжка. <span class="todo">расписание пилатеса</span></p></div>
-      <div class="item"><h3>Арт-терапия · 50+ мам</h3><p>Снять тревогу через творчество.</p></div>
-      <div class="item"><h3>Вокал · 70+ мам</h3><p>Пение для беременных.</p></div>
-      <div class="item"><h3>Психолог</h3><p>Индивидуальные консультации. <span class="todo">запись через ЖК — уточнить</span></p></div>
-      <div class="item"><h3>Клуб «БиблиоФеи»</h3><p>Литературный клуб с Дмитровской библиотекой.</p></div>
-    </div>
-    <p class="note">Анонсы и запись — в чате роддома, Telegram <a href="https://t.me/womenhealthdmitrov">@womenhealthdmitrov</a>. <span class="todo">Где проходят школа мам и «БиблиоФеи», нужна ли запись.</span></p>
   </div></section>
 
   <section id="signal"><div class="wrap">
@@ -469,7 +441,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
         <p>Сигнал может подать врач, акушерка, патронажная сестра, сама мама или её близкие. Дальше у мамы есть понятный маршрут к психологу.</p>
       </div>
       <div class="btns"><a class="btn primary" href="#kontakty">Получить помощь психолога</a></div>
-      <div class="callout">Если появились мысли причинить вред себе или ребёнку — обратитесь за помощью в тот же день: <span class="todo">телефон психолога</span> экстренная помощь — <b>112</b>.</div>
+      <div class="callout">Если появились мысли причинить вред себе или ребёнку — обратитесь за помощью в тот же день: контакт-центр «Остров Надежды» — <a href="tel:+74962232454" style="white-space:nowrap"><b>+7 (496) 223-24-54</b></a>, экстренная помощь — <b>112</b>.</div>
     </div>
   </div></section>
 
@@ -500,13 +472,17 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
     <div class="figures">
       <div><b>+13,5%</b><span>родов в январе–августе 2026 к тому же периоду 2025</span></div>
       <div><b>954</b><span>ребёнка родились в январе–августе 2026 (840 годом ранее)</span></div>
-      <div><b>1242</b><span>родов в 2025 году (1110 в 2024) <span class="todo">1242 или 1247</span></span></div>
+      <div><b>1242</b><span>родов в 2025 году (1110 в 2024)</span></div>
       <div><b>4267</b><span>мам в чате роддома (было 980)</span></div>
       <div><b>300+</b><span>мам прошли школу мам</span></div>
-      <div><b>3-е место</b><span>в номинации конкурса «Медиалидер», 562 заявки</span></div>
+      <div><b>Топ-3</b><span>вошли в тройку призёров в номинации конкурса «Медиалидер», 562 заявки</span></div>
     </div>
     <div class="charts"><div class="chart"><h3>Родов, январь–август</h3><svg viewBox="0 0 300 170" role="img" aria-label="Родов, январь–август: 2025 — 840, 2026 — 954"><line x1="20" y1="140" x2="280" y2="140" stroke="var(--line)" stroke-width="1.5"/><rect x="48" y="43" width="84" height="97" rx="8" fill="var(--rose)"/><text x="90" y="35" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ink)" font-family="Manrope,Golos Text,sans-serif">840</text><text x="90" y="160" text-anchor="middle" font-size="12.5" fill="var(--muted)" font-family="Golos Text,sans-serif">2025</text><rect x="168" y="30" width="84" height="110" rx="8" fill="var(--plum)"/><text x="210" y="22" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ink)" font-family="Manrope,Golos Text,sans-serif">954</text><text x="210" y="160" text-anchor="middle" font-size="12.5" fill="var(--muted)" font-family="Golos Text,sans-serif">2026</text></svg><p class="cap">+13,5% за год</p></div><div class="chart"><h3>Родов за год</h3><svg viewBox="0 0 300 170" role="img" aria-label="Родов за год: 2024 — 1110, 2025 — 1242"><line x1="20" y1="140" x2="280" y2="140" stroke="var(--line)" stroke-width="1.5"/><rect x="48" y="42" width="84" height="98" rx="8" fill="var(--rose)"/><text x="90" y="34" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ink)" font-family="Manrope,Golos Text,sans-serif">1110</text><text x="90" y="160" text-anchor="middle" font-size="12.5" fill="var(--muted)" font-family="Golos Text,sans-serif">2024</text><rect x="168" y="30" width="84" height="110" rx="8" fill="var(--plum)"/><text x="210" y="22" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ink)" font-family="Manrope,Golos Text,sans-serif">1242</text><text x="210" y="160" text-anchor="middle" font-size="12.5" fill="var(--muted)" font-family="Golos Text,sans-serif">2025</text></svg><p class="cap">Данные Дмитровской больницы</p></div><div class="chart"><h3>Мам в чате роддома</h3><svg viewBox="0 0 300 170" role="img" aria-label="Мам в чате роддома: было — 980, сейчас — 4267"><line x1="20" y1="140" x2="280" y2="140" stroke="var(--line)" stroke-width="1.5"/><rect x="48" y="115" width="84" height="25" rx="8" fill="var(--rose)"/><text x="90" y="107" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ink)" font-family="Manrope,Golos Text,sans-serif">980</text><text x="90" y="160" text-anchor="middle" font-size="12.5" fill="var(--muted)" font-family="Golos Text,sans-serif">было</text><rect x="168" y="30" width="84" height="110" rx="8" fill="var(--plum)"/><text x="210" y="22" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ink)" font-family="Manrope,Golos Text,sans-serif">4267</text><text x="210" y="160" text-anchor="middle" font-size="12.5" fill="var(--muted)" font-family="Golos Text,sans-serif">сейчас</text></svg><p class="cap">В 4,4 раза больше</p></div></div>
     <p class="note">В проекте работают администрация округа, больница, социальные службы, семейный центр «Остров Надежды», местные предприниматели и сообщества мам. <a href="#afisha">События проекта →</a></p>
+    <a class="life-teaser" href="#zhizn">
+      <span class="lt-grid"><img src="img/life/fest-amb-s.webp" alt="" loading="lazy" width="760" height="507"><img src="img/life/kraft-s.webp" alt="" loading="lazy" width="760" height="507"><img src="img/life/school1-s.webp" alt="" loading="lazy" width="760" height="507"><img src="img/life/fam-car-s.webp" alt="" loading="lazy" width="760" height="507"></span>
+      <span class="lt-txt"><span class="eyebrow">Жизнь проекта</span><b>Нас уже тысячи — и мы встречаемся не только в роддоме</b><span>Праздники у Дома рождения, школа мам, встречи с врачами, подарки и первые дни малышей. Посмотрите, как живёт сообщество.</span><span class="btn primary">Смотреть фотографии →</span></span>
+    </a>
   </div></section>
 
   <section id="servisy"><div class="wrap">
@@ -540,6 +516,124 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
 </div>
 
 <!-- МАМАМ -->
+
+<div data-view="vy-skazali" hidden>
+  <p class="back"><a href="#home">← На главную</a></p>
+  <section id="vy-skazali"><div class="wrap">
+    <div class="sec-head"><span class="sec-ico"><svg class="ico"><use href="#i-chat"/></svg></span><span class="eyebrow">Вы сказали — мы сделали</span><h2>Что мамы попросили изменить и что уже работает</h2><p class="muted">В опросе «Путь мамы» мамы назвали 187 трудных ситуаций, 106 из них вызывают сильную тревогу. Вот что сделано по главным.</p></div>
+    <div class="ledger">
+      <div class="row"><q>Не знаю, куда обратиться</q><p>Цифровой гид, энциклопедия мамы и ответы в чате роддома</p><span class="chip ok">Работает</span></div>
+      <div class="row"><q>Страшно рожать</q><p>Обновлённая команда роддома, обучение персонала, ремонт, дни открытых дверей, обратная связь от мам</p><span class="chip ok">Работает</span></div>
+      <div class="row"><q>Не хватает навыков ухода за малышом</q><p>Бесплатная школа мам, эфиры и занятия в роддоме</p><span class="chip ok">Работает</span></div>
+      <div class="row"><q>Тревога и подавленность после родов</q><p>«Ранний сигнал» и маршрут к психологу</p><span class="chip ok">Работает</span></div>
+      <div class="row"><q>Чувство «я одна»</q><p>Чат на 4267 мам и очные встречи на занятиях</p><span class="chip ok">Работает</span></div>
+      <div class="row"><q>Трудно записаться к врачу</q><p>Связь с регистратурой в чате и чат-бот «Денис»</p><span class="chip ok">Работает</span></div>
+      <div class="row"><q>Детский сад и выход на работу</q><p>Заявление онлайн за два клика. В 2027 году откроются два детских сада.</p><span class="chip soon">В работе</span></div>
+      <div class="row"><q>Хочу видеть все меры поддержки в одном месте</q><p>ИИ-помощник «Мама» в Max, который подскажет подходящую меру.</p><span class="chip soon">Скоро</span></div>
+    </div>
+    <p class="note">Не нашли свою ситуацию? <a href="#kontakty">Напишите нам</a> — новые вопросы попадают в следующий опрос.</p>
+  </div></section>
+</div>
+
+<div data-view="roddom" hidden>
+  <p class="back"><a href="#home">← На главную</a></p>
+  <section id="roddom"><div class="wrap">
+    <div class="sec-head"><span class="sec-ico"><svg class="ico"><use href="#i-door"/></svg></span><span class="eyebrow">Роддом</span><h2>Роддом, в котором не страшно</h2><p class="muted">Главная задача команды — снять страх перед родами и выстроить доверие между женщиной и врачом.</p></div>
+    <div class="ph-strip"><button type="button" class="lb" data-src="img/life/birth-room.webp" data-cap="Родовой зал: фитбол, функциональная кровать и надпись «Всё ты можешь!»"><img src="img/life/birth-room-s.webp" alt="Родовой зал Дмитровского роддома" loading="lazy" width="760" height="507"></button><button type="button" class="lb" data-src="img/life/neo.webp" data-cap="Место для малыша сразу после рождения: подогрев, мониторы, всё под рукой"><img src="img/life/neo-s.webp" alt="Реанимационное место для новорождённого" loading="lazy" width="760" height="507"></button><button type="button" class="lb" data-src="img/life/twins.webp" data-cap="Двойня — первые дни рядом с мамой"><img src="img/life/twins-s.webp" alt="Медсестра держит двойню рядом с мамой" loading="lazy" width="760" height="507"></button><button type="button" class="lb" data-src="img/life/door.webp" data-cap="На дверях палат — слова поддержки"><img src="img/life/door-s.webp" alt="Надпись «Сегодня будет круто» на двери палаты" loading="lazy" width="760" height="507"></button></div>
+    <div class="two">
+      <div>
+        <ul class="ticks">
+          <li><span>Индивидуальные родовые боксы</span></li>
+          <li><span>В послеродовых палатах не больше двух мам, большинство — одноместные, в каждой свой санузел и душ</span></li>
+          <li><span>Совместное пребывание с малышом, семейные палаты, палата интенсивной терапии для новорождённых</span></li>
+          <li><span>«Золотой час» и партнёрские роды — бесплатно по ОМС</span></li>
+          <li><span>Консультант по грудному вскармливанию, расширенный неонатальный скрининг</span></li>
+          <li><span>С лета 2026 года — два реанимационных комплекса для новорождённых, в том числе недоношенных, аппараты ИВЛ, наркозно-дыхательная аппаратура, мониторы</span></li>
+          <li><span>Персонал учится не только медицине, но и общению с пациентками</span></li>
+        </ul>
+        <p class="note">Рожать сюда приезжают из соседних округов, других городов и даже стран. <span class="todo">Видео из родового отделения (1:08) — прислать файлом.</span></p>
+      </div>
+      <div class="scores" aria-label="Оценки мам">
+        <h3>Как мамы оценили роддом</h3>
+        <div class="bar"><div class="lbl"><span>Родовое отделение</span><b>8,99</b></div><div class="track"><div class="fill" style="width:89.9%"></div></div></div>
+        <div class="bar"><div class="lbl"><span>Общее впечатление</span><b>8,78</b></div><div class="track"><div class="fill" style="width:87.8%"></div></div></div>
+        <div class="bar"><div class="lbl"><span>Послеродовое отделение</span><b>8,53</b></div><div class="track"><div class="fill" style="width:85.3%"></div></div></div>
+        <div class="scale"><span>0</span><span>шкала из 10 баллов</span><span>10</span></div>
+      </div>
+    </div>
+    <div class="invite" id="den-otkrytyh-dverey">
+      <h3>День открытых дверей: каждый четверг в 15:00</h3>
+      <p>Михаил Цурцумия покажет родовое и послеродовое отделения и ответит на вопросы. Можно прийти с партнёром или мамой.</p>
+      <p><b>Адрес:</b> Дмитров, ул. Больничная, д. 7, корп. 3 (ул. Минина, 40). <span class="todo">Нужна ли запись — уточнить</span></p>
+      <div class="btns"><a class="btn primary" href="https://t.me/womenhealthdmitrov">Узнать подробности в чате</a></div>
+    </div>
+  </div></section>
+  <section id="komanda"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Кто вас встретит</span><h2>Люди, которые отвечают за роды в Дмитрове</h2></div>
+    <figure class="doc-feature">
+      <img referrerpolicy="no-referrer" src="https://static.tildacdn.com/tild3732-3064-4463-a565-653332363936/photo_2026-02-08_13-.jpg" alt="Михаил Цурцумия обнимает молодого папу с новорождённым в родильном отделении" loading="lazy" width="1280" height="853">
+      <figcaption class="doc-quote">
+        <blockquote>«Каждое рождение — это чудо»</blockquote>
+        <p>Михаил Зурабович убеждён: беременность должна ассоциироваться с радостью и спокойствием. Своей работой он создаёт в отделении атмосферу комфорта и доверия.</p>
+        <b>Михаил Зурабович Цурцумия</b><span>Заведующий акушерским отделением · экскурсии по четвергам в 15:00</span>
+      </figcaption>
+    </figure>
+    <div class="people">
+      <div class="person"><img class="avatar ph-av" src="img/life/tsurtsumia.webp" alt="Михаил Зурабович Цурцумия" width="104" height="104" loading="lazy"><div class="item"><h3>Цурцумия Михаил Зурабович</h3><p>Заведующий акушерским отделением. Проводит экскурсии по четвергам.</p></div></div>
+      <div class="person"><div class="avatar">ЭВ</div><div class="item"><h3>Вартанян Элен Араевна</h3><p>Заместитель главного врача по акушерству и гинекологии.</p></div></div>
+      <div class="person"><div class="avatar">СЭ</div><div class="item"><h3>Эдилян Сирануш Геворковна</h3><p>Заведующая детским отделением новорождённых.</p></div></div>
+      <div class="person"><div class="avatar">ОК</div><div class="item"><h3>Кокорина Оксана Валериевна</h3><p>Врач-неонатолог детского отделения новорождённых.</p></div></div>
+      <div class="person"><div class="avatar">ЛГ</div><div class="item"><h3>Горюнова Лариса Александровна</h3><p>Врач-неонатолог детского отделения новорождённых.</p></div></div>
+    </div>
+    <p class="note"><span class="todo">Портреты врачей (кроме М. З. Цурцумии) с письменными согласиями; психолог, инструктор йоги, педагог по вокалу, консультант по ГВ — ФИО и фото.</span></p>
+  </div></section>
+</div>
+
+<div data-view="zanyatiya" hidden>
+  <p class="back"><a href="#home">← На главную</a></p>
+  <section id="zanyatiya"><div class="wrap">
+    <div class="sec-head"><span class="sec-ico"><svg class="ico"><use href="#i-cal"/></svg></span><span class="eyebrow">Бесплатно</span><h2>Школа мам и занятия для беременных</h2><p class="muted">Маме нужны не только знания, но и силы. Все занятия проходят в роддоме и ничего не стоят.</p></div>
+    <div class="ph-strip"><button type="button" class="lb" data-src="img/life/school2.webp" data-cap="Встреча будущих мам с Михаилом Цурцумией"><img src="img/life/school2-s.webp" alt="Михаил Цурцумия на встрече с будущими мамами" loading="lazy" width="760" height="507"></button><button type="button" class="lb" data-src="img/life/school1.webp" data-cap="Зал школы мам в роддоме"><img src="img/life/school1-s.webp" alt="Занятие в зале школы мам" loading="lazy" width="760" height="507"></button><button type="button" class="lb" data-src="img/life/workshop.webp" data-cap="Практикум для будущих мам"><img src="img/life/workshop-s.webp" alt="Будущие мамы на практическом занятии" loading="lazy" width="760" height="507"></button><button type="button" class="lb" data-src="img/life/hall.webp" data-cap="Лекция для будущих родителей"><img src="img/life/hall-s.webp" alt="Лекция в зале для будущих родителей" loading="lazy" width="760" height="507"></button></div>
+    <div class="tbl"><table>
+      <thead><tr><th>День</th><th>Время</th><th>Занятие</th></tr></thead>
+      <tbody>
+        <tr><td>Понедельник</td><td class="num">12:00</td><td>Репетиция родов с акушерками и доулами</td></tr>
+        <tr><td>Вторник</td><td class="num">14:00</td><td>Арт-терапия и проработка страхов с психологом</td></tr>
+        <tr><td>Среда</td><td class="num">13:00</td><td>Йога</td></tr>
+        <tr><td>Четверг</td><td class="num">15:00</td><td>День открытых дверей: знакомство с врачами, вопросы</td></tr>
+        <tr><td>Четверг</td><td class="num">17:00</td><td>Вокал</td></tr>
+      </tbody>
+    </table></div>
+    <div class="grid" style="margin-top:1.6rem">
+      <div class="item"><h3>Школа мам · 300+ мам</h3><p>Подготовка к родам, дыхание, кормление, пеленание, купание, уход за пупочной ранкой.</p></div>
+      <div class="item"><h3>Йога и пилатес · 50+ мам</h3><p>Дыхательные практики и растяжка. <span class="todo">расписание пилатеса</span></p></div>
+      <div class="item"><h3>Арт-терапия · 50+ мам</h3><p>Снять тревогу через творчество.</p></div>
+      <div class="item"><h3>Вокал · 70+ мам</h3><p>Пение для беременных.</p></div>
+      <div class="item"><h3>Психолог</h3><p>Индивидуальные консультации, запись через женскую консультацию.</p></div>
+      <div class="item"><h3>Клуб «БиблиоФеи»</h3><p>Литературный клуб с Дмитровской библиотекой.</p></div>
+    </div>
+    <p class="note">Школа мам и клуб «БиблиоФеи» проходят в роддоме. Анонсы и запись — в чате роддома, Telegram <a href="https://t.me/womenhealthdmitrov">@womenhealthdmitrov</a>, или через женскую консультацию.</p>
+  </div></section>
+</div>
+
+
+<div data-view="zhizn" hidden><div class="wrap">
+  <p class="back"><a href="#home">← На главную</a></p>
+  <div class="page-title sec-head"><span class="eyebrow">Жизнь проекта</span><h1>Мы вместе — от первой встречи до выписки</h1>
+  <p class="muted">«Мама в ресурсе» — это не только роддом. Это тысячи семей Дмитровского округа, которые готовятся к рождению малышей вместе: учатся, задают вопросы врачам, приходят на праздники и поддерживают друг друга.</p></div>
+  <div class="life-stats"><div><b>4267</b><span>мам в чате</span></div><div><b>300+</b><span>прошли школу мам</span></div><div><b>1242</b><span>малыша родились в 2025</span></div></div>
+  <div class="chips-f" role="group" aria-label="Фильтр по темам"><button type="button" class="chip-f" aria-pressed="true" data-g="all">Все</button><button type="button" class="chip-f" aria-pressed="false" data-g="roddom-life">Роддом изнутри</button><button type="button" class="chip-f" aria-pressed="false" data-g="vstrechi">Школа мам и встречи с врачами</button><button type="button" class="chip-f" aria-pressed="false" data-g="prazdniki">Праздники у Дома рождения</button><button type="button" class="chip-f" aria-pressed="false" data-g="podarki">Подарки и забота</button><button type="button" class="chip-f" aria-pressed="false" data-g="sevidovy">872-й ребёнок</button></div>
+  <section class="life-g" data-g="roddom-life"><div class="life-h"><h2>Роддом изнутри</h2><p class="muted">Палаты, родовые залы и первые минуты малышей.</p></div><div class="life-grid"><figure class="lf tall"><button type="button" class="lb" data-src="img/life/birth-room.webp" data-cap="Родовой зал: фитбол, удобная кровать и надпись «Всё ты можешь!»"><img src="img/life/birth-room-s.webp" alt="Родовой зал" loading="lazy" width="760" height="507"></button><figcaption>Родовой зал: фитбол, удобная кровать и надпись «Всё ты можешь!»</figcaption></figure><figure class="lf"><button type="button" class="lb" data-src="img/life/twins.webp" data-cap="Двойня — первые дни вместе с мамой"><img src="img/life/twins-s.webp" alt="Медсестра держит двойню рядом с мамой" loading="lazy" width="760" height="507"></button><figcaption>Двойня — первые дни вместе с мамой</figcaption></figure><figure class="lf"><button type="button" class="lb" data-src="img/life/neo.webp" data-cap="Место для малыша сразу после рождения: подогрев и мониторы"><img src="img/life/neo-s.webp" alt="Реанимационное место для новорождённого" loading="lazy" width="760" height="507"></button><figcaption>Место для малыша сразу после рождения: подогрев и мониторы</figcaption></figure><figure class="lf"><button type="button" class="lb" data-src="img/life/nurse.webp" data-cap="Первые объятия"><img src="img/life/nurse-s.webp" alt="Медсестра держит новорождённого" loading="lazy" width="760" height="507"></button><figcaption>Первые объятия</figcaption></figure><figure class="lf"><button type="button" class="lb" data-src="img/life/door.webp" data-cap="На дверях палат — слова поддержки"><img src="img/life/door-s.webp" alt="Надпись «Сегодня будет круто» на двери палаты" loading="lazy" width="760" height="507"></button><figcaption>На дверях палат — слова поддержки</figcaption></figure><figure class="lf"><button type="button" class="lb" data-src="img/life/feet.webp" data-cap="Самые маленькие пяточки Дмитрова"><img src="img/life/feet-s.webp" alt="Ножки новорождённого в ладонях" loading="lazy" width="760" height="507"></button><figcaption>Самые маленькие пяточки Дмитрова</figcaption></figure></div></section>
+  <section class="life-g" data-g="vstrechi"><div class="life-h"><h2>Школа мам и встречи с врачами</h2><p class="muted">Здесь задают любые вопросы — и получают честные ответы.</p></div><div class="life-grid"><figure class="lf tall"><button type="button" class="lb" data-src="img/life/school2.webp" data-cap="Михаил Цурцумия отвечает на вопросы будущих мам"><img src="img/life/school2-s.webp" alt="Встреча с врачом в зале школы мам" loading="lazy" width="760" height="507"></button><figcaption>Михаил Цурцумия отвечает на вопросы будущих мам</figcaption></figure><figure class="lf"><button type="button" class="lb" data-src="img/life/school1.webp" data-cap="Разговор без стеснения: врачи, акушерки и мамы в одном кругу"><img src="img/life/school1-s.webp" alt="Встреча в зале школы мам" loading="lazy" width="760" height="507"></button><figcaption>Разговор без стеснения: врачи, акушерки и мамы в одном кругу</figcaption></figure><figure class="lf"><button type="button" class="lb" data-src="img/life/hall.webp" data-cap="Большая встреча для будущих родителей"><img src="img/life/hall-s.webp" alt="Лекция в зале" loading="lazy" width="760" height="507"></button><figcaption>Большая встреча для будущих родителей</figcaption></figure><figure class="lf"><button type="button" class="lb" data-src="img/life/stage.webp" data-cap="Михаил Цурцумия на встрече с будущими родителями"><img src="img/life/stage-s.webp" alt="Врач с микрофоном у сцены" loading="lazy" width="760" height="507"></button><figcaption>Михаил Цурцумия на встрече с будущими родителями</figcaption></figure><figure class="lf"><button type="button" class="lb" data-src="img/life/gallery-qa.webp" data-cap="Вопросы врачу — в неформальной обстановке"><img src="img/life/gallery-qa-s.webp" alt="Врач и ведущий отвечают на вопросы" loading="lazy" width="760" height="507"></button><figcaption>Вопросы врачу — в неформальной обстановке</figcaption></figure><figure class="lf"><button type="button" class="lb" data-src="img/life/workshop.webp" data-cap="Практикум для будущих мам"><img src="img/life/workshop-s.webp" alt="Будущие мамы на практическом занятии" loading="lazy" width="760" height="507"></button><figcaption>Практикум для будущих мам</figcaption></figure></div></section>
+  <section class="life-g" data-g="prazdniki"><div class="life-h"><h2>Праздники у Дома рождения</h2><p class="muted">Семьи приходят с детьми — и учатся важному в игре.</p></div><div class="life-grid two"><figure class="lf"><button type="button" class="lb" data-src="img/life/fest-cpr.webp" data-cap="Мастер-класс по первой помощи от бригады скорой"><img src="img/life/fest-cpr-s.webp" alt="Мастер-класс по реанимации у Дома рождения" loading="lazy" width="760" height="507"></button><figcaption>Мастер-класс по первой помощи от бригады скорой</figcaption></figure><figure class="lf"><button type="button" class="lb" data-src="img/life/fest-amb.webp" data-cap="Как помочь малышу — показывают на манекене"><img src="img/life/fest-amb-s.webp" alt="Фельдшеры скорой показывают первую помощь" loading="lazy" width="760" height="507"></button><figcaption>Как помочь малышу — показывают на манекене</figcaption></figure><figure class="lf"><button type="button" class="lb" data-src="img/life/fest-game.webp" data-cap="Игры для старших братьев и сестёр"><img src="img/life/fest-game-s.webp" alt="Дети играют на празднике" loading="lazy" width="760" height="507"></button><figcaption>Игры для старших братьев и сестёр</figcaption></figure><figure class="lf"><button type="button" class="lb" data-src="img/life/keepers.webp" data-cap="«Хранители Дмитровского роддома»"><img src="img/life/keepers-s.webp" alt="Футболка с логотипом «Хранители Дмитровского роддома»" loading="lazy" width="760" height="507"></button><figcaption>«Хранители Дмитровского роддома»</figcaption></figure></div></section>
+  <section class="life-g" data-g="podarki"><div class="life-h"><h2>Подарки и забота</h2><p class="muted">Ни одна мама не уходит с пустыми руками.</p></div><div class="life-grid two lead"><figure class="lf"><button type="button" class="lb" data-src="img/life/drmisha.webp" data-cap="Сумки в роддом — в подарок"><img src="img/life/drmisha-s.webp" alt="Девушка с подарочными сумками в роддом" loading="lazy" width="760" height="507"></button><figcaption>Сумки в роддом — в подарок</figcaption></figure><figure class="lf"><button type="button" class="lb" data-src="img/life/gifts-seats.webp" data-cap="Подарки участницам встречи"><img src="img/life/gifts-seats-s.webp" alt="Мамы с подарочными наборами" loading="lazy" width="760" height="507"></button><figcaption>Подарки участницам встречи</figcaption></figure><figure class="lf"><button type="button" class="lb" data-src="img/life/kraft.webp" data-cap="Каждая мама уходит с подарком"><img src="img/life/kraft-s.webp" alt="Мамы с подарочными пакетами" loading="lazy" width="760" height="507"></button><figcaption>Каждая мама уходит с подарком</figcaption></figure><figure class="lf"><button type="button" class="lb" data-src="img/life/giving.webp" data-cap="Подарки вручают лично"><img src="img/life/giving-s.webp" alt="Организатор вручает подарки" loading="lazy" width="760" height="507"></button><figcaption>Подарки вручают лично</figcaption></figure><figure class="lf"><button type="button" class="lb" data-src="img/life/medela.webp" data-cap="Подарки от партнёров для кормящих мам"><img src="img/life/medela-s.webp" alt="Подарки для кормящих мам" loading="lazy" width="760" height="507"></button><figcaption>Подарки от партнёров для кормящих мам</figcaption></figure></div></section>
+  <section class="life-g" data-g="sevidovy"><div class="life-h"><h2>872-й ребёнок</h2><p class="muted">Ко Дню города семья Севидовых получила автомобиль.</p></div><div class="life-grid two"><figure class="lf"><button type="button" class="lb" data-src="img/life/fam-car.webp" data-cap="Семья Севидовых у Дома рождения"><img src="img/life/fam-car-s.webp" alt="Семья у автомобиля проекта" loading="lazy" width="760" height="507"></button><figcaption>Семья Севидовых у Дома рождения</figcaption></figure><figure class="lf"><button type="button" class="lb" data-src="img/life/dad-car.webp" data-cap="Папа за рулём нового автомобиля"><img src="img/life/dad-car-s.webp" alt="Папа за рулём" loading="lazy" width="760" height="507"></button><figcaption>Папа за рулём нового автомобиля</figcaption></figure><figure class="lf"><button type="button" class="lb" data-src="img/life/mom-baby.webp" data-cap="Мария Севидова с малышом и дочкой"><img src="img/life/mom-baby-s.webp" alt="Мама с малышом и дочкой" loading="lazy" width="760" height="507"></button><figcaption>Мария Севидова с малышом и дочкой</figcaption></figure><figure class="lf"><button type="button" class="lb" data-src="img/life/car-side.webp" data-cap="«Мама в ресурсе — Дмитровский маршрут заботы»"><img src="img/life/car-side-s.webp" alt="Автомобиль с логотипом проекта" loading="lazy" width="760" height="507"></button><figcaption>«Мама в ресурсе — Дмитровский маршрут заботы»</figcaption></figure></div></section>
+  <div class="invite" style="margin-top:2rem"><h3>Хотите с нами?</h3><p>Анонсы встреч, занятий и праздников — в чате роддома.</p><div class="btns"><a class="btn primary" href="https://t.me/womenhealthdmitrov">Вступить в чат мам</a><a class="btn line" href="#afisha">События проекта</a></div></div>
+  <p class="note"><span class="todo">Фото публикуются с согласия участников — подтвердить.</span></p>
+</div></div>
+
+<dialog id="lightbox" aria-label="Фотография"><button type="button" class="lb-close" aria-label="Закрыть">×</button><button type="button" class="lb-nav prev" aria-label="Предыдущее фото">‹</button><img alt=""><button type="button" class="lb-nav next" aria-label="Следующее фото">›</button><p class="lb-cap"></p></dialog>
+
 <div data-view="mam" hidden><div class="wrap">
   <div class="page-title sec-head"><span class="eyebrow">Вопросы мам</span><h1>Ответы на то, что тревожит больше всего</h1>
   <img referrerpolicy="no-referrer" class="page-img" src="https://static.tildacdn.com/tild6232-3462-4661-b364-656664303335/image.jpeg" alt="Мама нежно держит новорождённого" loading="lazy" width="856" height="813">
@@ -559,7 +653,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
     <article id="mam-gv"><h2>Не получается наладить грудное вскармливание</h2><p>Почти каждая мама в первые недели думает, что молока мало, — и чаще всего это не так. Первые дни малышу хватает молозива: желудок у него совсем маленький. За первый месяц лактация подстраивается под ребёнка, лучше всего помогает кормление по требованию. Настоящие признаки нехватки — мало мокрых подгузников, редкий стул и плохая прибавка в весе. Даже тогда не переходите сразу на смесь: сначала к педиатру и к консультанту по ГВ — часто дело в прикладывании.</p><p class="go"><a href="https://t.me/womenhealthdmitrov">Спросить в чате роддома</a></p></article>
     <article id="mam-posle"><h2>Что нормально после родов, а когда ехать в роддом</h2><p>Послеродовой период длится 42 дня. Выделения (лохии) в норме идут до шести недель: сначала кровяные, через неделю — слизистые. Душ можно принимать уже в первые сутки, в том числе после кесарева; шов и рубец достаточно мыть с мылом и сушить, зелёнка и пластырь не нужны.</p><p>Приезжайте в роддом, если выделений больше, чем в первые дни месячных, есть сгустки, они ярко-алые, снова стали обильными после затихания или неприятно пахнут. Если за 6 часов после родов не удаётся помочиться — скажите врачу. При любых жалобах в течение 42 дней можно и нужно приехать в роддом.</p><p class="go">Приёмное отделение: <span class="phone">8 (496) 223-26-96</span>, круглосуточно</p></article>
     <article id="mam-malysh"><h2>Когда с малышом срочно к врачу</h2><p>В большинстве случаев достаточно наблюдать. Но к врачу нужно сразу, если малыш:</p><ul class="list"><li>стал вялым, отказывается от груди или плохо сосёт;</li><li>часто и обильно срыгивает (больше 5 раз в день), беспокоен, не прибавляет в весе;</li><li>пожелтел сильнее, побледнел или посинел;</li><li>температура выше 37,5 °C, и малыш вялый или беспокойный;</li><li>редко мочится, стул плотный, сухой или тёмный;</li><li>из пупка выделения с гноем или кровью, неприятный запах, покраснение вокруг; пупочная ранка не заживает больше 21 дня.</li></ul><p class="go"><a href="https://t.me/eregistratura_mo_bot">Записаться к педиатру через «Дениса»</a></p></article>
-    <article id="mam-ploho"><h2>Мне плохо после родов, и я не понимаю почему</h2><p>Если больше двух недель держатся подавленность и слёзы, потеря интереса ко всему, сильная тревога, бессонница даже когда малыш спит, чувство вины и никчёмности — это может быть перинатальная депрессия. Это не слабость и не «плохая мать». Она хорошо лечится, если обратиться вовремя.</p><div class="callout">Если появились мысли причинить вред себе или ребёнку — обратитесь за помощью в тот же день: <span class="todo">телефон психолога</span> экстренная помощь — <b>112</b>.</div><p>Близким: не ждите, пока мама пожалуется сама. Спросите, как она себя чувствует, и помогите дойти до специалиста.</p><p class="go"><a href="#signal">«Ранний сигнал»</a></p></article>
+    <article id="mam-ploho"><h2>Мне плохо после родов, и я не понимаю почему</h2><p>Если больше двух недель держатся подавленность и слёзы, потеря интереса ко всему, сильная тревога, бессонница даже когда малыш спит, чувство вины и никчёмности — это может быть перинатальная депрессия. Это не слабость и не «плохая мать». Она хорошо лечится, если обратиться вовремя.</p><div class="callout">Если появились мысли причинить вред себе или ребёнку — обратитесь за помощью в тот же день: контакт-центр «Остров Надежды» — <a href="tel:+74962232454" style="white-space:nowrap"><b>+7 (496) 223-24-54</b></a>, экстренная помощь — <b>112</b>.</div><p>Близким: не ждите, пока мама пожалуется сама. Спросите, как она себя чувствует, и помогите дойти до специалиста.</p><p class="go"><a href="#signal">«Ранний сигнал»</a></p></article>
     <article id="mam-odna"><h2>Я всё время одна, не с кем поговорить</h2><p>В чате роддома 4267 мам. Там можно спросить совет у тех, кто уже прошёл этот путь, и найти подругу для прогулок. На занятиях в роддоме — очные встречи.</p><p class="go"><a href="https://t.me/womenhealthdmitrov">Telegram</a><span class="todo">Чат в MAX</span></p></article>
     <article><h2>Не могу записаться к врачу</h2><p>Запишитесь через чат-бот «Денис» — к врачу, на прививки, вызов на дом. Если не получается, напишите в чат роддома: там есть связь с регистратурой.</p><p class="go"><a href="https://t.me/eregistratura_mo_bot">Чат-бот «Денис»</a></p></article>
     <article id="mam-sad"><h2>Как устроить ребёнка в детский сад и вернуться на работу</h2><p>Каждый ребёнок от 2 месяцев до 8 лет имеет право на место в муниципальном саду. Заявление подаётся онлайн через Госуслуги. В 2027 году в Дмитрове планируется достроить сад на 130 мест на ул. Большевистской.</p><p class="go"><a href="https://www.gosuslugi.ru/help/faq/popular/21">Записаться в детский сад</a></p></article>
@@ -612,12 +706,15 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
 <div data-view="afisha" hidden><div class="wrap">
   <div class="page-title sec-head"><span class="eyebrow">Афиша и новости</span><h1>События проекта</h1></div>
   <div class="qa">
-    <article><h2>Форум «Гнездо-2026»</h2><p>Михаил Цурцумия выступит спикером. <span class="todo">14 ноября — подтвердить</span></p></article>
-    <article><h2>872-й ребёнок</h2><p>Ко Дню города семья Марии и Михаила Севидовых из села Подъячево получила автомобиль: их малыш стал 872-м ребёнком, родившимся в Дмитрове в 2026 году. Все четверо детей Севидовых родились в Дмитровском роддоме. <span class="todo">фото с согласия семьи</span></p></article>
+    <article><h2>Форум «Гнездо-2026»</h2><p>Михаил Цурцумия выступит спикером 14 ноября.</p></article>
+    <article><h2>872-й ребёнок</h2><p>Ко Дню города семья Марии и Михаила Севидовых из села Подъячево получила автомобиль: их малыш стал 872-м ребёнком, родившимся в Дмитрове в 2026 году. Все четверо детей Севидовых родились в Дмитровском роддоме.</p>
+      <div class="ev-photos"><button type="button" class="lb" data-src="img/life/fam-car.webp" data-cap="Семья Севидовых у Дома рождения"><img src="img/life/fam-car-s.webp" alt="Семья Севидовых с новорождённым у автомобиля проекта" loading="lazy" width="760" height="507"></button><button type="button" class="lb" data-src="img/life/dad-car.webp" data-cap="Папа за рулём нового автомобиля"><img src="img/life/dad-car-s.webp" alt="Михаил Севидов за рулём автомобиля" loading="lazy" width="760" height="507"></button><button type="button" class="lb" data-src="img/life/mom-baby.webp" data-cap="Мария Севидова с малышом и дочкой"><img src="img/life/mom-baby-s.webp" alt="Мама с новорождённым и дочкой" loading="lazy" width="760" height="507"></button><button type="button" class="lb" data-src="img/life/car-side.webp" data-cap="Автомобиль «Мама в ресурсе — Дмитровский маршрут заботы»"><img src="img/life/car-side-s.webp" alt="Автомобиль с логотипом проекта" loading="lazy" width="760" height="507"></button></div></article>
     <article><h2>Фестиваль «Папа может!»</h2><p>В октябре в Дмитровском кремле будущие папы учились пеленать и поддерживать маму.</p></article>
     <article><h2>Фестиваль «За счастьем к нам»</h2><p>Первый в Подмосковье фестиваль для беременных — пришли около ста женщин с родными.</p></article>
     <article><h2>День беременных</h2><p>Проходит в апреле и октябре.</p></article>
-    <article><h2>«Медиалидер» и «Свет профилактики-2026»</h2><p>Проект вошёл в тройку призёров своей номинации «Медиалидера» (562 заявки) и подан на всероссийский конкурс просветительских проектов НМИЦ ТПМ Минздрава России.</p></article>
+    <article><h2>День открытых дверей</h2><p>Каждый четверг в 15:00 будущие родители знакомятся с врачами и видят родовое и послеродовое отделения. <a href="#den-otkrytyh-dverey">Подробнее →</a></p></article>
+    <p class="note"><span class="todo">Фото: «Папа может!», «За счастьем к нам», День беременных, День открытых дверей — пришлёт заказчик.</span></p>
+    <article><h2>«Медиалидер» и «Свет профилактики-2026»</h2><p>Проект вошёл в тройку призёров в номинации конкурса «Медиалидер» (562 заявки) и подан на всероссийский конкурс просветительских проектов НМИЦ ТПМ Минздрава России.</p></article>
   </div>
 </div></div>
 
@@ -693,6 +790,27 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
   tg.addEventListener('click',function(){var c=document.documentElement.classList.toggle('clean');tg.textContent=c?'Показать пометки':'Скрыть пометки'});
   document.getElementById('fb').addEventListener('submit',function(e){e.preventDefault();document.getElementById('fb-out').hidden=false});
 })();
+
+  // фото: фильтр и лайтбокс
+  (function(){
+    var chips=[].slice.call(document.querySelectorAll('.chip-f'));
+    chips.forEach(function(c){c.addEventListener('click',function(){
+      var g=c.getAttribute('data-g');
+      chips.forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false')});
+      [].forEach.call(document.querySelectorAll('.life-g'),function(sec){sec.hidden=!(g==='all'||sec.getAttribute('data-g')===g)});
+    })});
+    var dlg=document.getElementById('lightbox');if(!dlg)return;
+    var img=dlg.querySelector('img'),cap=dlg.querySelector('.lb-cap'),list=[],idx=0;
+    function open(i){var b=list[i];if(!b)return;idx=i;img.src=b.getAttribute('data-src');img.alt=b.querySelector('img').alt;cap.textContent=b.getAttribute('data-cap')||'';if(!dlg.open){if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','')}}
+    document.addEventListener('click',function(e){
+      var b=e.target.closest&&e.target.closest('.lb');
+      if(b){var scope=b.closest('[data-view]');list=[].slice.call(scope.querySelectorAll('.lb')).filter(function(x){return x.offsetParent!==null});open(list.indexOf(b));return}
+      if(e.target===dlg||e.target.classList.contains('lb-close'))dlg.close();
+      if(e.target.classList.contains('prev'))open((idx-1+list.length)%list.length);
+      if(e.target.classList.contains('next'))open((idx+1)%list.length);
+    });
+    document.addEventListener('keydown',function(e){if(!dlg.open)return;if(e.key==='ArrowLeft')open((idx-1+list.length)%list.length);if(e.key==='ArrowRight')open((idx+1)%list.length)});
+  })();
 </script>
 
 </body>
