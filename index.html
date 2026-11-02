@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>:root{color-scheme:light}html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png"><link rel="apple-touch-icon" href="img/favicon-180.png">
 <title>Мама в ресурсе</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="robots" content="noindex, nofollow">
@@ -491,6 +492,12 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
 .film-play.loading .fp-btn{animation:fpp 1s ease-in-out infinite}
 @keyframes fpp{50%{transform:scale(.9)}}
 .fp-time{position:absolute;right:14px;bottom:12px;background:rgba(0,0,0,.6);color:#fff;font:600 .85rem var(--body);padding:.2rem .5rem;border-radius:6px}
+
+.brand-logo{height:46px;width:auto;display:block}
+@media (max-width:560px){.brand-logo{height:44px}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .brand-logo,:root:not([data-theme="light"]) .foot-logo{filter:brightness(0) invert(1)}}
+.foot-marks{display:flex;align-items:center;gap:1rem;margin-bottom:.6rem}.foot-gerb{height:84px;width:auto}.foot-logo{height:84px;width:auto}
+.small-btn{padding:.55rem 1rem;font-size:.9rem;justify-self:start;margin-top:.3rem}
 </style>
 </head>
 <body>
@@ -514,7 +521,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
 <symbol id="i-door" viewBox="0 0 24 24"><path d="M6 20.5V4.5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v16M4 20.5h16M14.5 12.5h.01"/></symbol>
 </svg>
 <header class="top"><div class="wrap">
-  <a class="brand" href="#home">Мама в ресурсе<small>Дмитровский округ · Дмитровская больница</small></a>
+  <a class="brand" href="#home" aria-label="Мама в ресурсе — на главную"><img class="brand-logo" src="img/logo-h.png" alt="Мама в ресурсе — Дмитровский маршрут заботы" width="767" height="240"></a>
   <nav class="main" aria-label="Разделы">
     <a href="#home">Главная</a>
     <a href="#roddom">Роддом</a>
@@ -572,7 +579,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
     </div>
     <div class="stage-panel" data-panel="born" hidden>
       <div class="step"><svg class="ico"><use href="#i-heart"/></svg><span class="n">Первые дни</span><h3>Наладить кормление</h3><p>В роддоме работает консультант по грудному вскармливанию.</p><a class="go" href="#mam-gv">Что нормально →</a></div>
-      <div class="step"><svg class="ico"><use href="#i-rub"/></svg><span class="n">Выплаты</span><h3>Оформить выплаты</h3><p>Онлайн через Госуслуги Подмосковья, без походов по кабинетам.</p><a class="go" href="https://uslugi.mosreg.ru/birthmo">Подать заявление →</a></div>
+      <div class="step"><svg class="ico"><use href="#i-rub"/></svg><span class="n">Выплаты</span><h3>Оформить выплаты</h3><p>Онлайн через Госуслуги Подмосковья, без походов по кабинетам.</p><a class="go" href="https://www.gosuslugi.ru/life/details/onetime_childbirth_allowance" target="_blank" rel="noopener">Подать заявление →</a></div>
       <div class="step"><svg class="ico"><use href="#i-leaf"/></svg><span class="n">Самочувствие</span><h3>Если тяжело</h3><p>Подавленность больше двух недель — повод обратиться. Это лечится.</p><a class="go" href="#signal">«Ранний сигнал» →</a></div>
       <div class="step"><svg class="ico"><use href="#i-home"/></svg><span class="n">Дальше</span><h3>Детский сад</h3><p>Заявление онлайн через Госуслуги, место положено с 2 месяцев.</p><a class="go" href="https://www.gosuslugi.ru/help/faq/popular/21">Подать заявление →</a></div>
     </div>
@@ -592,7 +599,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
       <a class="enc-card" href="#pape"><img referrerpolicy="no-referrer" src="https://static.tildacdn.com/tild3330-3131-4239-a564-353031363234/image_3.jpeg" alt="Будущие мама и папа гуляют, держась за руки" loading="lazy" width="700" height="700"><b>Папам</b><span>Партнёрские роды, «Папа может!» и как поддержать маму</span></a>
     </div>
     <div class="enc four" id="razdely">
-      <a class="enc-card" href="#vy-skazali"><img src="img/support.webp" alt="Мама с малышом и бабушка" loading="lazy" width="640" height="857"><b>Вы сказали — мы сделали</b><span>Что мамы попросили изменить и что уже работает</span></a>
+      <a class="enc-card" href="#vy-skazali"><img src="img/feedback.webp" alt="Мама за ноутбуком делится впечатлениями о проекте" loading="lazy" width="640" height="857"><b>Вы сказали — мы сделали</b><span>Что мамы попросили изменить и что уже работает</span></a>
       <a class="enc-card" href="#roddom"><img src="img/tour.webp" alt="Будущие родители на экскурсии в родовой палате" loading="lazy" width="640" height="857"><b>Роддом, в котором не страшно</b><span>Палаты, оснащение, оценки мам и врачи</span></a>
       <a class="enc-card" href="#zanyatiya"><img src="img/school.webp" alt="Будущие мамы на занятии" loading="lazy" width="640" height="857"><b>Школа мам и занятия для беременных</b><span>Школа мам, йога, арт-терапия, вокал, психолог</span></a>
       <a class="enc-card" href="#zhizn"><img src="img/moms.webp" alt="Мамы гуляют с колясками" loading="lazy" width="640" height="857"><b>Жизнь проекта</b><span>Праздники, встречи, подарки и люди — в фотографиях</span></a>
@@ -635,7 +642,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
   <section id="podderzhka"><div class="wrap">
     <div class="sec-head"><span class="sec-ico"><svg class="ico"><use href="#i-rub"/></svg></span><span class="eyebrow">Меры поддержки</span><h2>Что положено семье и как это получить</h2></div>
     <div class="grid">
-      <div class="item"><h3><a href="https://uslugi.mosreg.ru/birthmo">Выплаты при рождении ребёнка</a></h3><p>Заявление онлайн через Госуслуги Подмосковья. Не понимаете, что положено именно вам, — спросите контакт-центр «Остров Надежды».</p></div>
+      <div class="item"><h3><a href="https://www.gosuslugi.ru/life/details/onetime_childbirth_allowance" target="_blank" rel="noopener">Выплаты при рождении ребёнка</a></h3><p>Единовременное пособие при рождении ребёнка — заявление онлайн на Госуслугах. Не понимаете, что положено именно вам, — спросите контакт-центр «Остров Надежды».</p><a class="btn primary small-btn" href="https://www.gosuslugi.ru/life/details/onetime_childbirth_allowance" target="_blank" rel="noopener">Оформить на Госуслугах</a></div>
       <div class="item"><h3><a href="#kontakty">ИИ-помощник «Мама» в Max</a></h3><p>Подскажет, какие меры поддержки положены именно вам и как их оформить. <span class="todo">ссылка на бота «Мама» в Max</span></p></div>
       <div class="item"><h3><a href="https://www.gosuslugi.ru/help/faq/popular/21">Детский сад</a></h3><p>Место в муниципальном саду положено каждому ребёнку от 2 месяцев до 8 лет.</p></div>
       <div class="item"><h3>Энциклопедия молодой мамы</h3><p>Про сон, кормление, гигиену и осмотры — простым языком. <span class="todo">PDF после правки опечаток</span></p></div>
@@ -655,7 +662,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
   </div></section>
 
   <section id="itogi"><div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Открытые цифры</span><h2>Что изменилось с начала проекта</h2><p class="muted">Проект запущен в 2024 году. Данные Дмитровской больницы, обновляются раз в квартал.</p></div>
+    <div class="sec-head"><span class="eyebrow">Открытые цифры</span><h2>Что изменилось с начала проекта</h2><p class="muted">Проект запущен в 2025 году. Данные Дмитровской больницы, обновляются раз в квартал.</p></div>
     <div class="figures">
       <div><b>+13,5%</b><span>родов в январе–августе 2026 к тому же периоду 2025</span></div>
       <div><b>954</b><span>ребёнка родились в январе–августе 2026 (840 годом ранее)</span></div>
@@ -763,14 +770,13 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
       <figcaption class="doc-quote">
         <blockquote>«Каждое рождение — это чудо»</blockquote>
         <p>Михаил Зурабович убеждён: беременность должна ассоциироваться с радостью и спокойствием. Своей работой он создаёт в отделении атмосферу комфорта и доверия.</p>
-        <b>Михаил Зурабович Цурцумия</b><span>Заведующий акушерским отделением · экскурсии по четвергам в 15:00</span>
       </figcaption>
     </figure>
     <div class="people">
       <div class="person"><img class="avatar ph-av" src="img/life/av-tsurtsumia.webp" alt="Михаил Зурабович Цурцумия" width="104" height="104" loading="lazy"><div class="item"><h3>Цурцумия Михаил Зурабович</h3><p>Заведующий акушерским отделением. Проводит экскурсии по четвергам.</p></div></div>
       <div class="person"><img class="avatar ph-av" src="img/life/av-vartanyan.webp" alt="Элен Араевна Вартанян" width="104" height="104" loading="lazy"><div class="item"><h3>Вартанян Элен Араевна</h3><p>Заместитель главного врача по акушерству и гинекологии.</p></div></div>
-      <div class="person"><div class="avatar">СЭ</div><div class="item"><h3>Эдилян Сирануш Геворковна</h3><p>Заведующая детским отделением новорождённых.</p></div></div>
-      <div class="person"><div class="avatar">ОК</div><div class="item"><h3>Кокорина Оксана Валериевна</h3><p>Врач-неонатолог детского отделения новорождённых.</p></div></div>
+      <div class="person"><img class="avatar ph-av" src="img/life/av-edilyan.webp" alt="Сирануш Геворковна Эдилян" width="104" height="104" loading="lazy"><div class="item"><h3>Эдилян Сирануш Геворковна</h3><p>Заведующая детским отделением новорождённых.</p></div></div>
+      <div class="person"><img class="avatar ph-av" src="img/life/av-kokorina.webp" alt="Оксана Валериевна Кокорина" width="104" height="104" loading="lazy"><div class="item"><h3>Кокорина Оксана Валериевна</h3><p>Врач-неонатолог детского отделения новорождённых.</p></div></div>
       <div class="person"><div class="avatar">ЛГ</div><div class="item"><h3>Горюнова Лариса Александровна</h3><p>Врач-неонатолог детского отделения новорождённых.</p></div></div>
     </div>
     <p class="note"><span class="todo">Портреты врачей (кроме М. З. Цурцумии) с письменными согласиями; психолог, инструктор йоги, педагог по вокалу, консультант по ГВ — ФИО и фото.</span></p>
@@ -892,7 +898,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
       <ol class="list"><li>Появились кровянистые выделения — даже небольшие.</li><li>Излились или подтекают околоплодные воды — сильным потоком или понемногу, но постоянно.</li><li>Малыш стал двигаться заметно меньше, слабее или вы его не чувствуете.</li><li>Сильная или постоянная боль в животе — особенно если нарастает, живот напряжён.</li><li>Сильная головная боль, «мушки» перед глазами, ухудшилось зрение — так может проявляться опасное повышение давления.</li><li>Температура 38° и выше, озноб, слабость, рвота, одышка.</li><li>Начались регулярные болезненные схватки при сроке 37 недель и больше.</li><li>Вы упали или ударились животом — даже если всё кажется в порядке.</li></ol>
       <div class="callout"><b>Сразу звоните 112</b>, если обильное кровотечение, потеря сознания, судороги, резко стало трудно дышать или сильная боль в груди, состояние быстро ухудшается.</div>
       <p>Если сомневаетесь — лучше приехать и убедиться, что всё хорошо. Приёмное отделение: <span class="phone">8 (496) 223-26-96</span>, круглосуточно.</p></article>
-    <article id="mam-vyplaty"><h2>Какие выплаты мне положены</h2><p>Оформить выплаты при рождении ребёнка можно онлайн через Госуслуги Подмосковья. Если не понимаете, что положено именно вам, — напишите в контакт-центр «Остров Надежды».</p><p class="go"><a href="https://uslugi.mosreg.ru/birthmo">Госуслуги Подмосковья</a><a href="#kontakty">Контакт-центр</a></p></article>
+    <article id="mam-vyplaty"><h2>Какие выплаты мне положены</h2><p>Оформить выплаты при рождении ребёнка можно онлайн через Госуслуги Подмосковья. Если не понимаете, что положено именно вам, — напишите в контакт-центр «Остров Надежды».</p><p class="go"><a href="https://www.gosuslugi.ru/life/details/onetime_childbirth_allowance" target="_blank" rel="noopener">Госуслуги</a><a href="#kontakty">Контакт-центр</a></p></article>
     <article id="mam-gv"><h2>Не получается наладить грудное вскармливание</h2><p>Почти каждая мама в первые недели думает, что молока мало, — и чаще всего это не так. Первые дни малышу хватает молозива: желудок у него совсем маленький. За первый месяц лактация подстраивается под ребёнка, лучше всего помогает кормление по требованию. Настоящие признаки нехватки — мало мокрых подгузников, редкий стул и плохая прибавка в весе. Даже тогда не переходите сразу на смесь: сначала к педиатру и к консультанту по ГВ — часто дело в прикладывании.</p><p class="go"><a href="https://t.me/womenhealthdmitrov">Спросить в чате роддома</a></p></article>
     <article id="mam-posle"><h2>Что нормально после родов, а когда ехать в роддом</h2><p>Послеродовой период длится 42 дня. Выделения (лохии) в норме идут до шести недель: сначала кровяные, через неделю — слизистые. Душ можно принимать уже в первые сутки, в том числе после кесарева; шов и рубец достаточно мыть с мылом и сушить, зелёнка и пластырь не нужны.</p><p>Приезжайте в роддом, если выделений больше, чем в первые дни месячных, есть сгустки, они ярко-алые, снова стали обильными после затихания или неприятно пахнут. Если за 6 часов после родов не удаётся помочиться — скажите врачу. При любых жалобах в течение 42 дней можно и нужно приехать в роддом.</p><p class="go">Приёмное отделение: <span class="phone">8 (496) 223-26-96</span>, круглосуточно</p></article>
     <article id="mam-malysh"><h2>Когда с малышом срочно к врачу</h2><p>В большинстве случаев достаточно наблюдать. Но к врачу нужно сразу, если малыш:</p><ul class="list"><li>стал вялым, отказывается от груди или плохо сосёт;</li><li>часто и обильно срыгивает (больше 5 раз в день), беспокоен, не прибавляет в весе;</li><li>пожелтел сильнее, побледнел или посинел;</li><li>температура выше 37,5 °C, и малыш вялый или беспокойный;</li><li>редко мочится, стул плотный, сухой или тёмный;</li><li>из пупка выделения с гноем или кровью, неприятный запах, покраснение вокруг; пупочная ранка не заживает больше 21 дня.</li></ul><p class="go"><a href="https://t.me/womenhealthdmitrov">Спросить в чате роддома</a></p></article>
@@ -982,7 +988,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
 <div class="sticky-call"><a class="btn primary" href="#kontakty">Позвонить</a><a class="btn soft" href="https://t.me/womenhealthdmitrov">Чат мам</a></div>
 
 <footer><div class="wrap">
-  <div><b style="color:var(--ink)">Проект «Мама в ресурсе»</b><br>Администрация Дмитровского муниципального округа и Дмитровская больница. Запущен в 2024 году.<br><a href="https://dmitrov-reg.ru/">dmitrov-reg.ru</a></div>
+  <div><div class="foot-marks"><img class="foot-gerb" src="img/gerb.png" alt="Герб Дмитровского муниципального округа" width="164" height="240" loading="lazy"><img class="foot-logo" src="img/logo-v.png" alt="Мама в ресурсе — Дмитровский маршрут заботы" width="700" height="343" loading="lazy"></div><b style="color:var(--ink)">Проект «Мама в ресурсе»</b><br>Администрация Дмитровского муниципального округа и Дмитровская больница. Запущен в 2025 году.<br><a href="https://dmitrov-reg.ru/">dmitrov-reg.ru</a></div>
   <nav aria-label="Ещё"><a href="#mam">Вопросы мам</a><a href="#chto-vzyat">Сумка в роддом</a><a href="#vopros-otvet">Вопрос — ответ</a><a href="#pape">Для пап</a><a href="#afisha">Афиша</a><a href="#pamyatki">Памятки</a><a href="#politika">Политика конфиденциальности</a></nav>
 </div></footer>
 
